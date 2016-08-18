@@ -1,0 +1,38 @@
+%section.content-header
+  %h1
+    Clientes  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Clientes
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Novo Cliente", new_admin_customer_path, :class => "btn btn-primary"
+    
+    .box
+      .box-header
+        %h3.box-title Clientes Cadastrados
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.customer.id")
+            %th=t("activerecord.attributes.customer.title")
+            %th=t("activerecord.attributes.customer.order")
+            %th=t("activerecord.attributes.customer.published") 
+            %th=t("actions")
+          - for customer in @admin_customers 
+            %tr
+              %td= customer.id
+              %td= customer.title
+              %td= customer.ordem
+              %td= customer.published                
+              %td 
+                = link_to t("show"), customer, :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_customer_path(customer), :class => "btn btn-default"
+                = link_to t("destroy"), customer, :method => :delete, :data => { :confirm => 'Are you sure?' } , :class => "btn btn-default"
+
+    %p= link_to "Novo Cliente", new_admin_customer_path, :class => "btn btn-primary"

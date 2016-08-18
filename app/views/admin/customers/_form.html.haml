@@ -1,0 +1,32 @@
+= form_for @admin_customer do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group  
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.customer.title")
+    .form-group
+      = f.label :description
+      = f.text_area :description, :class => "form-control", :placeholder => t("activerecord.attributes.customer.description")
+    .form-group
+      = f.label :services_performed
+      = f.text_area :services_performed, :class => "form-control", :placeholder => t("activerecord.attributes.customer.services_performed")
+    .form-group
+      = f.label :ordem
+      = f.number_field :ordem, :class => "form-control" 
+    .form-group
+      = f.label :published
+      = f.check_box :published 
+    .form-group
+      = f.label :company_logo
+      = f.file_field :company_logo, :class => "form-control"  
+    - if @admin_customer.company_logo.file?
+      .form-group
+        =image_tag(@admin_customer.company_logo.url)
+    
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary"   

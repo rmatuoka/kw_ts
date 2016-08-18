@@ -1,0 +1,32 @@
+%section.content-header
+  %h1
+    Usuários  
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Usuários
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@user.name}"
+        
+        .box-body  
+          %p= "E-mail: #{@user.email}"
+            
+          / %p
+          /   - if !@user.last_login_at.blank?
+          /     ="Último login: #{distance_of_time_in_words(@user.last_login_at)}"
+
+
+  = link_to "Edit", edit_user_path(@user), :class => "btn btn-default"
+  = link_to "View All", users_path, :class => "btn btn-default"

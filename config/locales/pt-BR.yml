@@ -1,0 +1,34 @@
+pt-BR:
+  site_name: "Training Society"
+  admin_site_name: "Administrador Training Society"
+  greeting: "Olá, "
+  translation:
+    en: "English"
+    es: "Español"
+    pt-BR: "Português"
+    choose: "Escolha o idioma"
+  
+  send: "Enviar"
+  copywrite: "Administrador (C) 2014 - Todos os direitos reservados."
+  
+  actions: "Ações"
+  show: "Exibir"
+  edit: "Editar"
+  delete: "Deletar"
+  destroy: "Deletar"
+  msg_delete: "Deseja realmente deletar? Está operação não poderá ser desfeita!" 
+  back_list: "Exibir Todos"
+
+  
+  msg_validate:
+    name_required: "Nome deve ser preenchido"
+    name_minlength: "Informe um nome válido"
+    email_required: "E-mail deve ser preenchido"
+    email_email: "Informe um E-mail valido"    
+    phone_required: "Telefone deve ser preenchido"
+    phone_minlength: "Informe um Telefone valido"
+    message_required: "Mensagem deve ser preenchido"
+    message_minlength: "Informe uma mensagem valida"
+    city_required: "Cidade deve ser preenchido"
+    city_minlength: "Informe uma cidade valida"
+    state_required: "Selecione um estado"

@@ -1,0 +1,111 @@
+#theme_advanced_toolbar_location: top
+#theme_advanced_toolbar_align: left
+#theme_advanced_statusbar_location: bottom
+#theme_advanced_buttons3_add:
+#  - tablecontrols
+#  - fullscreen
+#plugins:
+#  - table
+#  - fullscreen
+#theme_advanced_toolbar_location: top
+#theme_advanced_toolbar_align: left
+#theme_advanced_statusbar_location: bottom 
+#theme_advanced_buttons3_add:
+#  - tablecontrols
+#  - fullscreen | font[face|size|color|style] 
+#  - styleselect | bold italic | link image | undo redo  
+#  - table | fullscreen
+#  - forecolor     
+#plugins:
+#  - table
+#  - fullscreen
+#  - image
+#  - uploadimage 
+#  - preview
+#  - autolink
+
+
+
+
+#theme_advanced_toolbar_location: top
+#theme_advanced_toolbar_align: left
+#theme_advanced_statusbar_location: bottom
+#theme_advanced_buttons3_add:
+#  - tablecontrols
+#  - fullscreen
+#  - media
+#  - preview
+#  - link
+#  - image
+#  - uploadimage  
+#  - fullscreen
+#
+#plugins:
+#  - advlist
+#  - autolink
+#  - lists
+#  - link
+#  - image
+#  - charmap
+#  - print
+#  - preview
+#  - hr
+#  - anchor
+#  - pagebreak
+#  - searchreplace
+#  - wordcount
+#  - visualblocks
+#  - visualchars
+#  - code
+#  - fullscreen
+#  - insertdatetime
+#  - media
+#  - nonbreaking
+#  - save
+#  - table
+#  - contextmenu
+#  - directionality
+#  - emoticons
+#  - template
+#  - paste
+#  - textcolor
+#  - colorpicker
+#  - textpattern
+#  - uploadimage  
+#
+
+
+toolbar:
+  - uploadimage undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image
+  - print preview | forecolor backcolor emoticons | code paste table
+plugins:
+  - advlist
+  - autolink
+  - lists
+  - link
+  - image
+  - charmap
+  - print
+  - preview
+  - hr
+  - anchor
+  - pagebreak
+  - searchreplace
+  - wordcount
+  - visualblocks
+  - visualchars
+  - code
+  - fullscreen
+  - insertdatetime
+  - nonbreaking
+  - save
+  - table
+  - contextmenu
+  - directionality
+  - emoticons
+  - template
+  - paste
+  - textcolor
+  - colorpicker
+  - textpattern
+  - uploadimage

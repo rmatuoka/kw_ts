@@ -1,0 +1,32 @@
+= form_for @admin_highlight do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group  
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.highlight.title")
+    .form-group
+      = f.label :subtitle
+      = f.text_field :subtitle, :class => "form-control", :placeholder => t("activerecord.attributes.highlight.subtitle") 
+    .form-group
+      = f.label :ordem
+      = f.number_field :ordem, :class => "form-control"
+    .form-group
+      = f.label :published
+      = f.check_box :published 
+    .form-group
+      = f.label :image_highlight
+      = f.file_field :image_highlight, :class => "form-control"  
+    - if @admin_highlight.image_highlight.file?
+      .form-group
+        =image_tag(@admin_highlight.image_highlight.url)
+    .form-group
+      = f.label :link
+      = f.text_field :link, :class => "form-control", :placeholder => t("activerecord.attributes.highlight.link")
+    
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary"  

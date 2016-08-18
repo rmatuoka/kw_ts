@@ -1,0 +1,32 @@
+%section.content-header
+  %h1
+    Eventos 
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Eventos
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@admin_organization.title}"
+        
+        .box-body  
+          %p= "Descrição: #{@admin_organization.description}"
+
+        .box-body  
+          %p= "Inicio: #{@admin_organization.organization_start}"
+          %p= "Fim: #{@admin_organization.organization_finish}"
+
+
+  = link_to "Edit", edit_admin_organization_path(@admin_organization), :class => "btn btn-default"
+  = link_to "View All", admin_organizations_path, :class => "btn btn-default"

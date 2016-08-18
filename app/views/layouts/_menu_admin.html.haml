@@ -1,0 +1,56 @@
+%aside.main-sidebar
+  / sidebar: style can be found in sidebar.less
+  %section.sidebar
+    / Sidebar user panel (optional)
+    .user-panel
+      .pull-left.image
+        %img.img-circle{:alt => "User Image", :src => "dist/img/avatar6.png"}/
+      .pull-left.info
+        %p 
+          =t("Olá! ") + current_user.name         
+        / Status
+        %a{:href => "#"}
+          %i.fa.fa-circle.text-success
+          Online
+    / Sidebar Menu
+    %ul.sidebar-menu
+      %li.header HEADER
+      / Optionally, you can add icons to the links
+      %li
+        %a{:href => "#{admin_articles_path()}"}
+          %i.fa.fa-pencil-square-o
+          %span Artigos
+      %li
+        %a{:href => "#{admin_highlights_path()}"}
+          %i.fa.fa-picture-o
+          %span Banners
+      %li
+        %a{:href => "#{admin_customers_path()}"}
+          %i.fa.fa-group
+          %span Clientes
+      %li
+        %a{:href => "#{admin_organizations_path()}"}
+          %i.fa.fa-calendar
+          %span Eventos
+      %li
+        %a{:href => "#{admin_enterprises_path()}"}
+          %i.fa.fa-building
+          %span Empresas
+      %li
+        %a{:href => "#{users_path()}"}
+          %i.fa.fa-group
+          %span Usuários
+
+      / %li.treeview
+      /   %a{:href => "#"}
+      /     %i.fa.fa-link
+      /     %span Multilevel
+      /     %span.pull-right-container
+      /       %i.fa.fa-angle-left.pull-right
+      /   %ul.treeview-menu
+      /     %li
+      /       %a{:href => "#"} Link in level 2
+      /     %li
+      /       %a{:href => "#"} Link in level 2
+    / /.sidebar-menu
+  / /.sidebar

@@ -1,0 +1,20 @@
+= form_for @user_session do |f|
+  .body.bg-gray
+    -if flash[:error]
+      .alert.alert-danger.alert-dismissable
+        %i.fa.fa-ban
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        %b Alert!
+        Usuário e/ou senha inválidos.
+    .form-group
+    = f.text_field :email, :placeholder => "E-mail", :class => "form-control"
+    .form-group
+      = f.password_field :password, :placeholder => "Senha", :class => "form-control"
+    -#.form-group
+    -#  %input{:name => "remember_me", :type => "checkbox"}/
+    -#  Remember me
+  .footer
+    = f.submit "Entrar", :class => "btn bg-olive btn-block"
+    -#%p
+    -#  %a{:href => "#"} I forgot my password
+    -#%a.text-center{:href => "register.html"} Register a new membership

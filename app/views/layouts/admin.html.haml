@@ -1,0 +1,105 @@
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}
+      %title Training Society - Admin
+      /  / = content_for?(:title) ? t("admin_site_name") + " - " + yield(:title) : t("admin_site_name")  
+    %meta{content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no", name: "viewport"}    
+    = csrf_meta_tag
+    / = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag "bootstrap.min.css"
+    = stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
+    = stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    = stylesheet_link_tag "AdminLTE.css"
+    = stylesheet_link_tag "skins/skin-blue.min.css"
+    / = stylesheet_link_tag "iCheck/flat/blue.css"
+    / = stylesheet_link_tag "morris/morris.css"
+    / = stylesheet_link_tag "jquery-jvectormap-1.2.2.css"
+    / = stylesheet_link_tag "datepicker/datepicker3.css"
+    / = stylesheet_link_tag "daterangepicker/daterangepicker.css"
+    / = stylesheet_link_tag "custom.sato7.css"      
+    = yield(:head) 
+  
+  %body.hold-transition.skin-blue.sidebar-mini
+  .wrapper
+    / Main Header
+    %header.main-header
+      / Logo
+      %a.logo{:href => "/admin"}
+        / mini logo for sidebar mini 50x50 pixels
+        %span.logo-mini
+          %b> A
+          LT
+        / logo for regular state and mobile devices
+        %span.logo-lg
+          %b> Admin
+          LTE
+      / Header Navbar
+      %nav.navbar.navbar-static-top{:role => "navigation"}
+        / Sidebar toggle button
+        %a.sidebar-toggle{"data-toggle" => "offcanvas", :href => "#", :role => "button"}
+          %span.sr-only Toggle navigation
+        / Navbar Right Menu
+        .navbar-custom-menu
+          %ul.nav.navbar-nav           
+            / User Account Menu
+            %li.dropdown.user.user-menu
+              / Menu Toggle Button
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                / The user image in the navbar
+                %img.user-image{:alt => "User Image", :src => "dist/img/avatar6.png"}/
+                / hidden-xs hides the username on small devices so only the image appears.
+                %span.hidden-xs 
+                  = current_user.name
+              %ul.dropdown-menu
+                / The user image in the menu
+                %li.user-header
+                  %img.img-circle{:alt => "User Image", :src => "dist/img/avatar6.png"}/
+                  %p
+                    = current_user.name
+                    %span -
+                    = current_user.role
+                    %small Member since 
+                    =current_user.created_at
+                / Menu Body
+                / Menu Footer
+                %li.user-footer
+                  .pull-right
+                    %a.btn.btn-default.btn-flat{:href => "#{logout_path()}"} Sign out
+
+
+  
+  
+    .wrapper.row-offcanvas.row-offcanvas-left
+      / Left side column. contains the logo and sidebar
+      %aside.left-side.sidebar-offcanvas
+        =render file: "layouts/_menu_admin.html.haml" 
+      / Right side column. Contains the navbar and content of the page
+      %aside.right-side
+        =yield
+        / Content Header (Page header)
+        / /.content
+      / /.right-side
+    / ./wrapper
+    / add new calendar event modal
+    / jQuery include
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag "jQuery/jquery-2.2.3.min.js"
+    / = javascript_include_tag "application"
+    / = javascript_include_tag "https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"
+    = javascript_include_tag "bootstrap.min.js"
+    / = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"
+    / = javascript_include_tag "morris/morris.min.js"
+    / = javascript_include_tag "sparkline/jquery.sparkline.min.js"
+    / = javascript_include_tag "jvectormap/jquery-jvectormap-1.2.2.min.js"
+    / = javascript_include_tag "jvectormap/jquery-jvectormap-world-mill-en.js"
+    / = javascript_include_tag "knob/jquery.knob.js"
+    / = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"
+    / = javascript_include_tag "daterangepicker/daterangepicker.js"
+    / = javascript_include_tag "datepicker/bootstrap-datepicker.js"
+    / = javascript_include_tag "bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"
+    / = javascript_include_tag "slimScroll/jquery.slimscroll.min.js"
+    / = javascript_include_tag "fastclick/fastclick.js"
+    = javascript_include_tag "AdminLTE/app.js"
+    / = javascript_include_tag "AdminLTE/dashboard.js" 
+    = yield(:footer)

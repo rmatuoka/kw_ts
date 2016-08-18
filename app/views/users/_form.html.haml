@@ -1,0 +1,32 @@
+= form_for @user, role: "form" do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+
+  .box-body
+    .form-group
+      =t('activerecord.attributes.user.name')
+      
+      = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
+    .form-group
+      =t('activerecord.attributes.user.email')
+      = f.text_field :email, :class => "form-control", :placeholder => "Preencha o e-mail"
+    
+    .form-group
+      =t('activerecord.attributes.user.password')
+      = f.password_field :password, :class => "form-control", :placeholder => "senha"
+    .form-group
+      =t('activerecord.attributes.user.password_confirmation')
+      = f.password_field :password_confirmation, :class => "form-control", :placeholder => "Senha"
+    .form-group
+      Permissões de Acesso:
+      %br 
+      = f.radio_button :role, :administrator
+      Administrador
+      = f.radio_button :role, :user
+      Usuário
+  .box-footer
+    =f.submit "Salvar", :class => "btn btn-primary"

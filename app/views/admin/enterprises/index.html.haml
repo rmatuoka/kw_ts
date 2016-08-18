@@ -1,0 +1,42 @@
+%section.content-header
+  %h1
+    Empresas  
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Empresas
+
+
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Nova Empresa", new_admin_enterprise_path, :class => "btn btn-primary"
+    
+    .box.a
+      .box-header
+        %h3.box-title Empresas
+        
+      / /.box-header
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th ID
+            %th=t("activerecord.attributes.admin_enterprise.name")
+            %th=t("activerecord.attributes.admin_enterprise.description")
+            %th=t("activerecord.attributes.admin_enterprise.visualizations")
+            %th Ações
+          - @admin_enterprises.each do |admin_enterprise|
+            %tr
+              %td= admin_enterprise.id
+              %td= admin_enterprise.name
+              %td= admin_enterprise.description
+              %td= admin_enterprise.visualizations
+              %td 
+                = link_to "Show", [admin_enterprise], :class => "btn btn-default"
+                = link_to "Edit", edit_admin_enterprise_path(admin_enterprise), :class => "btn btn-default"
+                = link_to "Destroy", [admin_enterprise], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default"
+
+    %p= link_to "Nova Empresa", new_admin_enterprise_path, :class => "btn btn-primary"

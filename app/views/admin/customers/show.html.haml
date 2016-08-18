@@ -1,0 +1,47 @@
+%section.content-header
+  %h1
+    Clientes  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Clientes
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@admin_customer.title}"
+        
+        .box-body  
+          %p
+            %b="#{t("activerecord.attributes.customer.description")}:"
+            %br
+            =@admin_customer.description   
+        .box-body  
+          %p
+            %b="#{t("activerecord.attributes.customer.services_performed")}:"
+            %br
+            =@admin_customer.services_performed
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.customer.order")}: "
+            =@admin_customer.ordem
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.customer.published")}: "
+            =@admin_customer.published
+        - if @admin_customer.company_logo.file?
+          .box-body
+            %p=image_tag(@admin_customer.company_logo.url)
+
+  = link_to t("back_list"), admin_customers_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_customer_path(@admin_customer), :class => "btn btn-default" 
+  = link_to "Novo Cliente", new_admin_customer_path, :class => "btn btn-primary"

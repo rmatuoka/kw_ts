@@ -1,0 +1,43 @@
+%section.content-header
+  %h1
+    Eventos  
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Eventos
+
+
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Novo Evento", new_admin_organization_path, :class => "btn btn-primary"
+    
+    .box.a
+      .box-header
+        %h3.box-title Eventos
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th ID
+            %th= "Titulo"
+            %th= "Descrição"
+            %th= "Inicio do Evento"
+            %th= "Fim do Evento"
+            %th Ações
+          - @admin_organizations.each do |admin_organization|
+            %tr
+              %td= admin_organization.id
+              %td= admin_organization.title
+              %td= admin_organization.description
+              %td= admin_organization.organization_start
+              %td= admin_organization.organization_finish
+              %td 
+                = link_to "Show", admin_organization, :class => "btn btn-default"
+                = link_to "Edit", edit_admin_organization_path(admin_organization), :class => "btn btn-default"
+                = link_to "Destroy", admin_organization, :data => { :confirm => 'Are you sure?' }, :method => :delete, :class => "btn btn-default"
+
+    %p= link_to "Novo Evento", new_admin_organization_path, :class => "btn btn-primary"
+

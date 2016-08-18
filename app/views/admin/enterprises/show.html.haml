@@ -1,0 +1,32 @@
+%section.content-header
+  %h1
+    Empresas  
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Empresas
+     
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@admin_enterprise.name}"
+        
+        .box-body  
+          %p= "Descrição: #{@admin_enterprise.description}"
+
+        .box-body  
+          %p= "Visualizações: #{@admin_enterprise.visualizations}"
+            
+
+
+  = link_to "Edit", edit_admin_enterprise_path(@admin_enterprise), :class => "btn btn-default"
+  = link_to "View All", admin_enterprises_path, :class => "btn btn-default"

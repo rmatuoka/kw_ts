@@ -1,0 +1,49 @@
+- content_for :head do 
+  = stylesheet_link_tag "jquery.tagsinput.css"
+- content_for :footer do 
+  = javascript_include_tag "jquery.tagsinput.min.js"
+  :javascript
+    $('.tags').tagsInput({
+      'width':'100%',
+      'height':'42px',
+      'removeWithBackspace' : true,
+      'defaultText':'+ item'
+    });
+= form_for [:admin, @article] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => "titulo" 
+    .form-group
+      = f.label :subtitle
+      = f.text_field :subtitle, :class => "form-control", :placeholder => "subtitulo"
+    .form-group 
+      = f.label :description
+      = f.text_area :description, :class => "form-control", :placeholder => "descrição"
+    .form-group
+      = f.label :tag_list
+      = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"      
+    .form-group 
+      = f.label :ordem
+      = f.number_field :ordem, :class => "form-control"
+    .form-group 
+      = f.label :published
+      = f.check_box :published
+    .form-group
+      = f.label :image_article
+      = f.file_field :image_article, :class => "form-control"  
+    - if @article.image_article.file?
+      .form-group
+        =image_tag(@article.image_article.url)
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary" 
+
+
+-content_for :footer do
+  = tinymce   

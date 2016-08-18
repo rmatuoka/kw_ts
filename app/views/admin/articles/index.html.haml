@@ -1,0 +1,53 @@
+%section.content-header
+  %h1
+    Artigos  
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Artigos
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+      = link_to "Novo Artigo", new_admin_article_path, :class => "btn btn-primary" 
+      = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?
+    
+    .box
+      .box-header
+        %h3.box-title 
+          Artigos Cadastrados
+          = " - Com Tag '#{params[:tag]}'" if !params[:tag].blank? 
+          
+      .box-body.table-responsive.no-padding#tag_cloud
+
+        /- tag_cloud Article.tag_counts, %w[s m l] do |tag, css_class| 
+        /  = link_to tag.name, admin_tag_path(tag.name), :class => css_class
+        / - tag_cloud Article.tag_counts, %w[s m l] do |tag, css_class|
+        /   = link_to(tag.name, admin_tag_path(tag.name), :class => css_class)
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.article.title") 
+            %th=t("activerecord.attributes.article.subtitle")
+            %th=t("activerecord.attributes.article.tag_list")                         
+            %th=t("activerecord.attributes.article.order")
+            %th=t("activerecord.attributes.article.active")
+            %th=t("actions")
+          - for article in @articles 
+            %tr
+              %td= article.title 
+              %td= article.subtitle
+              %td= raw article.tag_list.map{ |t| link_to t, admin_tag_path(t)}.join(', ')                            
+              %td= article.ordem
+              %td= article.active              
+              %td 
+                = link_to t("show"), [:admin, article], :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_article_path(article), :class => "btn btn-default"
+                = link_to 'Destroy', [:admin, article], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-default"
+
+    %p
+      = link_to "Novo Artigo", new_admin_article_path, :class => "btn btn-primary" 
+      = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?

@@ -1,0 +1,27 @@
+= form_for @admin_organization do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+
+  .box-body
+    .form-group
+      =t('activerecord.attributes.article.title')      
+      = f.text_field :title, :class => "form-control", :placeholder => "Preencha o titulo"
+    .form-group
+      =t('activerecord.attributes.article.description')      
+      = f.text_area :description, :class => "form-control"
+    .form-group
+      = f.label "Inicio do Evento"   
+      = f.datetime_select :organization_start, :class => "form-control"
+    .form-group
+      = f.label "Fim do Evento"   
+      = f.datetime_select :organization_finish, :class => "form-control"
+
+
+    
+    
+  .box-footer
+    =f.submit "Salvar", :class => "btn btn-primary"
