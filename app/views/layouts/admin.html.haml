@@ -47,14 +47,14 @@
               / Menu Toggle Button
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 / The user image in the navbar
-                %img.user-image{:alt => "User Image", :src => "dist/img/avatar6.png"}/
+                =image_tag("admin_img/avatar6.png", :class => "user-image img")
                 / hidden-xs hides the username on small devices so only the image appears.
                 %span.hidden-xs 
                   = current_user.name
               %ul.dropdown-menu
                 / The user image in the menu
                 %li.user-header
-                  %img.img-circle{:alt => "User Image", :src => "dist/img/avatar6.png"}/
+                  =image_tag("admin_img/avatar6.png", :class => "img img-circle")
                   %p
                     = current_user.name
                     %span -

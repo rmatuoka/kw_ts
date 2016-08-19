@@ -226,6 +226,9 @@ pt-BR:
       improvement: "Estética"
       process_step: "Imagem do Processo"
       massage: "Massagem"
+      enterprise: "Empresa"
+      customer: "Cliente"
+      organization: "Evento"
     attributes:
       default: &default_name
         id: 'Código'
@@ -250,8 +253,10 @@ pt-BR:
         <<: *default_name
       highlight:
         <<: *default_name
-        publication_start: "Inicio da Publicação"
-        publication_stop: "Fim da Publicação"
+        link: "link"
+      customer:
+        <<: *default_name
+        services_performed: "Cargo"
       contact:
         <<: *default_name
         id: "Protocolo Nº"

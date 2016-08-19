@@ -4,7 +4,7 @@
     / Sidebar user panel (optional)
     .user-panel
       .pull-left.image
-        %img.img-circle{:alt => "User Image", :src => "dist/img/avatar6.png"}/
+        =image_tag("admin_img/avatar6.png", :class => "img-circle")
       .pull-left.info
         %p 
           =t("Olá! ") + current_user.name         
