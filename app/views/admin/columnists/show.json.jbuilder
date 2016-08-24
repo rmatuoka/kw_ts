@@ -1,0 +1,1 @@
+json.partial! "admin_columnists/admin_columnist", admin_columnist: @admin_columnist

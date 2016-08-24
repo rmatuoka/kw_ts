@@ -1,0 +1,42 @@
+%section.content-header
+  %h1
+    Categorias  
+    %small Control panel
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Categorias
+
+
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Nova Categoria", new_admin_category_path, :class => "btn btn-primary"
+    
+    .box.a
+      .box-header
+        %h3.box-title Categorias
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th ID
+            %th=t("activerecord.attributes.admin_category.name")
+            %th=t("activerecord.attributes.admin_category.description")
+            %th=t("activerecord.attributes.admin_category.ordem")
+            %th=t("activerecord.attributes.admin_category.published")
+            %th Ações
+          - for admin_category in @admin_categories
+            %tr
+              %td= admin_category.id
+              %td= admin_category.name
+              %td= admin_category.description
+              %td= admin_category.ordem
+              %td= admin_category.published
+              %td 
+                = link_to "Show", [:admin, admin_category], :class => "btn btn-default"
+                = link_to "Edit", edit_admin_category_path(admin_category), :class => "btn btn-default"
+                = link_to "Destroy", [:admin, admin_category], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default"
+
+    %p= link_to "Nova Categoria", new_admin_category_path, :class => "btn btn-primary"

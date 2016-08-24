@@ -1,14 +1,3 @@
-- content_for :head do 
-  = stylesheet_link_tag "jquery.tagsinput.css"
-- content_for :footer do 
-  = javascript_include_tag "jquery.tagsinput.min.js"
-  :javascript
-    $('.tags').tagsInput({
-      'width':'100%',
-      'height':'42px',
-      'removeWithBackspace' : true,
-      'defaultText':'+ item'
-    });
 = form_for [:admin, @article] do |f|
   -if f.error_messages
     .alert.alert-danger.alert-dismissable
@@ -25,10 +14,16 @@
       = f.text_field :subtitle, :class => "form-control", :placeholder => "subtitulo"
     .form-group 
       = f.label :description
-      = f.text_area :description, :class => "form-control", :placeholder => "descrição"
-    .form-group
-      = f.label :tag_list
-      = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"      
+      = f.text_area :description, :class => "form-control ckeditor", :placeholder => "descrição"
+    .form-group 
+      = f.label "Escolha a Categoria"    
+      = f.select :category_ids, @categories,{}, {multiple: "multiple", class: "form-control select2"}
+    .form-group 
+      = f.label :columnist_id, "Escolha o Colunista"    
+      = f.select :columnist_id, @columnists,{}, {class: "form-control select2"}
+    / .form-group
+    /   = f.label :tag_list
+    /   = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"      
     .form-group 
       = f.label :ordem
       = f.number_field :ordem, :class => "form-control"
@@ -44,6 +39,8 @@
   .box-footer
     =f.submit nil, :class => "btn btn-primary" 
 
-
 -content_for :footer do
-  = tinymce   
+  :javascript
+    $(function () {
+      $(".select2").select2();
+    });

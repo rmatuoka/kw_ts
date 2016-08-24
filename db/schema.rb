@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817185052) do
+ActiveRecord::Schema.define(version: 20160824184800) do
+
+  create_table "admin_columnists", force: :cascade do |t|
+    t.string   "name",                          limit: 255
+    t.string   "description",                   limit: 255
+    t.boolean  "published",                                 default: true
+    t.boolean  "active",                                    default: true
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.string   "admin_columnists_file_name",    limit: 255
+    t.string   "admin_columnists_content_type", limit: 255
+    t.integer  "admin_columnists_file_size",    limit: 4
+    t.datetime "admin_columnists_updated_at"
+  end
 
   create_table "admin_customers", force: :cascade do |t|
     t.string   "title",                     limit: 255
@@ -75,7 +88,42 @@ ActiveRecord::Schema.define(version: 20160817185052) do
     t.string   "image_article_content_type", limit: 255
     t.integer  "image_article_file_size",    limit: 4
     t.datetime "image_article_updated_at"
+    t.integer  "columnist_id",               limit: 4
+    t.integer  "category_id",                limit: 4
   end
+
+  create_table "articles_categories", id: false, force: :cascade do |t|
+    t.integer "category_id", limit: 4, null: false
+    t.integer "article_id",  limit: 4, null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.integer  "ordem",       limit: 4
+    t.boolean  "published",               default: true
+    t.boolean  "active",                  default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "father_id",   limit: 4
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string   "data_file_name",    limit: 255, null: false
+    t.string   "data_content_type", limit: 255
+    t.integer  "data_file_size",    limit: 4
+    t.string   "data_fingerprint",  limit: 255
+    t.integer  "assetable_id",      limit: 4
+    t.string   "assetable_type",    limit: 30
+    t.string   "type",              limit: 30
+    t.integer  "width",             limit: 4
+    t.integer  "height",            limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",              limit: 40
@@ -131,6 +179,16 @@ ActiveRecord::Schema.define(version: 20160817185052) do
     t.string   "last_login_ip",      limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "last_name",          limit: 255
+    t.string   "birthdate",          limit: 255
+    t.string   "company",            limit: 255
+    t.string   "services_performed", limit: 255
+    t.string   "cep",                limit: 255
+    t.string   "street",             limit: 255
+    t.string   "number",             limit: 255
+    t.string   "neighborhood",       limit: 255
+    t.string   "city",               limit: 255
+    t.string   "state",              limit: 255
   end
 
 end

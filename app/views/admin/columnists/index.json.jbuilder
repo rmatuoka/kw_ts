@@ -1,0 +1,1 @@
+json.array! @admin_columnists, partial: 'admin_columnists/admin_columnist', as: :admin_columnist

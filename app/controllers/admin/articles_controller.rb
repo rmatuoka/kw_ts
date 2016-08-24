@@ -1,9 +1,10 @@
 class Admin::ArticlesController < ApplicationController
-  layout "admin"
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
   access_control do
       allow :administrator, :all
   end
+  layout "admin"
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_filter :load_categories, :load_columnists
   # GET /articles
   # GET /articles.json
   def index
@@ -31,7 +32,7 @@ class Admin::ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to [:admin, @article], notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: [:admin, @article] }
       else
         format.html { render :new }
@@ -45,7 +46,7 @@ class Admin::ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to [:admin, @article], notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: [:admin, @article] }
       else
         format.html { render :edit }
@@ -72,6 +73,15 @@ class Admin::ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :subtitle, :description, :ordem, :active, :published, :tag_list, :image_article)
+      params.require(:article).permit(:title, :subtitle, :description, :ordem, :active, :published, :tag_list, :image_article, :columnist_id, category_ids: [])
+    end
+
+    def load_categories
+      @categories = Category.where("published = true").all.collect { |c| [c.name, c.id] }
+      # @categories = Admin::Category.includes(:children).where("admin_categories.published = true").all
+    end
+
+    def load_columnists
+      @columnists = Admin::Columnist.where("published = true").all.collect { |c| [c.name, c.id] }
     end
 end

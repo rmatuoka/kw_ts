@@ -32,7 +32,8 @@
           %tr
             %th=t("activerecord.attributes.article.title") 
             %th=t("activerecord.attributes.article.subtitle")
-            %th=t("activerecord.attributes.article.tag_list")                         
+            %th Colunista
+            / %th=t("activerecord.attributes.article.tag_list")                         
             %th=t("activerecord.attributes.article.order")
             %th=t("activerecord.attributes.article.active")
             %th=t("actions")
@@ -40,7 +41,8 @@
             %tr
               %td= article.title 
               %td= article.subtitle
-              %td= raw article.tag_list.map{ |t| link_to t, admin_tag_path(t)}.join(', ')                            
+              %td
+              / %td= raw article.tag_list.map{ |t| link_to t, admin_tag_path(t)}.join(', ')                            
               %td= article.ordem
               %td= article.active              
               %td 

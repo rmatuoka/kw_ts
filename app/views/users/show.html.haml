@@ -18,11 +18,26 @@
       / general form elements
       .box.box-primary
         .box-header
-          %h3.box-title="#{@user.name}"
+          %h3.box-title="#{@user.name} - #{@user.role}"
         
         .box-body  
           %p= "E-mail: #{@user.email}"
-            
+
+          %p= "Data de nascimento: #{@user.birthdate}"
+
+          %p= "Cargo: #{@user.services_performed}"
+
+          %p= "Cep: #{@user.cep}"
+
+          %p= "Rua: #{@user.street}"
+
+          %p= "Número: #{@user.number}"
+
+          %p= "Bairro: #{@user.neighborhood}"
+
+          %p= "Cidade: #{@user.city}"  
+
+          %p= "Estado: #{@user.state}"
           / %p
           /   - if !@user.last_login_at.blank?
           /     ="Último login: #{distance_of_time_in_words(@user.last_login_at)}"

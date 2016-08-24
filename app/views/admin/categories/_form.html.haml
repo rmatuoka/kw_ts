@@ -1,0 +1,26 @@
+= form_for @admin_category do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+
+  .box-body
+    .form-group
+      =t('activerecord.attributes.user.name')      
+      = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
+    .form-group
+      =t('activerecord.attributes.admin_category.description')
+      = f.text_field :description, :class => "form-control", :placeholder => "Preencha a descrição"
+
+    .form-group
+      =t('activerecord.attributes.admin_category.ordem')
+      = f.number_field :ordem, :class => "form-control"
+
+    .form-group
+      =t('activerecord.attributes.admin_category.published')
+      = f.check_box :published
+
+  .box-footer
+    =f.submit "Salvar", :class => "btn btn-primary"

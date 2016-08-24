@@ -14,19 +14,75 @@
     .form-group
       =t('activerecord.attributes.user.email')
       = f.text_field :email, :class => "form-control", :placeholder => "Preencha o e-mail"
-    
+
+    .form-group
+      =t('activerecord.attributes.user.birthdate')
+      = f.text_field :birthdate, :class => "form-control", :placeholder => "Preencha a data de nascimento", id: "datemask"
+
+    .form-group
+      =t('activerecord.attributes.user.services_performed')
+      / =f.select :services_performed, ['cargo1', 'cargo2', 'cargo3']
+      %select.select2.form-control#user_services_performed{:name => "user[services_performed]"}
+        %option{:value => "cargo1"} cargo1
+        %option{:value => "cargo2"} cargo2
+        %option{:value => "cargo3"} cargo3
+
+    .form-group
+      =t('activerecord.attributes.user.cep')
+      = f.text_field :cep, :class => "form-control", :placeholder => "Preencha o cep", id: "cep"
+
+    .form-group
+      =t('activerecord.attributes.user.street')
+      = f.text_field :street, :class => "form-control", :placeholder => "Preencha a rua"
+
+    .form-group
+      =t('activerecord.attributes.user.number')
+      = f.text_field :number, :class => "form-control", :placeholder => "Preencha o numero"
+
+    .form-group
+      =t('activerecord.attributes.user.neighborhood')
+      = f.text_field :neighborhood, :class => "form-control", :placeholder => "Preencha o bairro"
+
+    .form-group
+      =t('activerecord.attributes.user.city')
+      = f.text_field :city, :class => "form-control", :placeholder => "Preencha o bairro"
+
+    .form-group
+      =t('activerecord.attributes.user.state')
+      = f.text_field :state, :class => "form-control", :placeholder => "Preencha o bairro"
+
     .form-group
       =t('activerecord.attributes.user.password')
       = f.password_field :password, :class => "form-control", :placeholder => "senha"
+
     .form-group
       =t('activerecord.attributes.user.password_confirmation')
       = f.password_field :password_confirmation, :class => "form-control", :placeholder => "Senha"
+
     .form-group
       Permissões de Acesso:
       %br 
       = f.radio_button :role, :administrator
       Administrador
+      = f.radio_button :role, :editor
+      Redator
+      = f.radio_button :role, :marketing
+      Marketing
+      = f.radio_button :role, :maneger
+      Gestor
       = f.radio_button :role, :user
-      Usuário
+      Cliente
+
   .box-footer
     =f.submit "Salvar", :class => "btn btn-primary"
+
+-content_for :footer do
+  :javascript
+    $(function () {
+      //Datemask dd/mm/yyyy
+      $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/aaaa"});
+
+      $("#cep").inputmask("#####-###", {"placeholder": "00000-000"});
+
+      $(".select2").select2();
+    });

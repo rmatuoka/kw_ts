@@ -16,18 +16,27 @@
     %ul.sidebar-menu
       %li.header HEADER
       / Optionally, you can add icons to the links
-      %li
-        %a{:href => "#{admin_articles_path()}"}
+      %li.treeview
+        %a{:href => "#"}
           %i.fa.fa-pencil-square-o
           %span Artigos
+          %span.pull-right-container
+            %i.fa.fa-angle-left.pull-right
+        %ul.treeview-menu
+          %li
+            %a{:href => "#{admin_articles_path()}"} Artigos
+          %li
+            %a{:href => "#{admin_categories_path()}"} Categorias
+          %li
+            %a{:href => "#{admin_columnists_path()}"} Colunistas
       %li
         %a{:href => "#{admin_highlights_path()}"}
           %i.fa.fa-picture-o
           %span Banners
-      %li
-        %a{:href => "#{admin_customers_path()}"}
-          %i.fa.fa-group
-          %span Clientes
+      / %li
+      /   %a{:href => "#{admin_customers_path()}"}
+      /     %i.fa.fa-group
+      /     %span Clientes
       %li
         %a{:href => "#{admin_organizations_path()}"}
           %i.fa.fa-calendar
@@ -41,16 +50,5 @@
           %i.fa.fa-group
           %span Usuários
 
-      / %li.treeview
-      /   %a{:href => "#"}
-      /     %i.fa.fa-link
-      /     %span Multilevel
-      /     %span.pull-right-container
-      /       %i.fa.fa-angle-left.pull-right
-      /   %ul.treeview-menu
-      /     %li
-      /       %a{:href => "#"} Link in level 2
-      /     %li
-      /       %a{:href => "#"} Link in level 2
     / /.sidebar-menu
   / /.sidebar

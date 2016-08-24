@@ -1,0 +1,19 @@
+.select2-container--default .select2-selection--single {
+   background-color: #fff; 
+   border: 1px solid #d2d6de;
+   border-radius: 0; 
+   height: 34px;
+   line-height: 1.42857143;
+ }
+
+ .select2-container--default .select2-selection--multiple {
+   background-color: #fff; 
+   border: 1px solid #d2d6de;
+   border-radius: 0; 
+   height: 34px;
+   line-height: 1.42857143;
+ }
+ 
+.select2-container .select2-selection--single .select2-selection__rendered {
+  padding-left: 0;
+}

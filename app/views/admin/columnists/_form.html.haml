@@ -1,0 +1,29 @@
+= form_for @admin_columnist do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+
+  .box-body
+    .form-group
+      =t('activerecord.attributes.admin_columnist.name')      
+      = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
+    .form-group
+      =t('activerecord.attributes.admin_columnist.description')
+      = f.text_area :description, :class => "form-control ckeditor", :placeholder => "Preencha a descrição"
+
+    .form-group
+      = f.label :admin_columnists
+      = f.file_field :admin_columnists, :class => "form-control"  
+    - if @admin_columnist.admin_columnists.file?
+      .form-group
+        =image_tag(@admin_columnist.admin_columnists.url)
+
+    .form-group
+      =t('activerecord.attributes.admin_columnist.published')
+      = f.check_box :published
+
+  .box-footer
+    =f.submit "Salvar", :class => "btn btn-primary"

@@ -1,0 +1,2 @@
+module Admin::ColumnistsHelper
+end
