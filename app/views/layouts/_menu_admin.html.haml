@@ -13,22 +13,35 @@
           %i.fa.fa-circle.text-success
           Online
     / Sidebar Menu
-    %ul.sidebar-menu
-      %li.header HEADER
-      / Optionally, you can add icons to the links
-      %li.treeview
-        %a{:href => "#"}
+    %ul.sidebar-menu      
+      %li.header
+      %li
+        %a{:href => "#{admin_articles_path()}"}
           %i.fa.fa-pencil-square-o
           %span Artigos
-          %span.pull-right-container
-            %i.fa.fa-angle-left.pull-right
-        %ul.treeview-menu
-          %li
-            %a{:href => "#{admin_articles_path()}"} Artigos
-          %li
-            %a{:href => "#{admin_categories_path()}"} Categorias
-          %li
-            %a{:href => "#{admin_columnists_path()}"} Colunistas
+      %li
+        %a{:href => "#{admin_categories_path()}"}
+          %i.fa.fa-pencil-square-o
+          %span Categorias
+      %li
+        %a{:href => "#{admin_columnists_path()}"}
+          %i.fa.fa-pencil-square-o
+          %span Colunistas
+      / %li.header
+      / Optionally, you can add icons to the links
+      / %li.treeview
+      /   %a{:href => "#"}
+      /     %i.fa.fa-pencil-square-o
+      /     %span Artigos
+      /     %span.pull-right-container
+      /       %i.fa.fa-angle-left.pull-right
+      /   %ul.treeview-menu
+      /     %li
+      /        Artigos
+      /     %li
+      /       %a{:href => "#{admin_categories_path()}"} Categorias
+      /     %li
+      /       %a{:href => "#{admin_columnists_path()}"} Colunistas
       %li
         %a{:href => "#{admin_highlights_path()}"}
           %i.fa.fa-picture-o

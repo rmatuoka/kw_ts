@@ -9,6 +9,7 @@ class Admin::ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    # @articles = @columnists.articles.all
   end
 
   # GET /articles/1

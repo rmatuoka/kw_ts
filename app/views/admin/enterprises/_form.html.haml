@@ -13,7 +13,7 @@
       = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
     .form-group
       =t('activerecord.attributes.user.description')
-      = f.text_area :description, :class => "form-control", :placeholder => "Preencha a descrição"    
+      = f.text_area :description, :class => "form-control ckeditor", :placeholder => "descrição"
     
   .box-footer
     =f.submit "Salvar", :class => "btn btn-primary"
