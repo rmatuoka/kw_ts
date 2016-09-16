@@ -1,4 +1,4 @@
-= form_for [:admin, @article] do |f|
+= form_for [@columnist, @article] do |f|
   -if f.error_messages
     .alert.alert-danger.alert-dismissable
       %i.fa.fa-ban
@@ -18,12 +18,12 @@
     .form-group 
       = f.label "Escolha a Categoria"    
       = f.select :category_ids, @categories,{}, {multiple: "multiple", class: "form-control select2"}
-    .form-group 
-      = f.label :columnist_id, "Escolha o Colunista"    
-      = f.select :columnist_id, @columnists,{}, {class: "form-control select2"}
-    / .form-group
-    /   = f.label :tag_list
-    /   = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"      
+    / .form-group 
+    /   = f.label :columnist_id, "Escolha o Colunista"    
+    /   = f.select :columnist_id, @columnists,{}, {class: "form-control select2"}
+    .form-group
+      = f.label :tag_list
+      = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"  
     .form-group 
       = f.label :ordem
       = f.number_field :ordem, :class => "form-control"

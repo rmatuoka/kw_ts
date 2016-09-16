@@ -1,15 +1,15 @@
 class Admin::ArticlesController < ApplicationController
   access_control do
-      allow :administrator, :all
+    allow :administrator, :all
   end
   layout "admin"
+
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_filter :load_categories, :load_columnists
+  before_filter :load_categories, :load_father
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
-    # @articles = @columnists.articles.all
+    @articles = @columnist.articles.all
   end
 
   # GET /articles/1
@@ -19,7 +19,7 @@ class Admin::ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-    @article = Article.new
+    @article = @columnist.articles.build
   end
 
   # GET /articles/1/edit
@@ -29,12 +29,13 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
-
+    @article = @columnist.articles.build(article_params)
+    @article.columnist_id = @columnist.id
+    @article.save
     respond_to do |format|
       if @article.save
-        format.html { redirect_to [:admin, @article], notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: [:admin, @article] }
+        format.html { redirect_to admin_columnist_article_path(@columnist, @article), notice: 'Article was successfully created.' }
+        format.json { render :show, status: :created, location: admin_columnist_article_path(@columnist, @article) }
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -61,7 +62,7 @@ class Admin::ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to admin_articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to admin_columnist_articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -82,7 +83,11 @@ class Admin::ArticlesController < ApplicationController
       # @categories = Admin::Category.includes(:children).where("admin_categories.published = true").all
     end
 
-    def load_columnists
-      @columnists = Admin::Columnist.where("published = true").all.collect { |c| [c.name, c.id] }
+    # def load_columnists
+    #   @columnists = Admin::Columnist.where("published = true").all.collect { |c| [c.name, c.id] }
+    # end
+
+    def load_father
+      @columnist = Admin::Columnist.find(params[:columnist_id])
     end
 end

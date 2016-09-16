@@ -1,6 +1,7 @@
 %section.content-header
   %h1
     Artigos
+    ="#{@columnist.name}"
     %small Painel de Controle
   %ol.breadcrumb
     %li
@@ -25,6 +26,6 @@
       
 
       %p
-        = link_to t("back_list"), admin_articles_path, :class => "btn btn-default"
-        = link_to t("show"), [:admin, @article], :class => "btn btn-default"
+        = link_to t("back_list"), admin_columnist_articles_path, :class => "btn btn-default"
+        = link_to t("show"), admin_columnist_article_path(@columnist, @article), :class => "btn btn-default"
 

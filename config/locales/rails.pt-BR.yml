@@ -247,6 +247,9 @@ pt-BR:
         commercial_phone: "Telefone Comercial"   
         password: "Senha"
         password_confirmation: "Confirme sua Senha"  
+      article:
+        tag_list: "Tags"
+        <<: *default_name
       user:
         <<: *default_name  
       user_session:

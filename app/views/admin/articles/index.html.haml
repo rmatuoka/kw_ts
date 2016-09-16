@@ -1,19 +1,24 @@
 %section.content-header
   %h1
-    Artigos  
+    Artigos
+    = "#{@columnist.name}" 
     %small Painel de Controle
   %ol.breadcrumb
     %li
       %a{:href => "/admin"}
         %i.fa.fa-dashboard
         Home
+    %li
+      %a{:href => "#{admin_columnists_path()}"}
+        %i.fa.fa-dashboard
+        Colunistas
     %li.active Artigos
 / Main content
 %section.content
   .col-xs-12
     %p
-      = link_to "Novo Artigo", new_admin_article_path, :class => "btn btn-primary" 
-      = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?
+      = link_to "Novo Artigo", new_admin_columnist_article_path, :class => "btn btn-primary" 
+      / = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?
     
     .box
       .box-header
@@ -41,15 +46,15 @@
             %tr
               %td= article.title 
               %td= article.subtitle
-              %td
+              %td= @columnist.name
               / %td= raw article.tag_list.map{ |t| link_to t, admin_tag_path(t)}.join(', ')                            
               %td= article.ordem
               %td= article.active              
               %td 
-                = link_to t("show"), [:admin, article], :class => "btn btn-default"
-                = link_to t("edit"), edit_admin_article_path(article), :class => "btn btn-default"
-                = link_to 'Destroy', [:admin, article], :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-default"
+                = link_to t("show"), admin_columnist_article_path(@columnist, article), :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_columnist_article_path(@columnist, article), :class => "btn btn-default"
+                = link_to 'Destroy', admin_columnist_article_path(@columnist, article), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-default"
 
     %p
-      = link_to "Novo Artigo", new_admin_article_path, :class => "btn btn-primary" 
-      = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?
+      = link_to "Novo Artigo", new_admin_columnist_article_path, :class => "btn btn-primary" 
+      / = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?

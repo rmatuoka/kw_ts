@@ -1,0 +1,44 @@
+%section.content-header
+  %h1
+    Portfolios -
+    = "#{@admin_enterprise.name}" 
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => "#{admin_enterprises_path()}"}
+        %i.fa.fa-dashboard
+        Empresas 
+    %li.active Portfolios
+/ Main content
+%section.content
+  .col-xs-12
+    %p= link_to "Novo portfolio", new_admin_enterprise_portfolio_path(@admin_enterprise), class: "btn btn-primary"
+    
+    .box
+      .box-header
+        %h3.box-title Portfolios Cadastrados da empresa
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th=t("activerecord.attributes.portfolio.title")
+            %th=t("activerecord.attributes.portfolio.ordem")
+            %th=t("activerecord.attributes.portfolio.published")
+            %th=t("actions")
+          - for portfolio in @portfolios 
+            %tr 
+              %td= portfolio.title
+              %td= portfolio.ordem
+              %td= portfolio.published               
+              %td 
+                = link_to t("show"), admin_enterprise_portfolio_path(@admin_enterprise,portfolio), :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_enterprise_portfolio_path(@admin_enterprise, portfolio), :class => "btn btn-default"
+                = link_to t("destroy"), admin_enterprise_portfolio_path(@admin_enterprise,portfolio), :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-danger" 
+
+    %p= link_to "Novo portfolio", new_admin_enterprise_portfolio_path(@admin_enterprise), class: "btn btn-primary"
+
+
+

@@ -1,0 +1,31 @@
+%section.content-header
+  %h1
+    Portfolio
+    ="#{@admin_enterprise.name}"
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Portfolios
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Portfolio
+        / /.box-header
+        / form start
+        = render 'form'
+      
+
+      %p
+        = link_to t("back_list"), admin_enterprise_portfolios_path, :class => "btn btn-default"
+        = link_to t("show"), admin_enterprise_portfolio_path(@admin_enterprise, @portfolio), :class => "btn btn-default"
+

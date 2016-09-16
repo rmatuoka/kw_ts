@@ -1,0 +1,25 @@
+= form_for [@admin_enterprise, @portfolio] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho. 
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control" 
+    .form-group 
+      = f.label :ordem
+      = f.number_field :ordem, :class => "form-control"
+    .form-group
+      = f.label :portfolio_img
+      = f.file_field :portfolio_img, :class => "form-control"  
+    - if @portfolio.portfolio_img.file?
+      .form-group
+        =image_tag(@portfolio.portfolio_img.url)
+    .form-group 
+      = f.label :published
+      = f.check_box :published    
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary" 

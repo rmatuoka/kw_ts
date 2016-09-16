@@ -3,14 +3,18 @@ KwTraining::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   namespace :admin do
-    resources :columnists
+    resources :columnists do      
+      resources :articles
+    end
     resources :categories
     resources :organizations
     resources :highlights
     resources :customers
-    resources :enterprises
+    resources :enterprises do
+      resources :portfolios
+    end
     resources :statics, only: [:index]
-    resources :articles
+    resources :tags
 
     root to: 'statics#index'
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824184800) do
+ActiveRecord::Schema.define(version: 20160909183858) do
 
   create_table "admin_columnists", force: :cascade do |t|
     t.string   "name",                          limit: 255
@@ -42,11 +42,20 @@ ActiveRecord::Schema.define(version: 20160824184800) do
   end
 
   create_table "admin_enterprises", force: :cascade do |t|
-    t.string   "name",           limit: 255
-    t.text     "description",    limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "visualizations", limit: 4
+    t.string   "name",                           limit: 255
+    t.text     "description",                    limit: 65535
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.integer  "visualizations",                 limit: 4
+    t.string   "img_enterprise_file_name",       limit: 255
+    t.string   "img_enterprise_content_type",    limit: 255
+    t.integer  "img_enterprise_file_size",       limit: 4
+    t.datetime "img_enterprise_updated_at"
+    t.string   "banner_enterprise_file_name",    limit: 255
+    t.string   "banner_enterprise_content_type", limit: 255
+    t.integer  "banner_enterprise_file_size",    limit: 4
+    t.datetime "banner_enterprise_updated_at"
+    t.string   "specialties",                    limit: 255
   end
 
   create_table "admin_highlights", force: :cascade do |t|
@@ -75,6 +84,20 @@ ActiveRecord::Schema.define(version: 20160824184800) do
     t.datetime "updated_at",                                     null: false
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.string   "title",                      limit: 255
+    t.integer  "ordem",                      limit: 4
+    t.integer  "enterprise_id",              limit: 4
+    t.boolean  "active",                                 default: true
+    t.boolean  "published",                              default: true
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.string   "portfolio_img_file_name",    limit: 255
+    t.string   "portfolio_img_content_type", limit: 255
+    t.integer  "portfolio_img_file_size",    limit: 4
+    t.datetime "portfolio_img_updated_at"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string   "title",                      limit: 255
     t.string   "subtitle",                   limit: 255
@@ -89,7 +112,6 @@ ActiveRecord::Schema.define(version: 20160824184800) do
     t.integer  "image_article_file_size",    limit: 4
     t.datetime "image_article_updated_at"
     t.integer  "columnist_id",               limit: 4
-    t.integer  "category_id",                limit: 4
   end
 
   create_table "articles_categories", id: false, force: :cascade do |t|
@@ -157,12 +179,22 @@ ActiveRecord::Schema.define(version: 20160824184800) do
     t.datetime "created_at"
   end
 
+  add_index "taggings", ["context"], name: "index_taggings_on_context", using: :btree
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
+  add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
+  add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string  "name",           limit: 255
+    t.integer "taggings_count", limit: 4,   default: 0
   end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",              limit: 255

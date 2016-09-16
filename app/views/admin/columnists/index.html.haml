@@ -35,6 +35,7 @@
               %td 
                 = link_to "Show", [admin_columnist], :class => "btn btn-default"
                 = link_to "Edit", edit_admin_columnist_path(admin_columnist), :class => "btn btn-default"
+                = link_to "Artigos", admin_columnist_articles_path(admin_columnist), :class => "btn btn-primary"
                 = link_to "Destroy", [admin_columnist], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default"
 
     %p= link_to "Novo Colunistas", new_admin_columnist_path, :class => "btn btn-primary"

@@ -1,11 +1,11 @@
 class Article < ActiveRecord::Base
   # attr_accessible :title, :subtitle, :description, :order, :active, :published, :tag_list, :image_article
-  acts_as_taggable
+  acts_as_taggable_on :tags
   has_attached_file :image_article
   validates_attachment :image_article, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   
   has_and_belongs_to_many :category
-  belongs_to :columnists
+  belongs_to :admin_columnist
 
   # def self.search(search)
   #   if search

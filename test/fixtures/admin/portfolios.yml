@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ordem: 1
+  enterprise_id: 1
+  active: false
+  published: false
+
+two:
+  title: MyString
+  ordem: 1
+  enterprise_id: 1
+  active: false
+  published: false
