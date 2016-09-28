@@ -40,9 +40,9 @@
                   %span.label.label-default
                     = user.role
               %td 
-                = link_to "Show", [user], :class => "btn btn-default"
-                = link_to "Edit", edit_user_path(user), :class => "btn btn-default"
-                = link_to "Destroy", [user], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default"
+                = link_to "Show", [:admin, user], :class => "btn btn-default"
+                = link_to "Edit", edit_admin_user_path(user), :class => "btn btn-default"
+                = link_to "Destroy", [:admin, user], :confirm => 'Are you sure?', :method => :delete, :class => "btn btn-default"
 
-    %p= link_to "Novo Usuário", new_user_path, :class => "btn btn-primary"
+    %p= link_to "Novo Usuário", new_admin_user_path, :class => "btn btn-primary"
 

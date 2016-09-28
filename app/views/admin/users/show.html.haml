@@ -43,5 +43,5 @@
           /     ="Último login: #{distance_of_time_in_words(@user.last_login_at)}"
 
 
-  = link_to "Edit", edit_user_path(@user), :class => "btn btn-default"
-  = link_to "View All", users_path, :class => "btn btn-default"
+  = link_to "Edit", edit_admin_user_path(@user), :class => "btn btn-default"
+  = link_to "View All", admin_users_path, :class => "btn btn-default"

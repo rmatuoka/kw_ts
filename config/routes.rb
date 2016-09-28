@@ -3,6 +3,7 @@ KwTraining::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   
   namespace :admin do
+    resources :users
     resources :columnists do      
       resources :articles
     end

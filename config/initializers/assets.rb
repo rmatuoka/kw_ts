@@ -42,3 +42,4 @@ Rails.application.config.assets.precompile += %w( input-mask/jquery.inputmask.ex
 Rails.application.config.assets.precompile += %w( select2/select2.min.css )
 Rails.application.config.assets.precompile += %w( select2/select2.full.min.js )
 Rails.application.config.assets.precompile += %w( style.css )
+Rails.application.config.assets.precompile += %w( bootstrap-theme.min.css )
