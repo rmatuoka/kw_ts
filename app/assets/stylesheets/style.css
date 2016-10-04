@@ -76,3 +76,17 @@ body{font-family: 'Open Sans', sans-serif;}
 .btn-cadastrar:hover{  
   background-color: #6a902d;  
 }
+
+.fa-facebook{
+  float: left;
+  margin-left: 45px;
+  margin-right: -45px;
+  font-size: 20px;
+}
+
+.fa-linkedin{
+  float: left;
+  margin-left: 45px;
+  margin-right: -55px;
+  font-size: 20px;
+}

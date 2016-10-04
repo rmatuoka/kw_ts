@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 #-== Inicio ==- gems personalizadas administrador 
 gem 'acl9'
 gem "authlogic", '~> 3.4.2'
+gem 'font-awesome-sass'
 # gem 'tinymce-rails'
 # gem 'tinymce-rails-imageupload'
 gem 'ckeditor'
