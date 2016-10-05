@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require ckeditor/init
+// require ckeditor/init
 // require tinymce-jquery
 // require_tree .
