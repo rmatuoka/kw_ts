@@ -9,38 +9,18 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( bootstrap.min.css )
-Rails.application.config.assets.precompile += %w( morris/morris.css )
-Rails.application.config.assets.precompile += %w( jvectormap/jquery-jvectormap-1.2.2.css )
-Rails.application.config.assets.precompile += %w( fullcalendar/fullcalendar.css )
-Rails.application.config.assets.precompile += %w( bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css )
-Rails.application.config.assets.precompile += %w( bootstrap.min.js )
-Rails.application.config.assets.precompile += %w( AdminLTE/app.js )
-Rails.application.config.assets.precompile += %w( AdminLTE/dashboard.js )
-Rails.application.config.assets.precompile += %w( AdminLTE.css )
-Rails.application.config.assets.precompile += %w( jquery-3.1.0.min.js )
-Rails.application.config.assets.precompile += %w( skins/_all-skins.min.css )
-Rails.application.config.assets.precompile += %w( iCheck/flat/blue.css )
-Rails.application.config.assets.precompile += %w( jquery-jvectormap-1.2.2.css )
-Rails.application.config.assets.precompile += %w( datepicker/datepicker3.css )
-Rails.application.config.assets.precompile += %w( daterangepicker/daterangepicker.css )
-Rails.application.config.assets.precompile += %w( jQuery/jquery-2.2.3.min.js )
-Rails.application.config.assets.precompile += %w( morris/morris.min.js )
-Rails.application.config.assets.precompile += %w( sparkline/jquery.sparkline.min.js )
-Rails.application.config.assets.precompile += %w( jvectormap/jquery-jvectormap-1.2.2.min.js )
-Rails.application.config.assets.precompile += %w( jvectormap/jquery-jvectormap-world-mill-en.js )
-Rails.application.config.assets.precompile += %w( knob/jquery.knob.js )
-Rails.application.config.assets.precompile += %w( daterangepicker/daterangepicker.js )
-Rails.application.config.assets.precompile += %w( datepicker/bootstrap-datepicker.js )
-Rails.application.config.assets.precompile += %w( bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js )
-Rails.application.config.assets.precompile += %w( slimScroll/jquery.slimscroll.min.js )
-Rails.application.config.assets.precompile += %w( fastclick/fastclick.js )
-Rails.application.config.assets.precompile += %w( skins/skin-blue.min.css )
-Rails.application.config.assets.precompile += %w( input-mask/jquery.inputmask.js )
-Rails.application.config.assets.precompile += %w( input-mask/jquery.inputmask.date.extensions.js )
-Rails.application.config.assets.precompile += %w( input-mask/jquery.inputmask.extensions.js )
-Rails.application.config.assets.precompile += %w( select2/select2.min.css )
-Rails.application.config.assets.precompile += %w( select2/select2.full.min.js )
-Rails.application.config.assets.precompile += %w( style.css )
-Rails.application.config.assets.precompile += %w( bootstrap-theme.min.css )
-Rails.application.config.assets.precompile += %w( font-awesome.min.css )
+Rails.application.config.assets.precompile << Proc.new { |path|
+  if path =~ /\.(css|js)\z/
+    full_path = Rails.application.assets.resolve(path).to_path
+    app_assets_path = Rails.root.join('app', 'assets').to_path
+    if full_path.starts_with? app_assets_path
+      puts "including asset: " + full_path
+      true
+    else
+      puts "excluding asset: " + full_path
+      false
+    end
+  else
+    false
+  end
+}
