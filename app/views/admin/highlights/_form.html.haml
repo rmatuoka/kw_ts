@@ -8,25 +8,25 @@
   .box-body
     .form-group  
       = f.label :title
-      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.highlight.title")
+      = f.text_field :title, :class => "form-control", :placeholder => t("activerecord.attributes.admin_highlight.title")
     .form-group
       = f.label :subtitle
-      = f.text_field :subtitle, :class => "form-control", :placeholder => t("activerecord.attributes.highlight.subtitle") 
+      = f.text_field :subtitle, :class => "form-control", :placeholder => t("activerecord.attributes.admin_highlight.subtitle") 
     .form-group
       = f.label :ordem
-      = f.number_field :ordem, :class => "form-control"
+      = f.number_field :ordem, :class => "form-control", value: 1
     .form-group
       = f.label :published
       = f.check_box :published 
     .form-group
-      = f.label :image_highlight
+      = f.label "Imagem"
       = f.file_field :image_highlight, :class => "form-control"  
     - if @admin_highlight.image_highlight.file?
       .form-group
         =image_tag(@admin_highlight.image_highlight.url)
     .form-group
       = f.label :link
-      = f.text_field :link, :class => "form-control", :placeholder => t("activerecord.attributes.highlight.link")
+      = f.text_field :link, :class => "form-control", :placeholder => t("activerecord.attributes.admin_highlight.link")
     
   .box-footer
-    =f.submit nil, :class => "btn btn-primary"  
+    =f.submit nil, :class => "btn btn-primary", value: "Salvar"  

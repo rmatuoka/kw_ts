@@ -254,9 +254,11 @@ pt-BR:
         <<: *default_name  
       user_session:
         <<: *default_name
-      highlight:
+      admin_highlight:
         <<: *default_name
         link: "link"
+      portfolio:
+        <<: *default_name
       customer:
         <<: *default_name
         services_performed: "Cargo"
