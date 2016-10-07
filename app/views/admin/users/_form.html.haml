@@ -1,4 +1,4 @@
-= form_for @user, role: "form" do |f|
+= form_for [:admin, @user], role: "form" do |f|
   -if f.error_messages
     .alert.alert-danger.alert-dismissable
       %i.fa.fa-ban
