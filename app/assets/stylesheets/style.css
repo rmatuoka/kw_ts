@@ -13,8 +13,8 @@ body{font-family: 'Open Sans', sans-serif;}
 .form-home-cadastro p{text-align:center; color:#fff;}
 .btn-cadastros{margin-bottom:10px;}
 
-.home-block-02{background-image:url(../img/bg-home-block02.png);background-position:top center;background-repeat:repeat-x;min-height:490px;}
-.home-block-02-background{background-image:url(../img/img-home-block02.png);background-position:right;background-repeat:no-repeat;}
+.home-block-02{background-image:url(/assets/bg-home-block02.png);background-position:top center;background-repeat:repeat-x;min-height:490px;}
+.home-block-02-background{background-image:url(/assets/img-home-block02.png);background-position:right;background-repeat:no-repeat;}
 .img-home-block02{margin-top:25px;text-transform:uppercase;}
 .item-home{margin-bottom:20px;}
 .home-block-02 h1{color:#fff;font-size:35px;text-transform:uppercase;}
@@ -22,7 +22,7 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-02 p{color:#fff;font-size:12px;}
 .icon-home{float:left;margin-right:20px;}
 
-.home-block-03{background-image:url(../img/bg-home-block03.png);background-position:top left;background-repeat:no-repeat;min-height:520px;}
+.home-block-03{background-image:url(/assets/bg-home-block03.png);background-position:top left;background-repeat:no-repeat;min-height:520px;}
 .img-home-block03{margin-top:25px;}
 .item-home{margin-bottom:20px;}
 .home-block-03 h1{color:#18242f;font-size:35px;text-transform:uppercase;text-align:right;}
@@ -30,7 +30,7 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-03 p{color:#18242f;font-size:12px;text-align:right;}
 .icon-home-02{float:right;margin-left:20px;}
 
-.home-block-04{min-height:220px; text-align:center;background-image:url(../img/bg-title.png);background-position:top left;background-repeat:repeat-x;}
+.home-block-04{min-height:220px; text-align:center;background-image:url(/assets/bg-title.png);background-position:top left;background-repeat:repeat-x;}
 .home-block-04 h1{color:#18242f;font-size:35px;text-transform:uppercase;background-color:#fff;}
 
 .home-block-05{min-height:150px;background-color:#18242f;}
