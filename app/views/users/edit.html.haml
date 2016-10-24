@@ -1,0 +1,152 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+  
+.container-fluid.top_perfil
+  .container
+    .row
+      .col-md-12.perfil
+        .col-md-3.avatar-perfil
+          -if current_user.picture.file?
+            %a{:href => "#"}
+              =image_tag(current_user.picture.url(:medium))
+          -else
+            =image_tag("user_missing_medium.png")
+
+        .col-md-9
+          .row
+            %h2="#{current_user.name} #{current_user.last_name}"
+            - if current_user.services_performed.present?
+              %p="#{current_user.services_performed}" 
+
+.container-fluid.dados_perfil
+  .container
+    .row
+      .col-md-6
+        -if flash[:notice]
+          .row
+            .alert.alert-success
+              =flash[:notice]
+      
+        = form_for [@user], role: "form" do |f|
+          .dados_perfil_esquerda
+            .row
+              %h1 Conte-nos mais sobre você
+              .perfil_bloco_um.cadastro_perfil
+                .row
+                  .col-md-5
+                    %label Nome:
+                    %br/
+                    =f.text_field :name
+                  .col-md-7
+                    %label Sobrenome:
+                    %br/
+                    =f.text_field :last_name
+                .row
+                  .col-md-5
+                    %label E-mail:
+                    %br/
+                    =f.text_field :email
+                  .col-md-7
+                    %label Data de Nascimento:
+                    %br/
+                    =f.text_field :birthdate
+                .row
+                  .col-md-5
+                    %label Empresa:
+                    %br/
+                    =f.text_field :company
+                  .col-md-7
+                    %label Cargo:
+                    %br/
+                    =f.text_field :services_performed
+          .dados_perfil_esquerda
+            .row
+              %h1 Onde você mora?
+              %form
+                .perfil_bloco_um.cadastro_perfil
+                  .row
+                    .col-md-5
+                      %label CEP:
+                      %br/
+                      =f.text_field :cep
+                    .col-md-7
+                      %label Endereço:
+                      %br/
+                      =f.text_field :street
+                  .row
+                    .col-md-5
+                      %label Número:
+                      %br/
+                      =f.text_field :number
+                    .col-md-7
+                      %label Bairro:
+                      %br/
+                      =f.text_field :neighborhood
+                  .row
+                    .col-md-5
+                      %label Cidade:
+                      %br/
+                      =f.text_field :city
+                    .col-md-7
+                      %label Estado:
+                      %br/
+                      =f.text_field :state
+                      
+                  .row
+                    .col-sm-12
+                      =f.submit
+          /.dados_perfil_esquerda
+          /  .row
+          /    %h1 Tenho interesse em treinamentos de:
+          /    %form
+          /      .perfil_bloco_um
+          /        .row
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /        .row
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /        .row
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /        .row
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+          /          .col-md-4
+          /            %input{:name => "vehicle", :type => "checkbox", :value => "Bike"}/
+          /            ESPECIALIDADE
+                    
+      .col-md-5.col-md-offset-1
+        .dados_perfil_direita
+
+          =render file: "layouts/widgets/_perfil_bar.html.haml"
+          =render file: "layouts/widgets/_empresas.html.haml"
+          =render file: "layouts/widgets/_ajude_nos.html.haml"
+          =render file: "layouts/widgets/_mais_lidos.html.haml"
+          =render file: "layouts/widgets/_wiki.html.haml"

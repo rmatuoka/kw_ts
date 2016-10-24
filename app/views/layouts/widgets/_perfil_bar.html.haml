@@ -1,0 +1,15 @@
+-if current_user.profile_perc.to_i < 100
+  .row
+    %h1 Seu perfil está quase completo!
+    .bloco_perfil_completo
+      .row
+        .progress
+          .progress-bar{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "70", :role => "progressbar", :style => "width:#{current_user.profile_perc.to_i}%"}
+            %span.sr-only 70%
+
+      .row
+        %h2 Por quê devo completar o meu perfil?
+      .row
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.sum dolor sit amet, consectetur adipsum dolor sit amet, consectetur adip.
+      .row
+        %a.col-md-offset-3{:href => "#"} completar o meu pefil

@@ -1,0 +1,47 @@
+- article = Article.find(feed.object_id)
+
+.news_perfil
+  .row
+    .col-md-2
+      -if current_user.picture.file?
+        %a{:href => "#"}
+          =image_tag(article.columnist.admin_columnists.url(:small), :class => "img-responsive")
+      -else
+        =image_tag("user_missing_small.png", :class => "img-responsive")
+      
+    .col-md-10
+      %h5="#{article.columnist.name}"
+      %h6="#{article.columnist.description}"
+  .row.news_content
+    -if article.image_article.file?
+      =image_tag(article.image_article.url(), :class => "img-responsive")
+    
+    %h4="#{article.title}"
+    %p="#{article.subtitle}"
+    %a{:href => "#"} Continuar lendo
+  .row.news_interacao
+    .col-md-4
+      %p
+        %i.fa.fa-commenting-o{"aria-hidden" => "true"}
+        10 comentários
+      %button.btn.btn-especialidade{:type => "button"}
+        %i.fa.fa-heart{"aria-hidden" => "true"}
+        GOSTEI
+    .col-md-8
+      %p
+        %i.fa.fa-heart{"aria-hidden" => "true"}
+        25 pessoas gostaram deste artigo
+  /.row.news_comentario
+  /  .col-md-2
+  /    =image_tag("avatar-news.png")
+  /  .col-md-10
+  /    %h2 Maria Aparecida da Silva
+  /    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+  /.row.news_campo_comentario
+  /  .col-md-2
+  /    =image_tag("avatar-news.png")
+  /  .col-md-10
+  /    %form
+  /      %textarea
+  /      %br/
+  /      %a{:href => "#"} comentar

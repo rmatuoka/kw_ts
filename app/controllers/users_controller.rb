@@ -17,7 +17,26 @@ class UsersController < ApplicationController
     @user.role = "user"
     respond_to do |format|
       if @user.save
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }      
+        
+        format.html { redirect_to perfil_path, notice: 'User was successfully created.' }      
+      end
+    end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to edit_user_path(@user), notice: 'Seu perfil foi atualizado com sucesso!' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: [:admin, @user.errors], status: :unprocessable_entity }
       end
     end
   end

@@ -28,7 +28,7 @@ class Admin::ColumnistsController < ApplicationController
 
     respond_to do |format|
       if @admin_columnist.save
-        format.html { redirect_to @admin_columnist, notice: 'Columnist was successfully created.' }
+        format.html { redirect_to @admin_columnist, notice: 'Admin::Columnist was successfully created.' }
         format.json { render :show, status: :created, location: @admin_columnist }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::ColumnistsController < ApplicationController
   def update
     respond_to do |format|
       if @admin_columnist.update(admin_columnist_params)
-        format.html { redirect_to @admin_columnist, notice: 'Columnist was successfully updated.' }
+        format.html { redirect_to @admin_columnist, notice: 'Admin::Columnist was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_columnist }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::ColumnistsController < ApplicationController
   def destroy
     @admin_columnist.destroy
     respond_to do |format|
-      format.html { redirect_to admin_columnists_url, notice: 'Columnist was successfully destroyed.' }
+      format.html { redirect_to admin_columnists_url, notice: 'Admin::Columnist was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

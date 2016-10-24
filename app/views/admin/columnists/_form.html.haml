@@ -8,21 +8,22 @@
 
   .box-body
     .form-group
-      =t('activerecord.attributes.admin_columnist.name')      
+      =f.label :name, "Nome"
       = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
     .form-group
-      =t('activerecord.attributes.admin_columnist.description')
+      =f.label :description, "Descrição"
       = f.text_area :description, :class => "form-control ckeditor", :placeholder => "Preencha a descrição"
 
     .form-group
-      = f.label :admin_columnists
+      = f.label :admin_columnists, "Foto"
       = f.file_field :admin_columnists, :class => "form-control"  
+    
     - if @admin_columnist.admin_columnists.file?
       .form-group
         =image_tag(@admin_columnist.admin_columnists.url)
 
     .form-group
-      =t('activerecord.attributes.admin_columnist.published')
+      =f.label :published, "Publicado?"
       = f.check_box :published
 
   .box-footer

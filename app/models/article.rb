@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   validates_attachment :image_article, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   
   has_and_belongs_to_many :category
-  belongs_to :admin_columnist
+  belongs_to :columnist, class_name: 'Admin::Columnist'
 
   # def self.search(search)
   #   if search

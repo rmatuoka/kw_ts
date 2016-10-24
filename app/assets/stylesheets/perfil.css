@@ -1,0 +1,83 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i';
+body{font-family: 'Open Sans', sans-serif;}
+
+.top-bar{min-height:80px;background-image:url(/assets/bg-topbar.jpg);background-position:top left;background-repeat:repeat-x;padding-top:10px;}
+
+.menu{background-color:#1a2632;min-height:60px;}
+.menu ul{list-style:none;}
+.menu ul li a{float:left;color:#fff;font-size:14px;margin-right:20px;font-weight:600;margin-top:20px;}
+.menu ul li a:hover{text-decoration:none;}
+
+.caixa a{float:left;color:#fff;font-size:14px;font-weight:600;margin-top:10px;}
+.caixa a:hover{text-decoration:none;}
+.caixa a i{font-size:30px;margin-left:20px;}
+
+.busca{margin-top:10px;}
+.campo_busca{height:32px;border:1px solid #1a2632;border-radius:5px;margin-top:3px;}
+.campo_drop{height:32px;border:1px solid #1a2632;border-radius:5px;margin-left:35px;margin-top:3px;}
+.icon-search{color:#95c940;}
+
+.top_perfil{margin-top:20px;}
+.perfil{min-height:205px;background-image:url(/assets/capa-perfil.png);background-position:center top;background-repeat:no-repeat;background-size:cover;}
+.avatar-perfil{margin-top:20px;}
+
+.avatar-perfil img{
+  border-radius:25px;
+}
+
+.perfil-image-small img
+{
+  border-radius:50px;
+}
+
+.dados_perfil_esquerda{margin-bottom:20px;}
+.dados_perfil_esquerda h1{color:#18242f;border-bottom:5px solid #95c940;font-size:20px;text-transform:uppercase;padding:10px;padding-left:30px;}
+.perfil_bloco_um{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:20px;margin-top:30px;}
+.cadastro_perfil input{height:28px;border:1px solid #95c940;border-radius:5px;margin-top:3px;width:100%;margin-bottom:10px;}
+
+.dados_perfil_direita h1{color:#18242f;border-bottom:5px solid #95c940;font-size:20px;text-transform:uppercase;padding:10px;padding-right:30px;text-align:right}
+
+.bloco_perfil_completo{border-radius:10px;background-color:#18242f;padding:30px;margin-top:30px;}
+.bloco_perfil_completo h2{font-size:20px;text-transform:uppercase;color:#fff;}
+.bloco_perfil_completo p{font-size:12px;color:#fff;}
+.bloco_perfil_completo a{font-size:16px;text-transform:uppercase;color:#95c940;}
+
+.bloco_empresas{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:10px;margin-top:10px;}
+.dados_empresa{padding-left:30px;}
+.empresas_destaque{border-bottom:2px solid #1a2632;margin-bottom:20px;padding:10px;margin-left:5px;margin-right:5px;}
+.empresas_destaque h2{font-size:20px;text-transform:uppercase;color:#1a2632;}
+.btn-especialidade{font-size:10px;color:#fff;background-color:#95c940;font-weight:600;margin:5px;padding:3px;}
+
+.btn_extras{border-radius:10px;background-color:#18242f;padding:30px;margin-top:30px;margin-bottom:20px;}
+.btn_extras a{font-size:12px;text-transform:uppercase;color:#95c940;}
+.btn_extras h3{font-size:20px;text-transform:uppercase;color:#fff;padding:0; margin:0;}
+.btn_extras p{font-size:12px;color:#fff;margin-top:20px;}
+
+.news_perfil{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:40px;margin-top:10px;}
+.news_perfil h5{font-size:24px;text-transform:uppercase;color:#1a2632;padding:0;margin:0;font-weight:600}
+.news_perfil h6{font-size:14px;text-transform:uppercase;color:#95c940;padding:0;margin:0;}
+
+.news_interacao{border-bottom:2px solid #1a2632;padding-bottom:20px;margin-bottom:20px;}
+.news_content img{margin-top:10px;margin-bottom:10px;}
+.news_content h4{font-size:14px;text-transform:uppercase;color:#1a2632;font-weight:600}
+.news_content p{font-size:12px;color:#1a2632;}
+.news_content a{float:right;font-size:14px;text-transform:uppercase;color:#95c940;padding-bottom:20px;}
+
+.news_comentario{border-bottom:2px solid #1a2632;padding-bottom:20px;margin-bottom:20px;}
+.news_comentario h2{font-size:16px;text-transform:uppercase;color:#1a2632;font-weight:600;margin:0;}
+.news_comentario p{font-size:12px;color:#1a2632;}
+
+.news_campo_comentario textarea{border-radius:10px;border:2px solid #1a2632;width:100%}
+.news_campo_comentario a{font-size:14px;text-transform:uppercase;color:#95c940;float:right;margin-top:10px;}
+
+.mais_lidos{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:40px;margin-top:10px;}
+.post_mais_lido {border-bottom:2px solid #1a2632;padding-bottom:20px;margin-bottom:20px;}
+.post_mais_lido h2{font-size:14px;text-transform:uppercase;color:#1a2632;font-weight:600;margin:0;}
+.post_mais_lido h3{font-size:12px;text-transform:uppercase;color:#95c940;padding:0;margin:0;margin-bottom:10px;}
+.post_mais_lido a{font-size:12px;color:#1a2632;text-transform:uppercase;font-weight:600;}
+
+.home-block-05{min-height:150px;background-color:#18242f;}
+.home-block-05 p{color:#fff;font-size:14px;text-transform:uppercase;margin-top:75px;}
+.home-block-05 ul{list-style:none !important;margin-top:75px;}
+.home-block-05 ul li{float:left;margin-left:5px;}
+.home-block-05 ul li a{color:#fff;font-size:14px;text-transform:uppercase;text-decoration:none;}

@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   attr_accessor :role
 
   acts_as_authentic do |c|
@@ -10,6 +9,28 @@ class User < ActiveRecord::Base
   after_save :define_role
   
   #has_many :users
+  
+  has_attached_file :picture, styles: { medium: "226x260#", small: "50x50#" }
+	validates_attachment :picture, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+	
+  
+  def profile_perc
+    total = 0
+    total = total + 8.33 if self.name.present? 
+    total = total + 8.33 if self.last_name.present? 
+    total = total + 8.33 if self.email.present? 
+    total = total + 8.33 if self.birthdate.present? 
+    total = total + 8.33 if self.company.present? 
+    total = total + 8.33 if self.services_performed.present? 
+    total = total + 8.33 if self.cep.present? 
+    total = total + 8.33 if self.street.present? 
+    total = total + 8.33 if self.number.present? 
+    total = total + 8.33 if self.neighborhood.present? 
+    total = total + 8.33 if self.city.present? 
+    total = total + 8.33 if self.state.present? 
+      
+    return total.ceil
+  end
   
   def role
     @role

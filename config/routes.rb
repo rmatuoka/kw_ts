@@ -22,8 +22,10 @@ KwTraining::Application.routes.draw do
   
   resources :user_sessions, only: [:create, :new, :destroy]
   resources :users
+  resources :profiles
   
   root to: 'homes#index'  
+  match 'perfil', to: "profiles#index", via: :all
   match 'register', to: "users#new", via: :all
   match 'login', to: 'user_sessions#new', via: :all  
   match 'logout', to: 'user_sessions#destroy', via: :all

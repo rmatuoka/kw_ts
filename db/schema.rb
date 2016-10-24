@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909183858) do
+ActiveRecord::Schema.define(version: 20161024141822) do
+
+  create_table "admin_categories", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.integer  "ordem",       limit: 4
+    t.boolean  "published",               default: true
+    t.boolean  "active",                  default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "father_id",   limit: 4
+  end
 
   create_table "admin_columnists", force: :cascade do |t|
     t.string   "name",                          limit: 255
@@ -84,24 +95,10 @@ ActiveRecord::Schema.define(version: 20160909183858) do
     t.datetime "updated_at",                                     null: false
   end
 
-  create_table "portfolios", force: :cascade do |t|
-    t.string   "title",                      limit: 255
-    t.integer  "ordem",                      limit: 4
-    t.integer  "enterprise_id",              limit: 4
-    t.boolean  "active",                                 default: true
-    t.boolean  "published",                              default: true
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
-    t.string   "portfolio_img_file_name",    limit: 255
-    t.string   "portfolio_img_content_type", limit: 255
-    t.integer  "portfolio_img_file_size",    limit: 4
-    t.datetime "portfolio_img_updated_at"
-  end
-
   create_table "articles", force: :cascade do |t|
     t.string   "title",                      limit: 255
     t.string   "subtitle",                   limit: 255
-    t.string   "description",                limit: 255
+    t.text   "description",        limit: 65535
     t.integer  "ordem",                      limit: 4,   default: 0,    null: false
     t.boolean  "active",                                 default: true, null: false
     t.boolean  "published",                              default: true, null: false
@@ -146,6 +143,27 @@ ActiveRecord::Schema.define(version: 20160909183858) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "feeds", force: :cascade do |t|
+    t.integer  "object_id",   limit: 4
+    t.string   "object_type", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string   "title",                      limit: 255
+    t.integer  "ordem",                      limit: 4
+    t.integer  "enterprise_id",              limit: 4
+    t.boolean  "active",                                 default: true
+    t.boolean  "published",                              default: true
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.string   "portfolio_img_file_name",    limit: 255
+    t.string   "portfolio_img_content_type", limit: 255
+    t.integer  "portfolio_img_file_size",    limit: 4
+    t.datetime "portfolio_img_updated_at"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",              limit: 40
@@ -197,30 +215,34 @@ ActiveRecord::Schema.define(version: 20160909183858) do
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",              limit: 255
-    t.string   "name",               limit: 255
-    t.string   "crypted_password",   limit: 255
-    t.string   "password_salt",      limit: 255
-    t.string   "persistence_token",  limit: 255
-    t.integer  "login_count",        limit: 4
-    t.integer  "failed_login_count", limit: 4
+    t.string   "email",                limit: 255
+    t.string   "name",                 limit: 255
+    t.string   "crypted_password",     limit: 255
+    t.string   "password_salt",        limit: 255
+    t.string   "persistence_token",    limit: 255
+    t.integer  "login_count",          limit: 4
+    t.integer  "failed_login_count",   limit: 4
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
-    t.string   "current_login_ip",   limit: 255
-    t.string   "last_login_ip",      limit: 255
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "last_name",          limit: 255
-    t.string   "birthdate",          limit: 255
-    t.string   "company",            limit: 255
-    t.string   "services_performed", limit: 255
-    t.string   "cep",                limit: 255
-    t.string   "street",             limit: 255
-    t.string   "number",             limit: 255
-    t.string   "neighborhood",       limit: 255
-    t.string   "city",               limit: 255
-    t.string   "state",              limit: 255
+    t.string   "current_login_ip",     limit: 255
+    t.string   "last_login_ip",        limit: 255
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "last_name",            limit: 255
+    t.string   "birthdate",            limit: 255
+    t.string   "company",              limit: 255
+    t.string   "services_performed",   limit: 255
+    t.string   "cep",                  limit: 255
+    t.string   "street",               limit: 255
+    t.string   "number",               limit: 255
+    t.string   "neighborhood",         limit: 255
+    t.string   "city",                 limit: 255
+    t.string   "state",                limit: 255
+    t.string   "picture_file_name",    limit: 255
+    t.string   "picture_content_type", limit: 255
+    t.integer  "picture_file_size",    limit: 4
+    t.datetime "picture_updated_at"
   end
 
 end

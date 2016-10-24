@@ -21,16 +21,24 @@
           %h3.box-title="#{@admin_columnist.name}"
         
         .box-body  
+          %p Descrição
           %p 
             = @admin_columnist.description
-
+            
+          %p Publicado?
           %p 
             = @admin_columnist.published
 
-        .box-body  
-          %p Imagem
         - if @admin_columnist.admin_columnists.file?
           .box-body
+            %p Imagem pequena
+            %p=image_tag(@admin_columnist.admin_columnists.url(:small))
+            
+            %p Imagem média
+            %p=image_tag(@admin_columnist.admin_columnists.url(:medium))
+            
+            
+            %p Imagem Original
             %p=image_tag(@admin_columnist.admin_columnists.url)
 
   = link_to "Edit", edit_admin_columnist_path(@admin_columnist), :class => "btn btn-default"

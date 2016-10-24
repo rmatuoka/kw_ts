@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i';
 body{font-family: 'Open Sans', sans-serif;}
 
 .top-bar{background-color:#18242f;min-height:67px;}
@@ -11,9 +11,10 @@ body{font-family: 'Open Sans', sans-serif;}
 .form-home-cadastro label{color:#95c940;font-size:16px;}
 .input-cadastro{color:#18242f;font-size:16px;height:28px;border-radius:3px;border:0px solid transparent;margin-bottom:5px;margin-top:5px;margin-left:20px;}
 .form-home-cadastro p{text-align:center; color:#fff;}
+.btn-cadastros{margin-bottom:10px;}
 
-.home-block-02{background-image:url(bg-home-block02.png);background-position:top center;background-repeat:repeat-x;min-height:490px;}
-.home-block-02-background{background-image:url(img-home-block02.png);background-position:right;background-repeat:no-repeat;}
+.home-block-02{background-image:url(../img/bg-home-block02.png);background-position:top center;background-repeat:repeat-x;min-height:490px;}
+.home-block-02-background{background-image:url(../img/img-home-block02.png);background-position:right;background-repeat:no-repeat;}
 .img-home-block02{margin-top:25px;text-transform:uppercase;}
 .item-home{margin-bottom:20px;}
 .home-block-02 h1{color:#fff;font-size:35px;text-transform:uppercase;}
@@ -21,7 +22,7 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-02 p{color:#fff;font-size:12px;}
 .icon-home{float:left;margin-right:20px;}
 
-.home-block-03{background-image:url(bg-home-block03.png);background-position:top left;background-repeat:no-repeat;min-height:520px;}
+.home-block-03{background-image:url(../img/bg-home-block03.png);background-position:top left;background-repeat:no-repeat;min-height:520px;}
 .img-home-block03{margin-top:25px;}
 .item-home{margin-bottom:20px;}
 .home-block-03 h1{color:#18242f;font-size:35px;text-transform:uppercase;text-align:right;}
@@ -29,7 +30,7 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-03 p{color:#18242f;font-size:12px;text-align:right;}
 .icon-home-02{float:right;margin-left:20px;}
 
-.home-block-04{min-height:220px; text-align:center;background-image:url(bg-title.png);background-position:top left;background-repeat:repeat-x;}
+.home-block-04{min-height:220px; text-align:center;background-image:url(../img/bg-title.png);background-position:top left;background-repeat:repeat-x;}
 .home-block-04 h1{color:#18242f;font-size:35px;text-transform:uppercase;background-color:#fff;}
 
 .home-block-05{min-height:150px;background-color:#18242f;}
@@ -37,56 +38,3 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-05 ul{list-style:none !important;margin-top:75px;}
 .home-block-05 ul li{float:left;margin-left:5px;}
 .home-block-05 ul li a{color:#fff;font-size:14px;text-transform:uppercase;text-decoration:none;}
-
-.select2-container--default .select2-selection--single {
-   background-color: #fff; 
-   border: 1px solid #d2d6de;
-   border-radius: 0; 
-   height: 34px;
-   line-height: 1.42857143;
- }
-
- .select2-container--default .select2-selection--multiple {
-   background-color: #fff; 
-   border: 1px solid #d2d6de;
-   border-radius: 0; 
-   height: 34px;
-   line-height: 1.42857143;
- }
- 
-.select2-container .select2-selection--single .select2-selection__rendered {
-  padding-left: 0;
-}
-
-.btn-form{
-  width: 100%;
-  height: 29px;
-  border-radius: 5px;
-  border: none;
-  color: white;  
-  font-size: 12px;
-  font-weight: bold;
-  font-family: verdana, arial, helvetica, sans-serif;
-  margin-bottom: 25px;
-}
-.btn-cadastrar{  
-  background-color: #95c940;  
-}
-
-.btn-cadastrar:hover{  
-  background-color: #6a902d;  
-}
-
-.fa-facebook{
-  float: left;
-  margin-left: 45px;
-  margin-right: -45px;
-  font-size: 20px;
-}
-
-.fa-linkedin{
-  float: left;
-  margin-left: 45px;
-  margin-right: -55px;
-  font-size: 20px;
-}

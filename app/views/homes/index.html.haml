@@ -6,10 +6,10 @@
           %a{:href => "#"}
             %img{:src => "assets/logo.png"}/
         .col-md-6.form-login
-          %form
-            %input.input-login.col-md-4{:type => "text", placehold: "E-MAIL"}/
-            %input.input-login.col-md-4{:type => "password", placehold: "SENHA"}/
-            %input.btn-login.col-md-3{:type => "button", :value => "ENTRAR"}/
+          = form_for @user_session do |f|
+            = f.text_field :email, :placeholder => "E-mail", :class => "input-login col-md-4"
+            = f.password_field :password, :placeholder => "Senha", :class => "input-login col-md-4"
+            %input.btn-login.col-md-3{:type => "submit", :value => "ENTRAR"}/
   .container.home-block-01
     .row
       .col-md-6
@@ -22,11 +22,11 @@
             .col-md-12
               = f.text_field :name, class: "input-cadastro form-control"
             %br/
-            / %label SOBRENOME
-            / %br/
-            / .col-md-12
-            /   = f.text_field :name, class: "input-cadastro form-control"
-            / %br/
+            %label SOBRENOME
+            %br/
+            .col-md-12
+              = f.text_field :last_name, class: "input-cadastro form-control"
+            %br/
             %label E-MAIL
             %br/
             .col-md-12

@@ -34,6 +34,8 @@ class Admin::ArticlesController < ApplicationController
     @article.save
     respond_to do |format|
       if @article.save
+        
+
         format.html { redirect_to admin_columnist_article_path(@columnist, @article), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: admin_columnist_article_path(@columnist, @article) }
       else
@@ -48,7 +50,11 @@ class Admin::ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to [:admin, @article], notice: 'Article was successfully updated.' }
+        
+        #INSERIR NO FEED
+        save_or_update_feed(@article.id)
+        
+        format.html { redirect_to admin_columnist_article_path(@columnist, @article), notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: [:admin, @article] }
       else
         format.html { render :edit }
@@ -56,7 +62,7 @@ class Admin::ArticlesController < ApplicationController
       end
     end
   end
-
+  
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
@@ -68,6 +74,22 @@ class Admin::ArticlesController < ApplicationController
   end
 
   private
+    def save_or_update_feed(object_id)
+      check = Feed.where(["object_id = ?", object_id])
+      
+      puts "====check = #{check.inspect} / #{check.nil?} / #{check.present?} / #{check.count}"
+      
+      if check.count <= 0
+        feed = Feed.new
+      else
+        feed = Feed.find(check.first.id)
+      end
+
+      feed.object_id = object_id
+      feed.object_type = "post"
+      feed.save
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])

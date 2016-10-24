@@ -1,0 +1,33 @@
+.container-fluid.top-bar
+  .container
+    .row
+      .col-md-11
+        %a{:href => "#"}
+          =image_tag("logo-color.png")
+      .col-md-1.perfil-image-small
+        -if current_user.picture.file?
+          %a{:href => "#"}
+            =image_tag(current_user.picture.url(:small))
+        -else
+          =image_tag("user_missing_small.png")
+.container-fluid.menu
+  .container
+    .row
+      .col-md-10
+        %ul
+          %li
+            %a{:href => "/perfil"} INÍCIO
+          %li
+            %a{:href => "#"} DIRETÓRIO DE EMPRESAS
+          %li
+            %a{:href => "#"} BLOG
+          %li
+            %a{:href => "#"} EVENTOS
+          %li
+            %a{:href => "#"} WEBINARS
+          %li
+            %a{:href => "#"} WIKI
+      .col-md-2.caixa
+        %a{:href => "#"}
+          CAIXA DE IDÉIAS
+          %i.fa.fa-lightbulb-o{"aria-hidden" => "true"}
