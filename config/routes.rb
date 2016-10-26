@@ -23,6 +23,8 @@ KwTraining::Application.routes.draw do
   resources :user_sessions, only: [:create, :new, :destroy]
   resources :users
   resources :profiles
+  resources :comments
+  resources :likes
   
   root to: 'homes#index'  
   match 'perfil', to: "profiles#index", via: :all

@@ -1,4 +1,8 @@
 - article = Article.find(feed.object_id)
+- total_likes = feed.likes.all.count
+- total_comments = feed.comments.all.count
+- liked = feed.likes.where(["feed_id = ? AND user_id = ?", feed.id, current_user.id]).empty?
+- comments = feed.comments.all.order(:created_at => "desc").limit(4)
 
 .news_perfil
   .row
@@ -23,25 +27,47 @@
     .col-md-4
       %p
         %i.fa.fa-commenting-o{"aria-hidden" => "true"}
-        10 comentários
-      %button.btn.btn-especialidade{:type => "button"}
-        %i.fa.fa-heart{"aria-hidden" => "true"}
-        GOSTEI
+        %span{:id => "total_comments#{feed.id}"}=total_comments 
+        =" #{total_comments > 1 ? "comentários" : "comentário"}" 
+      
+      = form_for [@like], role: "form", remote: true do |f|
+        =f.hidden_field :feed_id, value: feed.id
+        %button.btn.btn-especialidade{:type => "submit", :id => "btn-like#{feed.id}"}
+          %i.fa.fa-heart{"aria-hidden" => "true"}
+          - if liked
+            GOSTEI
+          -else
+            DESFAZER
+      
     .col-md-8
       %p
         %i.fa.fa-heart{"aria-hidden" => "true"}
-        25 pessoas gostaram deste artigo
-  /.row.news_comentario
-  /  .col-md-2
-  /    =image_tag("avatar-news.png")
-  /  .col-md-10
-  /    %h2 Maria Aparecida da Silva
-  /    %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
-  /.row.news_campo_comentario
-  /  .col-md-2
-  /    =image_tag("avatar-news.png")
-  /  .col-md-10
-  /    %form
-  /      %textarea
-  /      %br/
-  /      %a{:href => "#"} comentar
+        %span{:id => "total_likes#{feed.id}"}=total_likes 
+        =" #{total_likes > 1 ? "pessoas gostaram deste artigo" : "pessoa gostou deste artigo"}"
+  
+  %div{:id => "comentarios-wrapper#{feed.id}"}
+    -comments.each do |c|
+      .row.news_comentario
+        .col-md-2
+          -if c.user.picture.file?
+            %a{:href => "#"}
+              =image_tag(c.user.picture.url(:small))
+          -else
+            =image_tag("user_missing_small.png")
+        .col-md-10
+          %h2="#{c.user.name} #{c.user.last_name}"
+          %p=c.comment
+    
+  .row.news_campo_comentario{:id => "form-comment#{feed.id}"}
+    .col-md-2
+      -if current_user.picture.file?
+        %a{:href => "#"}
+          =image_tag(current_user.picture.url(:small))
+      -else
+        =image_tag("user_missing_small.png")
+    .col-md-10
+      = form_for [@comment], role: "form", remote: true do |f|
+        =f.text_area :comment
+        =f.hidden_field :feed_id, value: feed.id
+        %br/
+        =f.submit "comentar"

@@ -1,0 +1,10 @@
+.row.news_comentario
+  .col-md-2
+    -if current_user.picture.file?
+      %a{:href => "#"}
+        =image_tag(current_user.picture.url(:small))
+    -else
+      =image_tag("user_missing_small.png")
+  .col-md-10
+    %h2="#{current_user.name} #{current_user.last_name}"
+    %p=@comment.comment

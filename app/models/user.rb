@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   attr_accessor :role
 
+  has_many :likes
+  has_many :comments
+
   acts_as_authentic do |c|
     c.login_field = "email"
   end
@@ -8,7 +11,7 @@ class User < ActiveRecord::Base
   acts_as_authorization_subject :association_name => :roles, :join_table_name => :roles_users
   after_save :define_role
   
-  #has_many :users
+  
   
   has_attached_file :picture, styles: { medium: "226x260#", small: "50x50#" }
 	validates_attachment :picture, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }

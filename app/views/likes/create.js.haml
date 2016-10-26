@@ -1,0 +1,9 @@
+var total_likes = $("#total_likes#{@feed_id}");
+= "var total_likes_final = parseInt(total_likes.html()) + #{@increase}"
+
+total_likes.html(total_likes_final);
+
+-if @increase > 0
+  $("#btn-like#{@feed_id}").html("<i aria-hidden=\"true\" class=\"fa fa-heart\"></i> DESFAZER")
+-else
+  $("#btn-like#{@feed_id}").html("<i aria-hidden=\"true\" class=\"fa fa-heart\"></i> GOSTEI")

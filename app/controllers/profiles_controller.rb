@@ -3,8 +3,11 @@ class ProfilesController < ApplicationController
     #Load FEED
     @feed = Feed.all.order(created_at: "desc" )
     
-    #Checa porcentagem do perfil 
+    #Cria formulário de comentário
+    @comment = Comment.new
     
+    #Cria formulário de like
+    @like = Like.new
     
   end
 end

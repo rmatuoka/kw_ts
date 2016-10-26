@@ -1,0 +1,10 @@
+-if !@error
+  :plain
+    $("#comentarios-wrapper#{@feed}").append("#{escape_javascript(render :partial => "comentarios", :locals => { :comment => @comment })}");
+    $("#form-comment#{@feed} textarea").val("");
+    
+    var total_comments = $("#total_comments#{@feed}");
+    var total_comments_final = parseInt(total_comments.html()) + 1
+    total_comments.html(total_comments_final);
+    
+    

@@ -77,9 +77,7 @@ class Admin::ArticlesController < ApplicationController
     def save_or_update_feed(object_id)
       check = Feed.where(["object_id = ?", object_id])
       
-      puts "====check = #{check.inspect} / #{check.nil?} / #{check.present?} / #{check.count}"
-      
-      if check.count <= 0
+      if check.empty?
         feed = Feed.new
       else
         feed = Feed.find(check.first.id)

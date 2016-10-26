@@ -47,6 +47,9 @@ body{font-family: 'Open Sans', sans-serif;}
 .empresas_destaque{border-bottom:2px solid #1a2632;margin-bottom:20px;padding:10px;margin-left:5px;margin-right:5px;}
 .empresas_destaque h2{font-size:20px;text-transform:uppercase;color:#1a2632;}
 .btn-especialidade{font-size:10px;color:#fff;background-color:#95c940;font-weight:600;margin:5px;padding:3px;}
+.btn-especialidade-liked{font-size:10px;color:#eee;background-color:#cecece;font-weight:600;margin:5px;padding:3px;}
+.btn-especialidade-liked:hover{font-size:10px;color:#eee;background-color:#cecece;font-weight:600;margin:5px;padding:3px;}
+
 
 .btn_extras{border-radius:10px;background-color:#18242f;padding:30px;margin-top:30px;margin-bottom:20px;}
 .btn_extras a{font-size:12px;text-transform:uppercase;color:#95c940;}

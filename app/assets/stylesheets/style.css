@@ -1,7 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i';
 body{font-family: 'Open Sans', sans-serif;}
 
-.top-bar{background-color:#18242f;min-height:67px;}
+.top-bar{background:#18242f;min-height:67px;}
 .logo{margin-top:10px;}
 .input-login{margin-top:20px;height:20px;margin-right:10px;font-size:14px;color:#18242f;border-radius:3px;border:0px solid transparent;}
 .btn-login{margin-top:20px;height:20px;background-color:#95c940;color:#fff;border-radius:3px;border:0px solid transparent;margin-bottom:10px;}
