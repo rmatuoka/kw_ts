@@ -25,8 +25,12 @@ KwTraining::Application.routes.draw do
   resources :profiles
   resources :comments
   resources :likes
+  resources :blogs
+  resources :categorias
   
   root to: 'homes#index'  
+  
+  match 'blog', to: "blogs#index", via: :all
   match 'perfil', to: "profiles#index", via: :all
   match 'register', to: "users#new", via: :all
   match 'login', to: 'user_sessions#new', via: :all  

@@ -7,7 +7,7 @@
 .news_perfil
   .row
     .col-md-2
-      -if current_user.picture.file?
+      -if article.columnist.admin_columnists.file?
         %a{:href => "#"}
           =image_tag(article.columnist.admin_columnists.url(:small), :class => "img-responsive")
       -else
@@ -23,51 +23,6 @@
     %h4="#{article.title}"
     %p="#{article.subtitle}"
     %a{:href => "#"} Continuar lendo
-  .row.news_interacao
-    .col-md-4
-      %p
-        %i.fa.fa-commenting-o{"aria-hidden" => "true"}
-        %span{:id => "total_comments#{feed.id}"}=total_comments 
-        =" #{total_comments > 1 ? "comentários" : "comentário"}" 
-      
-      = form_for [@like], role: "form", remote: true do |f|
-        =f.hidden_field :feed_id, value: feed.id
-        %button.btn.btn-especialidade{:type => "submit", :id => "btn-like#{feed.id}"}
-          %i.fa.fa-heart{"aria-hidden" => "true"}
-          - if liked
-            GOSTEI
-          -else
-            DESFAZER
-      
-    .col-md-8
-      %p
-        %i.fa.fa-heart{"aria-hidden" => "true"}
-        %span{:id => "total_likes#{feed.id}"}=total_likes 
-        =" #{total_likes > 1 ? "pessoas gostaram deste artigo" : "pessoa gostou deste artigo"}"
   
-  %div{:id => "comentarios-wrapper#{feed.id}"}
-    -comments.each do |c|
-      .row.news_comentario
-        .col-md-2
-          -if c.user.picture.file?
-            %a{:href => "#"}
-              =image_tag(c.user.picture.url(:small))
-          -else
-            =image_tag("user_missing_small.png")
-        .col-md-10
-          %h2="#{c.user.name} #{c.user.last_name}"
-          %p=c.comment
-    
-  .row.news_campo_comentario{:id => "form-comment#{feed.id}"}
-    .col-md-2
-      -if current_user.picture.file?
-        %a{:href => "#"}
-          =image_tag(current_user.picture.url(:small))
-      -else
-        =image_tag("user_missing_small.png")
-    .col-md-10
-      = form_for [@comment], role: "form", remote: true do |f|
-        =f.text_area :comment
-        =f.hidden_field :feed_id, value: feed.id
-        %br/
-        =f.submit "comentar"
+  =render partial: "interacao", locals: {feed: feed, total_comments: total_comments, total_likes: total_likes, comments: comments, liked: liked}
+  

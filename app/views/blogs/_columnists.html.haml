@@ -1,0 +1,19 @@
+.dados_perfil_direita
+  .row
+    .row
+      %h1 colunistas
+    .row
+      .mais_lidos
+        -@columnists.each do |c|
+          -if c.articles.present?
+            .row.post_mais_lido
+              .col-md-2
+                -if c.admin_columnists.file?
+                  %a{:href => "#"}
+                    =image_tag(c.admin_columnists.url(:small), :class => "img-responsive")
+                -else
+                  =image_tag("user_missing_small.png", :class => "img-responsive")
+              .col-md-10
+                %h2=c.name
+                %h3=" as #{c.articles.last.updated_at.strftime('%H:%M')} do dia #{c.articles.last.updated_at.strftime('%d/%m/%Y')}"
+                %a{:href => "#{blog_path(c.articles.last)}"}=c.articles.last.title

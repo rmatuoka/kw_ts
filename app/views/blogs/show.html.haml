@@ -1,0 +1,40 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.top_artigo
+  .container
+    .row
+      %ul
+        -if !@categories.empty?
+          -@categories.each do |c|
+            %li
+              %a{:href => "#{categoria_path(c)}"}=c.name
+              
+.container-fluid.dados_perfil
+  .container
+    .row
+      .col-md-6
+        .dados_perfil_esquerda
+          .row
+            .artigo
+              .row
+                %h1=@article.title
+                %h2="por #{@article.columnist.name} as #{@article.columnist.created_at.strftime('%H:%M')} do dia #{@article.columnist.created_at.strftime('%d/%m/%Y')}"
+              
+              .row.news_content
+                
+                -if @article.image_article.file?
+                  =image_tag(@article.image_article.url(), :class => "img-responsive")
+                
+                
+                %h3=@article.subtitle
+                =raw(@article.description)
+              
+              =render file: "profiles/_interacao.html.haml", locals: {feed: @feed, total_comments: @total_comments, total_likes: @total_likes, comments: @comments, liked: @liked}
+              
+      .col-md-5.col-md-offset-1
+        =render :partial => "columnists", locals: {columnists: @columnists}
+                          
+        =render file: "layouts/widgets/_ajude_nos.html.haml"
+        =render file: "layouts/widgets/_wiki.html.haml"
+         

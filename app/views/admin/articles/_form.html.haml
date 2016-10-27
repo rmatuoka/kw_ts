@@ -16,8 +16,12 @@
       = f.label :description
       = f.text_area :description, :class => "form-control ckeditor", :placeholder => "descrição"
     .form-group 
-      = f.label "Escolha a Categoria"    
+      = f.label :category_ids, "Escolha a Categoria"    
       = f.select :category_ids, @categories,{}, {multiple: "multiple", class: "form-control select2"}
+    .form-group 
+      = f.label :position, "Escolha a posição"
+      %br
+      = f.select :position, options_for_select([["Destaque", "1"], ["Destaque Direita", "2"], ["Baixo", "3"]], @article.position),{}, {class: "form-control select2"}
     / .form-group 
     /   = f.label :columnist_id, "Escolha o Colunista"    
     /   = f.select :columnist_id, @columnists,{}, {class: "form-control select2"}
