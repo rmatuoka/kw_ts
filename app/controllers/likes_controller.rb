@@ -1,4 +1,8 @@
 class LikesController < ApplicationController
+  access_control do
+    allow logged_in
+  end
+  
   def create
     @feed_id = params[:like][:feed_id].to_i
     @increase = 0

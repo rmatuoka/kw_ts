@@ -1,0 +1,25 @@
+= form_for [:admin, @wiki] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => "titulo" 
+    .form-group 
+      = f.label :description
+      = f.text_area :description, :class => "form-control ckeditor", :placeholder => "descrição"
+    
+    .form-group
+      = f.label :enterprise_ids, "Empresas relacionadas"
+      %br
+      = f.collection_check_boxes(:enterprise_ids, Admin::Enterprise.all, :id, :name)
+    
+    .form-group 
+      = f.label :published
+      = f.check_box :published
+    .box-footer
+    =f.submit nil, :class => "btn btn-primary" 

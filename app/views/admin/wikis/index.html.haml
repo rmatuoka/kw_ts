@@ -1,0 +1,40 @@
+%section.content-header
+  %h1
+    Wiki
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Wiki
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+      = link_to "Novo Wiki", new_admin_wiki_path, :class => "btn btn-primary" 
+      / = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?
+    
+    .box
+      .box-header
+        %h3.box-title 
+          Artigos Cadastrados 
+          
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th="Título"
+            %th="Publicado?"
+            %th=t("actions")
+          - for wiki in @wikis 
+            %tr
+              %td= wiki.title 
+              %td= wiki.published              
+              %td 
+                = link_to t("show"), admin_wiki_path(wiki), :class => "btn btn-default"
+                = link_to t("edit"), edit_admin_wiki_path(wiki), :class => "btn btn-default"
+                = link_to 'Destroy', admin_wiki_path(wiki), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-default"
+
+    %p
+      = link_to "Novo Artigo", new_admin_wiki_path, :class => "btn btn-primary" 
+      / = link_to "Ver Todos", admin_articles_path, :class => "btn btn-primary"  if !params[:tag].blank?

@@ -1,4 +1,8 @@
 class BlogsController < ApplicationController
+  access_control do
+    allow logged_in
+  end
+  
   def index
     #------------------INSERIR EM UM BEFORE FILTER
     #Carrega artigos dos colunistas

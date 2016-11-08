@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026193258) do
+ActiveRecord::Schema.define(version: 20161101134711) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -153,6 +153,11 @@ ActiveRecord::Schema.define(version: 20161026193258) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "enterprises_wikis", id: false, force: :cascade do |t|
+    t.integer "enterprise_id", limit: 4, null: false
+    t.integer "wiki_id",       limit: 4, null: false
+  end
+
   create_table "feeds", force: :cascade do |t|
     t.integer  "object_id",   limit: 4
     t.string   "object_type", limit: 255
@@ -201,6 +206,14 @@ ActiveRecord::Schema.define(version: 20161026193258) do
     t.text     "data",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "suggestions", force: :cascade do |t|
+    t.string   "subject",     limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -259,6 +272,15 @@ ActiveRecord::Schema.define(version: 20161026193258) do
     t.string   "picture_content_type", limit: 255
     t.integer  "picture_file_size",    limit: 4
     t.datetime "picture_updated_at"
+  end
+
+  create_table "wikis", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.text     "description", limit: 65535
+    t.boolean  "active",                    default: true
+    t.boolean  "published",                 default: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
 end

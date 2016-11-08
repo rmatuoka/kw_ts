@@ -1,0 +1,56 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.top_perfil
+  .container
+    .row
+      .col-md-12.perfil
+        .col-md-3.avatar-perfil
+          -if current_user.picture.file?
+            %a{:href => "#"}
+              =image_tag(current_user.picture.url(:medium))
+          -else
+            =image_tag("user_missing_medium.png")
+
+        .col-md-9
+          .row
+            %h2="#{current_user.name} #{current_user.last_name}"
+            - if current_user.services_performed.present?
+              %p="#{current_user.services_performed}" 
+          .row
+            %a{:href => "#"}
+              =image_tag("btn-editar-perfil.png")
+              
+.container-fluid.dados_perfil
+  .container
+    .row
+      .col-md-6
+        .dados_perfil_esquerda
+          .row
+            %h1 Wiki Training Society
+            =render partial: "filter"
+            .wiki_content
+              .row
+                %p orem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.us mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+              .row
+                .col-md-1
+                  %h1="#{params[:id].upcase}"
+                .col-md-11
+                  .linha_wiki  
+              -@wikis.each do |w|
+                .row
+                  %h2=w.title
+                  %p=w.description
+                  %ul
+                    %li ESPECIALIDADE 1
+                    %li ESPECIALIDADE 2
+                    %li ESPECIALIDADE 3
+                    %li ESPECIALIDADE 4
+                    %li ESPECIALIDADE 5
+            
+      .col-md-5.col-md-offset-1
+        .dados_perfil_direita
+          =render file: "layouts/widgets/_perfil_bar.html.haml"
+          =render file: "layouts/widgets/_empresas.html.haml"
+          =render file: "layouts/widgets/_ajude_nos.html.haml"
+          =render file: "layouts/widgets/_mais_lidos.html.haml"

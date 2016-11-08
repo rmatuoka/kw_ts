@@ -1,0 +1,34 @@
+%section.content-header
+  %h1
+    Artigos
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Artigos
+     
+
+/ Main content
+%section.content   
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@wiki.title}"  
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.article.description")}:"
+            %br
+            = raw @wiki.description   
+        .box-body  
+          %p
+            %b= "#{t("activerecord.attributes.article.published")}: "
+            = @wiki.published
+        
+  = link_to t("back_list"), admin_wikis_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_wiki_path(@wiki), :class => "btn btn-default" 
+  = link_to "Novo Artigo", new_admin_wiki_path, :class => "btn btn-primary"

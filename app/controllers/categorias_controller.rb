@@ -1,4 +1,8 @@
 class CategoriasController < ApplicationController
+  access_control do
+    allow logged_in
+  end
+  
   def show
     @category = Category.find(params[:id])
     

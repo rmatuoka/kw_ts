@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
     c.login_field = "email"
   end
   
+  acts_as_tagger
+  
   acts_as_authorization_subject :association_name => :roles, :join_table_name => :roles_users
   after_save :define_role
   

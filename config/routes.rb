@@ -1,5 +1,4 @@
 KwTraining::Application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
   
   namespace :admin do
@@ -16,6 +15,7 @@ KwTraining::Application.routes.draw do
     end
     resources :statics, only: [:index]
     resources :tags
+    resources :wikis
 
     root to: 'statics#index'
   end
@@ -27,10 +27,13 @@ KwTraining::Application.routes.draw do
   resources :likes
   resources :blogs
   resources :categorias
+  resources :suggestions
+  resources :wiki
   
   root to: 'homes#index'  
   
   match 'blog', to: "blogs#index", via: :all
+  match 'caixa-de-ideias', to: "suggestions#new", via: :all
   match 'perfil', to: "profiles#index", via: :all
   match 'register', to: "users#new", via: :all
   match 'login', to: 'user_sessions#new', via: :all  

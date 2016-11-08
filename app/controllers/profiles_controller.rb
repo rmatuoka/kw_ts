@@ -1,4 +1,8 @@
 class ProfilesController < ApplicationController
+  access_control do
+    allow logged_in
+  end
+  
   def index
     #Load FEED
     @feed = Feed.all.order(created_at: "desc" )

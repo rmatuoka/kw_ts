@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   acts_as_taggable_on :tags
+  
   has_attached_file :image_article
   validates_attachment :image_article, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
   

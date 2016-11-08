@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  access_control do
+    allow logged_in
+  end
+  
   def create
     @error = true
     @feed = params[:comment][:feed_id].to_i
