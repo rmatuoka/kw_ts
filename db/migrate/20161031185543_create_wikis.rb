@@ -3,8 +3,8 @@ class CreateWikis < ActiveRecord::Migration
     create_table :wikis do |t|
       t.string :title
       t.text :description
-      t.boolean :active, :default => :true
-      t.boolean :published, :default => :false
+      t.boolean :active
+      t.boolean :published
 
       t.timestamps null: false
     end
