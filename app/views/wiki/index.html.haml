@@ -18,7 +18,7 @@
             - if current_user.services_performed.present?
               %p="#{current_user.services_performed}" 
           .row
-            %a{:href => "#"}
+            %a{:href => "#{edit_user_path(current_user)}"}
               =image_tag("btn-editar-perfil.png")
               
 .container-fluid.dados_perfil
