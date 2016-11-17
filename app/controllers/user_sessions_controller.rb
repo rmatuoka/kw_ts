@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
       if User.find(current_user.id).has_role? :administrator
         redirect_to admin_root_path
       else
-        redirect_to root_path
+        redirect_to perfil_path
       end
     else
       flash[:error] = true

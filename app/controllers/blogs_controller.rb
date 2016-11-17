@@ -33,6 +33,12 @@ class BlogsController < ApplicationController
     @article = Article.find(params[:id])
     @feed = Feed.where(["object_id = ? AND object_type =?",@article.id, "post"]).first
     
+    #-----------READ
+    read =  @article.article_reads.build
+    read.ip = request.remote_ip
+    read.save
+    #-----------READ
+    
     puts "===========FEED: #{@feed.inspect}"
     
     

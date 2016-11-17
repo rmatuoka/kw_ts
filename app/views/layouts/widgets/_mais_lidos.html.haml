@@ -1,26 +1,20 @@
-.row
+-most_readed = Article.joins(:article_reads).where(active: true, published: true).group(:id).order("count(*) desc").limit(3)
+
+-if !most_readed.empty?
   .row
-    %h1 mais lidos
-  .row
-    .mais_lidos
-      .row.post_mais_lido
-        .col-md-2
-          =image_tag("avatar-news.png")
-        .col-md-10
-          %h2 Maria Aparecida da Silva
-          %h3 Pesquisadora na empresa USP
-          %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
-      .row.post_mais_lido
-        .col-md-2
-          =image_tag("avatar-news.png")
-        .col-md-10
-          %h2 Maria Aparecida da Silva
-          %h3 Pesquisadora na empresa USP
-          %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
-      .row.post_mais_lido
-        .col-md-2
-          =image_tag("avatar-news.png")
-        .col-md-10
-          %h2 Maria Aparecida da Silva
-          %h3 Pesquisadora na empresa USP
-          %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
+    .row
+      %h1 mais lidos
+    .row
+      .mais_lidos
+        -most_readed.each do |a|
+          .row.post_mais_lido
+            .col-md-2
+              -if a.columnist.admin_columnists.file?
+                %a{:href => "#"}
+                  =image_tag(a.columnist.admin_columnists.url(:small), :class => "img-responsive")
+              -else
+                =image_tag("user_missing_small.png", :class => "img-responsive")
+            .col-md-10
+              %h2=a.columnist.name
+              %h3=a.columnist.description
+              %a{:href => "#{blog_path(a)}"}=a.subtitle

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101134711) do
+ActiveRecord::Schema.define(version: 20161117141638) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 20161101134711) do
     t.string   "specialties",                    limit: 255
   end
 
+  create_table "admin_enterprises_wikis", id: false, force: :cascade do |t|
+    t.integer "enterprise_id", limit: 4, null: false
+    t.integer "wiki_id",       limit: 4, null: false
+  end
+
   create_table "admin_highlights", force: :cascade do |t|
     t.string   "title",                        limit: 255
     t.string   "subtitle",                     limit: 255
@@ -93,6 +98,14 @@ ActiveRecord::Schema.define(version: 20161101134711) do
     t.boolean  "published",                       default: true, null: false
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+  end
+
+  create_table "article_reads", force: :cascade do |t|
+    t.integer  "article_id", limit: 4
+    t.boolean  "read",                   default: true
+    t.string   "ip",         limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "articles", force: :cascade do |t|
@@ -151,11 +164,6 @@ ActiveRecord::Schema.define(version: 20161101134711) do
     t.text     "comment",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-  end
-
-  create_table "enterprises_wikis", id: false, force: :cascade do |t|
-    t.integer "enterprise_id", limit: 4, null: false
-    t.integer "wiki_id",       limit: 4, null: false
   end
 
   create_table "feeds", force: :cascade do |t|

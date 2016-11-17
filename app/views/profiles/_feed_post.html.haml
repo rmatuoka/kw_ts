@@ -22,7 +22,9 @@
     
     %h4="#{article.title}"
     %p="#{article.subtitle}"
-    %a{:href => "#"} Continuar lendo
+    
+    - if feed.object_type == "post"
+      %a{:href => "#{blog_path(article)}"} Continuar lendo
   
   =render partial: "interacao", locals: {feed: feed, total_comments: total_comments, total_likes: total_likes, comments: comments, liked: liked}
   
