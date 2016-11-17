@@ -35,6 +35,8 @@ class Admin::ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         
+        #INSERIR NO FEED
+        save_or_update_feed(@article.id)
 
         format.html { redirect_to admin_columnist_article_path(@columnist, @article), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: admin_columnist_article_path(@columnist, @article) }
