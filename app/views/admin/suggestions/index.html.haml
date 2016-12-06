@@ -1,0 +1,30 @@
+%section.content-header
+  %h1
+    Caixa de Ideias
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Caixa de Idéias
+/ Main content
+%section.content
+  .col-xs-12
+    .box
+      .box-header
+        %h3.box-title Sugestões enviadas
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th="Assunto"
+            %th="Mensagem"
+            %th="Enviado por:"
+            %th=t("actions")
+          - for suggestion in @suggestions 
+            %tr 
+              %td= suggestion.subject
+              %td= suggestion.description
+              %td= suggestion.user.name
+              %td 
+                = link_to t("destroy"), admin_suggestion_path(suggestion), :confirm => t("msg_delete"), :method => :delete, :class => "btn btn-danger" 

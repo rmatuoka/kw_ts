@@ -18,7 +18,8 @@ KwTraining::Application.routes.draw do
     resources :statics, only: [:index]
     resources :tags
     resources :wikis
-
+    resources :suggestions
+    
     root to: 'statics#index'
   end
   
