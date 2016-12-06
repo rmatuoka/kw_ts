@@ -1,7 +1,7 @@
 class EmpresasController < ApplicationController
 
   def index
-    @empresas = Admin::Enterprise.all
+    @empresas = Admin::Enterprise.where(["name LIKE ?", "a%"]).order(:name => "ASC")
   end
 
   def show
@@ -34,5 +34,9 @@ class EmpresasController < ApplicationController
   def tags
     @speciality = Speciality.find(params[:id])
     @empresas = @speciality.enterprises.all 
+  end
+  
+  def filters
+    @empresas = Admin::Enterprise.where(["name LIKE ?", "#{params[:id]}%"]).order(:name => "ASC")
   end
 end

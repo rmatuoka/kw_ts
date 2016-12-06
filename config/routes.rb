@@ -36,6 +36,7 @@ KwTraining::Application.routes.draw do
   resources :empresas do
     member do
       get :tags
+      get :filters
     end
   end
   
