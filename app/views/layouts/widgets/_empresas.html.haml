@@ -1,35 +1,28 @@
-.row
-  %h1 Empresas em Destaque
-  .bloco_empresas
-    .row.empresas_destaque
-      .logo_empresa.col-md-3
-        =image_tag("logo-parceiro.jpg")
-      .dados_empresa.col-md-9
-        .row
-          %h2 HP BRASIL
-        .row
-          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
-          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
-          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
-        .row
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle-o{"aria-hidden" => "true"}
-    .row.empresas_destaque
-      .logo_empresa.col-md-3
-        =image_tag("logo-parceiro.jpg")
-      .dados_empresa.col-md-9
-        .row
-          %h2 HP BRASIL
-        .row
-          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
-          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
-          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
-        .row
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle{"aria-hidden" => "true"}
-          %i.fa.fa-circle-o{"aria-hidden" => "true"}
+-empresas = Admin::Enterprise.where(:featured => true)
+
+-if !empresas.blank?
+  .row
+    %h1 Empresas em Destaque
+    .bloco_empresas
+      -empresas.each do |e|
+        .row.empresas_destaque
+          .logo_empresa.col-md-3
+            -if e.img_enterprise.file?
+              %a{:href => "/empresas/#{e.id}"}
+                =image_tag(e.img_enterprise.url(:small), :class => "img-responsive")
+            -else
+              %a{:href => "/empresas/#{e.id}"}
+                =image_tag("user_missing_small.png", :class => "img-responsive")
+          .dados_empresa.col-md-9
+            .row
+              %h2=link_to e.name, "/empresas/#{e.id}"
+            .row
+              -e.specialities.all.each do |s|
+                %a.btn.btn-especialidade{:href=>"#{tags_empresa_path(s)}"}=s.name
+            .row
+              %i.fa.fa-circle{"aria-hidden" => "true"}
+              %i.fa.fa-circle{"aria-hidden" => "true"}
+              %i.fa.fa-circle{"aria-hidden" => "true"}
+              %i.fa.fa-circle{"aria-hidden" => "true"}
+              %i.fa.fa-circle-o{"aria-hidden" => "true"}
+      

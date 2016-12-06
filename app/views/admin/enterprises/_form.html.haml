@@ -155,13 +155,13 @@
       = f.file_field :img_enterprise, :class => "form-control"  
     - if @admin_enterprise.img_enterprise.file?
       .form-group
-        =image_tag(@admin_enterprise.img_enterprise.url)
+        =image_tag(@admin_enterprise.img_enterprise.url(:medium))
     .form-group
       = f.label :banner_enterprise
       = f.file_field :banner_enterprise, :class => "form-control"  
     - if @admin_enterprise.banner_enterprise.file?
       .form-group
-        =image_tag(@admin_enterprise.banner_enterprise.url)
+        =image_tag(@admin_enterprise.banner_enterprise.url(:medium))
     
   .box-footer
     =f.submit "Salvar", :class => "btn btn-primary"
