@@ -1,0 +1,21 @@
+= form_for [@organization, @organization_images] do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Confira os campos marcados em vermelho.
+  .box-body
+    .form-group
+      = f.label :title
+      = f.text_field :title, :class => "form-control", :placeholder => "titulo" 
+    
+    .form-group
+      = f.label :image
+      = f.file_field :image, :class => "form-control"  
+    - if @organization_images.image.file?
+      .form-group
+        =image_tag(@organization_images.image.url)
+  
+  .box-footer
+    =f.submit nil, :class => "btn btn-primary" 

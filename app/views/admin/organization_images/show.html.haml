@@ -1,0 +1,38 @@
+%section.content-header
+  %h1
+    Galeria de Fotos
+    = "#{@organization.title}" 
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => "#{admin_organizations_path()}"}
+        %i.fa.fa-dashboard
+        Eventos
+    %li.active Galeria de Fotos
+     
+
+/ Main content
+%section.content   
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title="#{@organization_images.title}"
+        
+        .box-body  
+          %p
+            %b= "Título"
+            = @organization_images.title
+        - if @organization_images.image.file?
+          .box-body
+            %p=image_tag(@organization_images.image.url)
+
+  = link_to t("back_list"), admin_organization_organization_images_path, :class => "btn btn-default"
+  = link_to t("edit"), edit_admin_organization_organization_image_path(@organization, @organization_images), :class => "btn btn-default" 
+  = link_to "Nova Imagem", new_admin_organization_organization_image_path, :class => "btn btn-primary"

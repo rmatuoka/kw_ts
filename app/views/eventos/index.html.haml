@@ -1,0 +1,122 @@
+.container-fluid.top_perfil
+  .container
+    .row
+      .col-md-12.perfil
+        .col-md-3.avatar-perfil
+          -if current_user.picture.file?
+            %a{:href => "#"}
+              =image_tag(current_user.picture.url(:medium))
+          -else
+            =image_tag("user_missing_medium.png")
+            
+        .col-md-9
+          .row
+            %h2="#{current_user.name} #{current_user.last_name}"
+            - if current_user.services_performed.present?
+              %p="#{current_user.services_performed}" 
+          .row
+            %a{:href => "#{edit_user_path(current_user)}"}
+              =image_tag("btn-editar-perfil.png")
+.container-fluid
+  .container
+    .row
+      .col-md-12.eventos
+        %h1 Eventos
+        .row
+          #calendar
+.container-fluid
+  .container
+    .row
+      .col-md-12.galeria
+        %h1 galeria de fotos
+        .row.galeria-itens
+          .col-md-3
+            %img{:src => "/assets/img-galeria.png"}/
+            %h3 Nome do Evento
+            %h4 01/11/2016
+          .col-md-3
+            %img{:src => "/assets/img-galeria.png"}/
+            %h3 Nome do Evento
+            %h4 01/11/2016
+          .col-md-3
+            %img{:src => "/assets/img-galeria.png"}/
+            %h3 Nome do Evento
+            %h4 01/11/2016
+          .col-md-3
+            %img{:src => "/assets/img-galeria.png"}/
+            %h3 Nome do Evento
+            %h4 01/11/2016
+/.container-fluid
+/  .container
+/    .row
+/      .col-md-12.galeria
+/        %h1 biblioteca
+/        .row.galeria-itens
+/          .col-md-3
+/            %img{:src => "/assets/img-galeria.png"}/
+/            %h3 Nome do Evento
+/            %h4 01/11/2016
+/          .col-md-3
+/            %img{:src => "/assets/img-galeria.png"}/
+/            %h3 Nome do Evento
+/            %h4 01/11/2016
+/          .col-md-3
+/            %img{:src => "/assets/img-galeria.png"}/
+/            %h3 Nome do Evento
+/            %h4 01/11/2016
+/          .col-md-3
+/            %img{:src => "/assets/img-galeria.png"}/
+/            %h3 Nome do Evento
+/            %h4 01/11/2016
+
+-content_for :footer do
+  :javascript
+    $(document).ready(function() {
+      var initialLocaleCode = 'pt-br';
+
+    $('#calendar').fullCalendar({
+      eventClick: function(calEvent, jsEvent, view) {
+        //alert('Event: ' + calEvent.title);
+        ////alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+        //alert('View: ' + view.name);
+
+      // change the border color just for fun
+        $(this).css('border-color', 'red');
+
+      },
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay,listMonth'
+      },
+        defaultDate: '#{DateTime.now.strftime("%Y/%m/%d")}',
+        locale: initialLocaleCode,
+        buttonIcons: false, // show the prev/next text
+        weekNumbers: true,
+        navLinks: true, // can click day/week names to navigate views
+        editable: true,
+        eventLimit: true, // allow "more" link when too many events
+    
+      events: [
+        #{@datas}
+    
+      ]
+    });
+
+    // build the locale selector's options
+    $.each($.fullCalendar.locales, function(localeCode) {
+      $('#locale-selector').append(
+        $('<option/>')
+        .attr('value', localeCode)
+        .prop('selected', localeCode == initialLocaleCode)
+        .text(localeCode)
+        );
+    });
+
+    // when the selected option changes, dynamically change the calendar option
+    $('#locale-selector').on('change', function() {
+        if (this.value) {
+          $('#calendar').fullCalendar('option', 'locale', this.value);
+        }
+      });
+    });

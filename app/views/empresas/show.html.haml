@@ -1,0 +1,80 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+
+.container-fluid.top_perfil
+  .container
+    .row
+      .col-md-12.perfil
+        .col-md-3.avatar-perfil
+          %a{:href => "#"}
+            %img{:src => "/assets/avatar-perfil.png"}/
+        .col-md-9
+          .row
+            %h2=@empresa.name
+            %p
+              ="#{@empresa.address}, #{@empresa.number} - #{@empresa.city} / #{@empresa.state}"
+            %p="#{@empresa.phone}"
+            %p="#{@empresa.email}"
+            %p="#{@empresa.site}"
+          /.row
+          /  %a{:href => "#{edit_user_path(current_user.id)}"}
+          /    %img{:src => "/assets/btn-editar-perfil.png"}/
+
+.container-fluid.info_empresas
+  .container
+    .row
+      .col-md-6
+        %h1 Sobre
+        .sobre_empresa
+          %p=@empresa.description
+      .col-md-5.col-md-offset-1
+        %h1 Especialidades
+        .row.especialidades_empresa
+          =raw(@especialidades)
+          
+
+- if !@portfolios.empty?
+  .container-fluid
+    .container
+      .row
+        .col-md-12.galeria
+          %h1 portifólio
+          .row.galeria-itens
+            .row
+              -@portfolios.each do |p|
+                -if p.portfolio_img.file?
+                  .col-md-3
+                    =image_tag(p.portfolio_img.url(:medium))
+                    %h3=p.title
+                    %h4=p.created_at.strftime("%d/%m/%Y")
+
+.container-fluid
+  .container
+    .row
+      .col-md-12
+        .row.opiniao
+          %h1 Mais lidos
+        .row
+          .mais_lidos
+            .row.post_mais_lido
+              .col-md-2
+                %img{:src => "/assets/avatar-news.png"}/
+              .col-md-10
+                %h2 Maria Aparecida da Silva
+                %h3 Pesquisadora na empresa USP
+                %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
+            .row.post_mais_lido
+              .col-md-2
+                %img{:src => "/assets/avatar-news.png"}/
+              .col-md-10
+                %h2 Maria Aparecida da Silva
+                %h3 Pesquisadora na empresa USP
+                %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
+            .row.post_mais_lido
+              .col-md-2
+                %img{:src => "/assets/avatar-news.png"}/
+              .col-md-10
+                %h2 Maria Aparecida da Silva
+                %h3 Pesquisadora na empresa USP
+                %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
+

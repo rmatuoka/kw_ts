@@ -13,102 +13,140 @@
     .form-group
       =t('activerecord.attributes.admin_enterprise.description')
       = f.text_area :description, :class => "form-control", :placeholder => "descrição"
+      
+    .form-group
+      ="Endereço"
+      = f.text_field :address, :class => "form-control", :placeholder => "Endereço"
+      
+    .form-group
+      ="Cidade"
+      = f.text_field :city, :class => "form-control", :placeholder => "Cidade"
+      
+    .form-group
+      ="Estado"
+      = f.text_field :state, :class => "form-control", :placeholder => "Estado"
+      
+    .form-group
+      ="Número"
+      = f.text_field :number, :class => "form-control", :placeholder => "Número"
+      
+    .form-group
+      ="Phone"
+      = f.text_field :phone, :class => "form-control", :placeholder => "Telefone"
+      
+    .form-group
+      ="E-mail"
+      = f.text_field :email, :class => "form-control", :placeholder => "E-mail"
+
+    .form-group
+      ="Site"
+      = f.text_field :site, :class => "form-control", :placeholder => "Site"
+    
+    .form-group
+      ="Empresa em destaque?"
+      = f.check_box :featured
+  
     
     .form-group
       = f.label :tag_list, "Tags"
       = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"
+    
     .form-group
-      =f.label :specialties, "Especialidades"
-      %select.select2.form-control#user_services_performed{name: "admin_enterprise[specialties]", multiple: "multiple"}
-        %option{:value => "4"}Análise de Negócios
-        %option{:value => "5"}Apresentações
-        %option{:value => "6"}Atendimento ao Cliente
-        %option{:value => "7"}Avaliação de Desempenho
-        %option{:value => "8"}Centros de Eventos
-        %option{:value => "9"}Clima Organizacional
-        %option{:value => "10"}Cloud Computing
-        %option{:value => "11"}Coaching
-        %option{:value => "12"}Compliance
-        %option{:value => "13"}Comunicação
-        %option{:value => "14"}Consultoria em Gestão Educacional
-        %option{:value => "15"}Criatividade
-        %option{:value => "16"}Cultura Organizacional
-        %option{:value => "17"}Desenv. de Aplicativos Móveis
-        %option{:value => "18"}Desenvolvimento de Carreiras
-        %option{:value => "19"}Desenvolvimento Organizacional
-        %option{:value => "20"}Design Gráfico
-        %option{:value => "21"}Direção Defensiva
-        %option{:value => "22"}Diversidade
-        %option{:value => "23"}EAD e-Learning
-        %option{:value => "24"}EAD Plataforma Mobile
-        %option{:value => "25"}Etiqueta Corporativa
-        %option{:value => "26"}Finanças para não Financeiros
-        %option{:value => "27"}Formação de Treinadores
-        %option{:value => "28"}Gestão da Mudança
-        %option{:value => "29"}Gestão da Performance
-        %option{:value => "30"}Gestão de Compras
-        %option{:value => "31"}Gestão de Conflitos
-        %option{:value => "32"}Gestão de Contratos
-        %option{:value => "33"}Gestão de Equipes
-        %option{:value => "34"}Gestão de Grandes Contas (KAM)
-        %option{:value => "35"}Gestão de Projetos
-        %option{:value => "36"}Gestão de Riscos
-        %option{:value => "37"}Gestão de Riscos Financeiros
-        %option{:value => "38"}Gestão do Comportamento Organizacional
-        %option{:value => "39"}Gestão do Stress
-        %option{:value => "40"}Gestão do Tempo
-        %option{:value => "41"}Gestão Estratégica
-        %option{:value => "42"}Gestão por Competências
-        %option{:value => "43"}Idiomas
-        %option{:value => "44"}Inclusão Social
-        %option{:value => "45"}Inovação
-        %option{:value => "46"}Jogos Corporativos
-        %option{:value => "47"}Licitações
-        %option{:value => "48"}Liderança
-        %option{:value => "49"}Logística de Treinamento
-        %option{:value => "50"}Manuais de Treinamento
-        %option{:value => "51"}Mapa Mental
-        %option{:value => "52"}Materiais Gráficos
-        %option{:value => "53"}Mensuração de Resultados
-        %option{:value => "54"}Mídias Sociais
-        %option{:value => "55"}Multi mídia
-        %option{:value => "56"}Negociação
-        %option{:value => "57"}Negócios Internacionais
-        %option{:value => "58"}Neurociência
-        %option{:value => "59"}Neurolinguística
-        %option{:value => "60"}Palestras
-        %option{:value => "61"}Produtividade
-        %option{:value => "62"}Recrutamento e Seleção
-        %option{:value => "63"}ROI de Treinamento
-        %option{:value => "64"}Salas para Treinamento
-        %option{:value => "65"}Secretariado Executivo
-        %option{:value => "66"}Segurança em TI
-        %option{:value => "67"}Seguros
-        %option{:value => "68"}Serviço ao Cliente
-        %option{:value => "69"}Servidores e Rede
-        %option{:value => "70"}Sistemas Operacionais em TI
-        %option{:value => "71"}Six Sigma
-        %option{:value => "72"}Supply Chain
-        %option{:value => "73"}Taxas
-        %option{:value => "74"}Team Building
-        %option{:value => "75"}Treinamento de Vendas
-        %option{:value => "76"}Visão, Missão e Valores
-        %option{:value => "77"}Voluntariado
-        %option{:value => "78"}Web Design
-        %option{:value => "79"}Windows Office
-        %optgroup{:label => "Leis"}
-          %option{:value => "81"}Direito Civil
-          %option{:value => "82"}Direito Empresarial
-          %option{:value => "83"}Direito Internacional
-          %option{:value => "84"}Direito Trabalhista
-          %option{:value => "85"}Direito Tributário
-        %optgroup{:label => "Engenharia"}
-          %option{:value => "87"}Segurança do Trabalho
-          %option{:value => "88"}Brigada de Incêndio
-          %option{:value => "89"}ISO 9001
-        %optgroup{:label => "Saúde"}
-        %optgroup{:label => "Finanças"}
-          %option{:value => "92"}Administração Tributária
+      = f.label :speciality_ids, "Especialidades"
+      %br
+      = f.collection_check_boxes(:speciality_ids, Speciality.all, :id, :name)
+    /.form-group
+    /  =f.label :specialties, "Especialidades"
+    /  %select.select2.form-control#user_services_performed{name: "admin_enterprise[specialties]", multiple: "multiple"}
+    /    %option{:value => "4"}Análise de Negócios
+    /    %option{:value => "5"}Apresentações
+    /    %option{:value => "6"}Atendimento ao Cliente
+    /    %option{:value => "7"}Avaliação de Desempenho
+    /    %option{:value => "8"}Centros de Eventos
+    /    %option{:value => "9"}Clima Organizacional
+    /    %option{:value => "10"}Cloud Computing
+    /    %option{:value => "11"}Coaching
+    /    %option{:value => "12"}Compliance
+    /    %option{:value => "13"}Comunicação
+    /    %option{:value => "14"}Consultoria em Gestão Educacional
+    /    %option{:value => "15"}Criatividade
+    /    %option{:value => "16"}Cultura Organizacional
+    /    %option{:value => "17"}Desenv. de Aplicativos Móveis
+    /    %option{:value => "18"}Desenvolvimento de Carreiras
+    /    %option{:value => "19"}Desenvolvimento Organizacional
+    /    %option{:value => "20"}Design Gráfico
+    /    %option{:value => "21"}Direção Defensiva
+    /    %option{:value => "22"}Diversidade
+    /    %option{:value => "23"}EAD e-Learning
+    /    %option{:value => "24"}EAD Plataforma Mobile
+    /    %option{:value => "25"}Etiqueta Corporativa
+    /    %option{:value => "26"}Finanças para não Financeiros
+    /    %option{:value => "27"}Formação de Treinadores
+    /    %option{:value => "28"}Gestão da Mudança
+    /    %option{:value => "29"}Gestão da Performance
+    /    %option{:value => "30"}Gestão de Compras
+    /    %option{:value => "31"}Gestão de Conflitos
+    /    %option{:value => "32"}Gestão de Contratos
+    /    %option{:value => "33"}Gestão de Equipes
+    /    %option{:value => "34"}Gestão de Grandes Contas (KAM)
+    /    %option{:value => "35"}Gestão de Projetos
+    /    %option{:value => "36"}Gestão de Riscos
+    /    %option{:value => "37"}Gestão de Riscos Financeiros
+    /    %option{:value => "38"}Gestão do Comportamento Organizacional
+    /    %option{:value => "39"}Gestão do Stress
+    /    %option{:value => "40"}Gestão do Tempo
+    /    %option{:value => "41"}Gestão Estratégica
+    /    %option{:value => "42"}Gestão por Competências
+    /    %option{:value => "43"}Idiomas
+    /    %option{:value => "44"}Inclusão Social
+    /    %option{:value => "45"}Inovação
+    /    %option{:value => "46"}Jogos Corporativos
+    /    %option{:value => "47"}Licitações
+    /    %option{:value => "48"}Liderança
+    /    %option{:value => "49"}Logística de Treinamento
+    /    %option{:value => "50"}Manuais de Treinamento
+    /    %option{:value => "51"}Mapa Mental
+    /    %option{:value => "52"}Materiais Gráficos
+    /    %option{:value => "53"}Mensuração de Resultados
+    /    %option{:value => "54"}Mídias Sociais
+    /    %option{:value => "55"}Multi mídia
+    /    %option{:value => "56"}Negociação
+    /    %option{:value => "57"}Negócios Internacionais
+    /    %option{:value => "58"}Neurociência
+    /    %option{:value => "59"}Neurolinguística
+    /    %option{:value => "60"}Palestras
+    /    %option{:value => "61"}Produtividade
+    /    %option{:value => "62"}Recrutamento e Seleção
+    /    %option{:value => "63"}ROI de Treinamento
+    /    %option{:value => "64"}Salas para Treinamento
+    /    %option{:value => "65"}Secretariado Executivo
+    /    %option{:value => "66"}Segurança em TI
+    /    %option{:value => "67"}Seguros
+    /    %option{:value => "68"}Serviço ao Cliente
+    /    %option{:value => "69"}Servidores e Rede
+    /    %option{:value => "70"}Sistemas Operacionais em TI
+    /    %option{:value => "71"}Six Sigma
+    /    %option{:value => "72"}Supply Chain
+    /    %option{:value => "73"}Taxas
+    /    %option{:value => "74"}Team Building
+    /    %option{:value => "75"}Treinamento de Vendas
+    /    %option{:value => "76"}Visão, Missão e Valores
+    /    %option{:value => "77"}Voluntariado
+    /    %option{:value => "78"}Web Design
+    /    %option{:value => "79"}Windows Office
+    /    %optgroup{:label => "Leis"}
+    /      %option{:value => "81"}Direito Civil
+    /      %option{:value => "82"}Direito Empresarial
+    /      %option{:value => "83"}Direito Internacional
+    /      %option{:value => "84"}Direito Trabalhista
+    /      %option{:value => "85"}Direito Tributário
+    /    %optgroup{:label => "Engenharia"}
+    /      %option{:value => "87"}Segurança do Trabalho
+    /      %option{:value => "88"}Brigada de Incêndio
+    /      %option{:value => "89"}ISO 9001
+    /    %optgroup{:label => "Saúde"}
+    /    %optgroup{:label => "Finanças"}
+    /      %option{:value => "92"}Administração Tributária
       
       
 

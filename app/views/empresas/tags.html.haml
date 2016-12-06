@@ -1,0 +1,102 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.dados_perfil
+  .container
+    .row
+      =#render :partial => "filters"
+      .col-md-12
+        .dados_perfil_direita.empresa_direita
+          .row
+            %h1 DIRETÓRIO DE EMPRESAS
+            .wiki
+              %ul
+                %li
+                  %a{:href => "#"} #
+                %li
+                  %a{:href => "#"} a
+                %li
+                  %a{:href => "#"} b
+                %li
+                  %a{:href => "#"} c
+                %li
+                  %a{:href => "#"} d
+                %li
+                  %a{:href => "#"} e
+                %li
+                  %a{:href => "#"} f
+                %li
+                  %a{:href => "#"} g
+                %li
+                  %a{:href => "#"} h
+                %li
+                  %a{:href => "#"} i
+                %li
+                  %a{:href => "#"} j
+                %li
+                  %a{:href => "#"} k
+                %li
+                  %a{:href => "#"} l
+                %li
+                  %a{:href => "#"} m
+                %li
+                  %a{:href => "#"} n
+                %li
+                  %a{:href => "#"} o
+                %li
+                  %a{:href => "#"} p
+                %li
+                  %a{:href => "#"} r
+                %li
+                  %a{:href => "#"} s
+                %li
+                  %a{:href => "#"} t
+                %li
+                  %a{:href => "#"} u
+                %li
+                  %a{:href => "#"} v
+                %li
+                  %a{:href => "#"} w
+                %li
+                  %a{:href => "#"} x
+                %li
+                  %a{:href => "#"} y
+                %li
+                  %a{:href => "#"} z
+          /.row
+          /  .bloco_empresas_principal
+          /    .row.empresas_destaque_principal
+          /      .logo_empresa.col-md-2
+          /        %img{:src => "/assets/logo_empresa.png"}/
+          /      .dados_empresa.col-md-10
+          /        .row
+          /          %h2 HP BRASIL
+          /          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.sum dolor sit amet, consectetur adipsum dolor sit amet, consectetur adip. Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, sum dolor sit amet, consectetur adipet, sum dolor sit amet, consectetur adip
+          /      .col-md-12
+          /        .row
+          /          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
+          /          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
+          /          %button.btn.btn-especialidade{:type => "button"} ESPECIALIDADE
+          -@empresas.each do |e|
+            .row
+              .bloco_empresas_principal_white
+                .row.empresas_destaque_principal_white
+                  .logo_empresa.col-md-2
+                    -if e.img_enterprise.file?
+                      %a{:href => "/empresas/#{e.id}"}
+                        =image_tag(e.img_enterprise.url(:small), :class => "img-responsive")
+                    -else
+                      %a{:href => "/empresas/#{e.id}"}
+                        =image_tag("user_missing_small.png", :class => "img-responsive")
+                    
+                  .dados_empresa.col-md-10
+                    .row
+                      %h2
+                        %a{:href => "/empresas/#{e.id}"}
+                          ="#{e.name}"
+                      %p="#{e.description}"
+                  .col-md-12
+                    .row
+                      -e.specialities.all.each do |s|
+                        %button.btn.btn-especialidade{:type => "button"}=s.name
+          

@@ -23,10 +23,10 @@
   .container
     .row
       .col-md-6
-        -if flash[:notice]
+        -if flash[:notice_user]
           .row
             .alert.alert-success
-              =flash[:notice]
+              =flash[:notice_user]
       
         = form_for [@user], role: "form" do |f|
           .dados_perfil_esquerda

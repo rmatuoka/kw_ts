@@ -7,7 +7,9 @@ KwTraining::Application.routes.draw do
       resources :articles
     end
     resources :categories
-    resources :organizations
+    resources :organizations do
+      resources :organization_images
+    end
     resources :highlights
     resources :customers
     resources :enterprises do
@@ -29,6 +31,12 @@ KwTraining::Application.routes.draw do
   resources :categorias
   resources :suggestions
   resources :wiki
+  resources :eventos
+  resources :empresas do
+    member do
+      get :tags
+    end
+  end
   
   root to: 'homes#index'  
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117141638) do
+ActiveRecord::Schema.define(version: 20161205225358) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 20161117141638) do
   create_table "admin_enterprises", force: :cascade do |t|
     t.string   "name",                           limit: 255
     t.text     "description",                    limit: 65535
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                                                   null: false
+    t.datetime "updated_at",                                                   null: false
     t.integer  "visualizations",                 limit: 4
     t.string   "img_enterprise_file_name",       limit: 255
     t.string   "img_enterprise_content_type",    limit: 255
@@ -67,6 +67,19 @@ ActiveRecord::Schema.define(version: 20161117141638) do
     t.integer  "banner_enterprise_file_size",    limit: 4
     t.datetime "banner_enterprise_updated_at"
     t.string   "specialties",                    limit: 255
+    t.string   "address",                        limit: 255
+    t.string   "number",                         limit: 255
+    t.string   "phone",                          limit: 255
+    t.string   "email",                          limit: 255
+    t.string   "site",                           limit: 255
+    t.boolean  "featured",                                     default: false
+    t.string   "city",                           limit: 255
+    t.string   "state",                          limit: 255
+  end
+
+  create_table "admin_enterprises_specialities", id: false, force: :cascade do |t|
+    t.integer "enterprise_id", limit: 4, null: false
+    t.integer "speciality_id", limit: 4, null: false
   end
 
   create_table "admin_enterprises_wikis", id: false, force: :cascade do |t|
@@ -180,6 +193,17 @@ ActiveRecord::Schema.define(version: 20161117141638) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "organization_images", force: :cascade do |t|
+    t.string   "title",              limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.integer  "organization_id",    limit: 4
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.string   "title",                      limit: 255
     t.integer  "ordem",                      limit: 4
@@ -214,6 +238,15 @@ ActiveRecord::Schema.define(version: 20161117141638) do
     t.text     "data",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.boolean  "published",                 default: false
+    t.boolean  "active",                    default: true
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "suggestions", force: :cascade do |t|

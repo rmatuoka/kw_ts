@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         
-        format.html { redirect_to perfil_path, notice: 'User was successfully created.' }      
+        format.html { redirect_to perfil_path, notice_user: 'User was successfully created.' }      
       end
     end
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_user_path(@user), notice: 'Seu perfil foi atualizado com sucesso!' }
+        format.html { redirect_to edit_user_path(@user), notice_user: 'Seu perfil foi atualizado com sucesso!' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

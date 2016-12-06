@@ -68,6 +68,13 @@ class Admin::ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    
+    feeds = Feed.where(["object_type = ? AND object_id = ?", "post", @article.id])
+    
+    feeds.each do f
+      f.destroy
+    end
+    
     @article.destroy
     respond_to do |format|
       format.html { redirect_to admin_columnist_articles_url, notice: 'Article was successfully destroyed.' }

@@ -1,30 +1,32 @@
-- article = Article.find(feed.object_id)
-- total_likes = feed.likes.all.count
-- total_comments = feed.comments.all.count
-- liked = feed.likes.where(["feed_id = ? AND user_id = ?", feed.id, current_user.id]).empty?
-- comments = feed.comments.all.order(:created_at => "desc").limit(4)
+-if !Article.where(id: feed.object_id).empty?
 
-.news_perfil
-  .row
-    .col-md-2
-      -if article.columnist.admin_columnists.file?
-        %a{:href => "#"}
-          =image_tag(article.columnist.admin_columnists.url(:small), :class => "img-responsive")
-      -else
-        =image_tag("user_missing_small.png", :class => "img-responsive")
+  - article = Article.find(feed.object_id)
+  - total_likes = feed.likes.all.count
+  - total_comments = feed.comments.all.count
+  - liked = feed.likes.where(["feed_id = ? AND user_id = ?", feed.id, current_user.id]).empty?
+  - comments = feed.comments.all.order(:created_at => "desc").limit(4)
+
+  .news_perfil
+    .row
+      .col-md-2
+        -if article.columnist.admin_columnists.file?
+          %a{:href => "#"}
+            =image_tag(article.columnist.admin_columnists.url(:small), :class => "img-responsive")
+        -else
+          =image_tag("user_missing_small.png", :class => "img-responsive")
       
-    .col-md-10
-      %h5="#{article.columnist.name}"
-      %h6="#{article.columnist.description}"
-  .row.news_content
-    -if article.image_article.file?
-      =image_tag(article.image_article.url(), :class => "img-responsive")
+      .col-md-10
+        %h5="#{article.columnist.name}"
+        %h6="#{article.columnist.description}"
+    .row.news_content
+      -if article.image_article.file?
+        =image_tag(article.image_article.url(), :class => "img-responsive")
     
-    %h4="#{article.title}"
-    %p="#{article.subtitle}"
+      %h4="#{article.title}"
+      %p="#{article.subtitle}"
     
-    - if feed.object_type == "post"
-      %a{:href => "#{blog_path(article)}"} Continuar lendo
+      - if feed.object_type == "post"
+        %a{:href => "#{blog_path(article)}"} Continuar lendo
   
-  =render partial: "interacao", locals: {feed: feed, total_comments: total_comments, total_likes: total_likes, comments: comments, liked: liked}
+    =render partial: "interacao", locals: {feed: feed, total_comments: total_comments, total_likes: total_likes, comments: comments, liked: liked}
   

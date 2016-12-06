@@ -1,0 +1,35 @@
+%section.content-header
+  %h1
+    Galeria de Fotos
+    = "#{@organization.title}" 
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li
+      %a{:href => "#{admin_organizations_path()}"}
+        %i.fa.fa-dashboard
+        Eventos
+    %li.active Galeria de Fotos
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Artigo
+        / /.box-header
+        / form start
+        = render 'form'
+      
+
+      %p
+        = link_to t("back_list"), admin_organization_organization_images_path(@organization), :class => "btn btn-default"
+        = link_to t("show"), admin_organization_organization_images_path(@organization, @organization_image), :class => "btn btn-default"
+

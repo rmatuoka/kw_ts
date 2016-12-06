@@ -12,6 +12,8 @@
     = stylesheet_link_tag "style.css"
     = yield :head
     = stylesheet_link_tag "font-awesome.min.css"
+    = stylesheet_link_tag "fullcalendar.css"
+    = stylesheet_link_tag "fullcalendar.print.css"
     
   %body
     %section
@@ -47,6 +49,11 @@
     = javascript_include_tag "jQuery/jquery-2.2.3.min.js"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     
+    = javascript_include_tag "lib/moment.min.js"
+    = javascript_include_tag "fullcalendar.min.js"
+    = javascript_include_tag "locale-all.js"
+    
+    =yield :footer
     :javascript
       //document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
     
