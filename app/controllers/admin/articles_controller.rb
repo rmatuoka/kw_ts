@@ -71,9 +71,9 @@ class Admin::ArticlesController < ApplicationController
     
     feeds = Feed.where(["object_type = ? AND object_id = ?", "post", @article.id])
     
-    feeds.each do f
-      f.destroy
-    end
+    #feeds.each do f
+    #  f.destroy
+    #end
     
     @article.destroy
     respond_to do |format|
