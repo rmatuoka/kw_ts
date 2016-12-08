@@ -18,30 +18,7 @@
   %body
     %section
       =render file: "layouts/_header.html.haml"
-      .container-fluid.busca
-        .container
-          .row
-            .col-md-12
-              %form
-                %input.col-md-4.campo_busca{:type => "text"}/
-                %span.fa-stack.fa-lg.col-md-1
-                  %i.fa.fa-square.fa-stack-2x.icon-search
-                  %i.fa.fa-search.fa-stack-1x.fa-inverse
-                %select.col-md-2.campo_drop
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
-                %select.col-md-2.campo_drop
-                  %option{:value => "treinamento"} EMPRESA
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
-                %select.col-md-2.campo_drop
-                  %option{:value => "treinamento"} ESTADO
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
-                  %option{:value => "treinamento"} TREINAMENTO
+      =render file: "layouts/_search.html.haml"
       =yield
       = render :file => "layouts/_footer.html.haml"
       

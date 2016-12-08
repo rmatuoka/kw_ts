@@ -1,0 +1,52 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.dados_perfil
+  .container
+    .row
+      =#render :partial => "filters"
+      .col-md-12
+        .dados_perfil_direita.empresa_direita
+          .row
+            %h1=" Buscando por: #{params[:q]}" 
+
+          -if !@search_empresas.blank?
+            %h4="Empresas encontradas com o termo #{params[:q]}"
+            -@search_empresas.each do |e|
+              .row
+                .bloco_empresas_principal_white
+                  .row.empresas_destaque_principal_white
+                    .logo_empresa.col-md-2
+                      -if e.img_enterprise.file?
+                        %a{:href => "/empresas/#{e.id}"}
+                          =image_tag(e.img_enterprise.url(:small), :class => "img-responsive")
+                      -else
+                        %a{:href => "/empresas/#{e.id}"}
+                          =image_tag("user_missing_small.png", :class => "img-responsive")
+                    
+                    .dados_empresa.col-md-10
+                      .row
+                        %h2
+                          %a{:href => "/empresas/#{e.id}"}
+                            ="#{e.name}"
+                        %p="#{e.description}"
+                    .col-md-12
+                      .row
+                        -e.specialities.all.each do |s|
+                          %a.btn.btn-especialidade{:href => "#{tags_empresa_path(s)}"}=s.name
+                          
+          -if !@search_artigos.blank?
+            %h4="Artigos encontrados com o termo #{params[:q]}"
+            -@search_artigos.each do |a|
+              .row.post_mais_lido
+                .col-md-2
+                  -if a.columnist.admin_columnists.file?
+                    %a{:href => "#"}
+                      =image_tag(a.columnist.admin_columnists.url(:small), :class => "img-responsive")
+                  -else
+                    =image_tag("user_missing_small.png", :class => "img-responsive")
+                .col-md-10
+                  %h2=a.columnist.name
+                  %h3=a.columnist.description
+                  %a{:href => "#{blog_path(a)}"}=a.subtitle
+    

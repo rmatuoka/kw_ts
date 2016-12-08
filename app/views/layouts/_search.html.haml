@@ -1,0 +1,34 @@
+.container-fluid.busca
+  .container
+    .row
+      .col-md-12
+        %form{:action=> "/searchs", :id => "form-busca"}
+          %input.col-md-11.campo_busca{:type => "text", :name => "q", :placeholder => "Busque por empresas, treinamentos ou arigos"}/
+          %span.fa-stack.fa-lg.col-md-1
+            %a{:href => "javascript:void(0);", :id => "bt-busca"}
+              %i.fa.fa-square.fa-stack-2x.icon-search
+              %i.fa.fa-search.fa-stack-1x.fa-inverse
+
+              
+              /%select.col-md-2.campo_drop
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /%select.col-md-2.campo_drop
+              /  %option{:value => "treinamento"} EMPRESA
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /%select.col-md-2.campo_drop
+              /  %option{:value => "treinamento"} ESTADO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              /  %option{:value => "treinamento"} TREINAMENTO
+              
+
+-content_for :footer do              
+  :javascript
+    $("#bt-busca").click(function(){
+      $("#form-busca").submit();
+    });

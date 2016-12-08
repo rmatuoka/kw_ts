@@ -25,6 +25,7 @@ KwTraining::Application.routes.draw do
   
   resources :user_sessions, only: [:create, :new, :destroy]
   resources :users
+  resources :searchs
   resources :profiles
   resources :comments
   resources :likes
