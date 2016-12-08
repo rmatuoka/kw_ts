@@ -5,7 +5,7 @@
       %span{:id => "total_comments#{feed.id}"}=total_comments 
       =" #{total_comments > 1 ? "comentários" : "comentário"}" 
     
-    = form_for [@like], role: "form", remote: true, id: "form#{feed.id}" do |f|
+    = form_for [@like], remote: true, html:{id: "new_like_#{feed.id}" , role: "form"}  do |f|
       =f.hidden_field :feed_id, value: feed.id
       %button.btn.btn-especialidade{:type => "submit", :id => "btn-like#{feed.id}"}
         %i.fa.fa-heart{"aria-hidden" => "true"}
@@ -41,7 +41,7 @@
     -else
       =image_tag("user_missing_small.png")
   .col-md-10
-    = form_for [@comment], role: "form", remote: true, id: "form#{feed.id}" do |f|
+    = form_for [@comment], remote: true, html:{id: "new_comment_#{feed.id}" , role: "form"} do |f|
       =f.text_area :comment
       =f.hidden_field :feed_id, value: feed.id
       %br/
