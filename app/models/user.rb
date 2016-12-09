@@ -70,6 +70,8 @@ class User < ActiveRecord::Base
       self.name = omniauth.info.name  
       # fetch extra user info from facebook
     when 'twitter'
+    when 'linkedin'
+      self.name = omniauth.info.name
       # fetch extra user info from twitter
     end
   end
