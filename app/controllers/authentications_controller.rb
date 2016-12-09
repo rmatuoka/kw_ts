@@ -67,6 +67,6 @@ class AuthenticationsController < ApplicationController
       user_session = UserSession.new(User.find_by_single_access_token(user.single_access_token))
       user_session.save
     end
-    redirect_to root_path
+    redirect_to perfil_path
   end
 end
