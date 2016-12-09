@@ -31,6 +31,7 @@ class AuthenticationsController < ApplicationController
       puts "===================================="           
       user = User.new
       user.role = "user"
+      
       user.apply_omniauth(omniauth)
       password = SecureRandom.base64(6) 
       puts "===================================="
