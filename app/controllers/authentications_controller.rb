@@ -1,5 +1,7 @@
 class AuthenticationsController < ApplicationController
   def create
+    require 'securerandom'
+    
     omniauth = request.env['omniauth.auth']
     puts "OMNI AUTH #{omniauth}"
     authentication = Authentication.find_by_provider_and_uid(omniauth.provider, omniauth.uid)
@@ -30,7 +32,7 @@ class AuthenticationsController < ApplicationController
       user = User.new
       user.role = "user"
       user.apply_omniauth(omniauth)
-      password = ActiveSupport::SecureRandom.base64(6) 
+      password = SecureRandom.base64(6) 
       puts "===================================="
       puts "          Senha usuário "+ password
       puts "===================================="      
