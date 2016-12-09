@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   
   def apply_omniauth(omniauth)
     self.email = omniauth.info.email#omniauth['user_info']['email'] if email.blank?
-
+    puts omniauth.inspect
     # Update user info fetching from social network
     case omniauth.provider
     when 'facebook'
