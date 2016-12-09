@@ -15,6 +15,7 @@ gem 'acts-as-taggable-on', '~> 4.0'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 
 gem 'sprockets', '~> 2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
