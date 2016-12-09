@@ -23,7 +23,7 @@ class AuthenticationsController < ApplicationController
       current_user.save
  
       flash[:info] = 'Authentication successful.'
-      redirect_to root_path
+      redirect_to perfil_path
     else
       # User is new to this application
       puts "===================================="
@@ -42,11 +42,11 @@ class AuthenticationsController < ApplicationController
         user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
         #user.authentications.build(:provider => omniauth.provider, :uid => omniauth.uid)
         
-        UserMailer.send_email_password_fb(user).deliver
+        #UserMailer.send_email_password_fb(user).deliver
         #ENVIAR EMAIL
         flash[:info] = 'User created and signed in successfully.'
         #sign_in_and_redirect(user)
-        redirect_to accounts_path, :notice => "Usuário Cadastrado com Sucesso!"
+        redirect_to perfil_path, :notice => "Usuário Cadastrado com Sucesso!"
       else
         session[:omniauth] = omniauth.except('extra')
         redirect_to login_path
