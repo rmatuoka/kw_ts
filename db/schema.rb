@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209125923) do
+ActiveRecord::Schema.define(version: 20161209141514) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -321,6 +321,7 @@ ActiveRecord::Schema.define(version: 20161209125923) do
     t.string   "picture_content_type", limit: 255
     t.integer  "picture_file_size",    limit: 4
     t.datetime "picture_updated_at"
+    t.string   "single_access_token",  limit: 255, null: false
   end
 
   create_table "wikis", force: :cascade do |t|
