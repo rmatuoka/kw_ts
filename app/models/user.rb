@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     # Update user info fetching from social network
     case omniauth.provider
     when 'facebook'
-      self.name = "#{omniauth.info.first_name} #{omniauth.info.last_name}"  
+      self.name = omniauth.info.first_name  
       # fetch extra user info from facebook
     when 'twitter'
       # fetch extra user info from twitter

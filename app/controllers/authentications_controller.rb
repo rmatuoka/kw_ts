@@ -45,8 +45,8 @@ class AuthenticationsController < ApplicationController
         #UserMailer.send_email_password_fb(user).deliver
         #ENVIAR EMAIL
         flash[:info] = 'User created and signed in successfully.'
-        #sign_in_and_redirect(user)
-        redirect_to perfil_path, :notice => "Usuário Cadastrado com Sucesso!"
+        sign_in_and_redirect(user)
+        #redirect_to perfil_path, :notice => "Usuário Cadastrado com Sucesso!"
       else
         session[:omniauth] = omniauth.except('extra')
         redirect_to login_path
