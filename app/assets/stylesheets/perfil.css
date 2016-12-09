@@ -120,6 +120,9 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-05 ul li a{color:#fff;font-size:14px;text-transform:uppercase;text-decoration:none;}
 .home-block-05 ul li a:hover{text-decoration:none;color:#95c940;background-color:transparent !important;}
 
+.wiki ul{list-style:none;margin-top: -20px;margin-bottom: 28px;}
+.wiki ul li a{float:left;text-transform:uppercase;font-size:17px;color:#1a2632;margin-right:7px;}
+.wiki ul li a:hover{text-decoration:none;color:#95c940;background-color:transparent !important;}
 
 .avatar-perfil img{
   border-radius:25px;
@@ -128,4 +131,30 @@ body{font-family: 'Open Sans', sans-serif;}
 .perfil-image-small img
 {
   border-radius:50px;
+}
+
+.bloco_empresas_principal{border-radius:10px;border:2px solid #95c940;background-color:#1a2632;padding:5px;margin-bottom:10px;}
+.dados_empresa_principal{padding-left:10px;}
+.empresas_destaque_principal{margin-bottom:20px;padding:5px;margin-left:5px;margin-right:5px;}
+.empresas_destaque_principal h2{font-size:20px;text-transform:uppercase;color:#fff;border-bottom:1px solid #fff;}
+.empresas_destaque_principal p{color:#fff;}
+.btn-especialidade_principal{font-size:10px;color:#fff;background-color:#95c940;font-weight:600;padding:3px;}
+
+.bloco_empresas_principal_white{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:5px;margin-bottom:10px;}
+.dados_empresa_principal_white{padding-left:10px;}
+.empresas_destaque_principal_white{margin-bottom:20px;padding:5px;margin-left:5px;margin-right:5px;}
+.empresas_destaque_principal_white h2{font-size:20px;text-transform:uppercase;color:#1a2632;border-bottom:1px solid #1a2632;}
+.empresas_destaque_principal_white h2 a{color:#1a2632;}
+.empresas_destaque_principal_white h2 a:hover{text-decoration:none;color:#95c940;background-color:transparent !important;}
+.empresas_destaque_principal_white p{color:#1a2632;}
+
+.sobre_empresa{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:5px;margin-top:20px;}
+.especialidades_empresa{border-radius:10px;border:2px solid #95c940;background-color:#f6f6f7;padding:5px;margin-top:20px;}
+.info_empresas h1{color:#18242f;border-bottom:5px solid #95c940;font-size:20px;text-transform:uppercase;padding:10px;padding-left:30px;}
+.sobre_empresa p{color:#18242f;font-size:12px;}
+.especialidades_empresa ul{margin:0;padding:0}
+.especialidades_empresa ul li{text-transform:uppercase;color:#18242f}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .wiki {padding-bottom:25px;}
 }

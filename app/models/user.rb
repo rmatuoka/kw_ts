@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :comments
   has_many :suggestions
+  has_many :authentications, :dependent => :destroy
 
   acts_as_authentic do |c|
     c.login_field = "email"
@@ -59,4 +60,18 @@ class User < ActiveRecord::Base
   def deliver_password_reset_instructions!
     reset_perishable_token!
   end
+  
+  def apply_omniauth(omniauth)
+    self.email = omniauth.info.email#omniauth['user_info']['email'] if email.blank?
+
+    # Update user info fetching from social network
+    case omniauth.provider
+    when 'facebook'
+      self.name = "#{omniauth.info.first_name} #{omniauth.info.last_name}"  
+      # fetch extra user info from facebook
+    when 'twitter'
+      # fetch extra user info from twitter
+    end
+  end
+  
 end
