@@ -41,6 +41,8 @@ KwTraining::Application.routes.draw do
     end
   end
   
+  resources :sobre
+  
   resources :authentications
   match '/auth/:provider/callback', to: 'authentications#create', via: :all
   
