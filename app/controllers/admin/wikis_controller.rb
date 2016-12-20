@@ -32,8 +32,6 @@ class Admin::WikisController < ApplicationController
     @wiki.save
     respond_to do |format|
       if @wiki.save
-        
-
         format.html { redirect_to admin_wiki_path(@wiki), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: adminwiki_path(@wiki) }
       else
@@ -75,6 +73,6 @@ class Admin::WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:title,:description,:active, :published, enterprise_ids_ids: [])
+      params.require(:wiki).permit(:title,:description,:active, :published, enterprise_ids: [])
     end
 end

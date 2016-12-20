@@ -11,13 +11,13 @@ class BlogsController < ApplicationController
     #------------------INSERIR EM UM BEFORE FILTER FIM
   
     #Carrega artigos
-    @destaque = Article.where(["published = 1 AND active = 1 AND position = 1"]).order(:created_at => "asc").limit(1)
+    @destaque = Article.where(["published = 1 AND active = 1 AND position = 1"]).order(:id => "desc").limit(1)
     puts "===========DESTAQUE: #{@destaque.inspect}"
     
-    @direita = Article.where(["published = 1 AND active = 1 AND position = 2"]).order(:created_at => "asc").limit(3)
+    @direita = Article.where(["published = 1 AND active = 1 AND position = 2"]).order(:id => "desc").limit(3)
     puts "===========DIREITA: #{@direita.inspect}"
     
-    @outros = Article.where(["published = 1 AND active = 1 AND position = 3"]).order(:created_at => "asc").limit(6)
+    @outros = Article.where(["published = 1 AND active = 1 AND position = 3"]).order(:id => "desc").limit(6)
     puts "===========OUTROS: #{@outros.inspect}"
     
     

@@ -9,7 +9,12 @@
         .dados_perfil_direita.empresa_direita
           .row
             %h1=" Buscando por: #{params[:q]}" 
-
+          
+          
+          -if @search_empresas.blank? && @search_artigos.blank?
+            %p
+              Não encontramos o que você procura. Tente novamente com outros termos.
+          
           -if !@search_empresas.blank?
             %h4="Empresas encontradas com o termo #{params[:q]}"
             -@search_empresas.each do |e|

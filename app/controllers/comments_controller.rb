@@ -8,13 +8,17 @@ class CommentsController < ApplicationController
     @feed = params[:comment][:feed_id].to_i
     
     if params[:comment][:comment].present?
-      @comment = Comment.new
-      @comment.feed_id = @feed
-      @comment.user_id = current_user.id
-      @comment.comment = params[:comment][:comment]
+      @check = Comment.where(:feed_id => @feed, :user_id => current_user.id,:comment => params[:comment][:comment] )
+      
+      if @check.blank?
+        @comment = Comment.new
+        @comment.feed_id = @feed
+        @comment.user_id = current_user.id
+        @comment.comment = params[:comment][:comment]
     
-      if @comment.save
-        @error = false
+        if @comment.save
+          @error = false
+        end
       end
     end
   end

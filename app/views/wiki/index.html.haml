@@ -1,25 +1,7 @@
 -content_for :head do
   = stylesheet_link_tag "perfil.css"
   
-.container-fluid.top_perfil
-  .container
-    .row
-      .col-md-12.perfil
-        .col-md-3.avatar-perfil
-          -if current_user.picture.file?
-            %a{:href => "#"}
-              =image_tag(current_user.picture.url(:medium))
-          -else
-            =image_tag("user_missing_medium.png")
 
-        .col-md-9
-          .row
-            %h2="#{current_user.name} #{current_user.last_name}"
-            - if current_user.services_performed.present?
-              %p="#{current_user.services_performed}" 
-          .row
-            %a{:href => "#{edit_user_path(current_user)}"}
-              =image_tag("btn-editar-perfil.png")
               
 .container-fluid.dados_perfil
   .container

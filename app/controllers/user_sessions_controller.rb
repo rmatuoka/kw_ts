@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       if User.find(current_user.id).has_role? :administrator
-        redirect_to admin_root_path
+        redirect_to perfil_path
       else
         redirect_to perfil_path
       end

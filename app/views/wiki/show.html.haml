@@ -41,12 +41,11 @@
                 .row
                   %h2=w.title
                   %p=w.description
-                  %ul
-                    %li ESPECIALIDADE 1
-                    %li ESPECIALIDADE 2
-                    %li ESPECIALIDADE 3
-                    %li ESPECIALIDADE 4
-                    %li ESPECIALIDADE 5
+                  - if w.enterprises.present?
+                    %h4 Empresas relacionadas
+                    %ul
+                      -w.enterprises.each do |e|
+                        %li=link_to(e.name, empresa_path(e),:style=>"float:none; font-size:13px;")
             
       .col-md-5.col-md-offset-1
         .dados_perfil_direita

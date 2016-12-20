@@ -4,7 +4,9 @@
       .col-md-11
         %a{:href => "/perfil"}
           =image_tag("logo-color.png")
+        %a.pull-right{:href => "/logout"} Logout
       .col-md-1.perfil-image-small
+        
         -if current_user.picture.file?
           %a{:href => "#"}
             =image_tag(current_user.picture.url(:small))
