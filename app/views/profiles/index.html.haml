@@ -1,10 +1,13 @@
 -content_for :head do
   = stylesheet_link_tag "perfil.css"
 
+-style =""
+-if current_user.cover.file?
+  -style = "background-image:url('#{current_user.cover.url()}'); background-repeat:repeat;"
 .container-fluid.top_perfil
   .container
     .row
-      .col-md-12.perfil
+      .col-md-12.perfil{:style => "#{style}"}
         .col-md-3.avatar-perfil
           -if current_user.picture.file?
             %a{:href => "#"}

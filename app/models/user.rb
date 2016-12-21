@@ -15,11 +15,13 @@ class User < ActiveRecord::Base
   acts_as_authorization_subject :association_name => :roles, :join_table_name => :roles_users
   after_save :define_role
   
-  
-  
   has_attached_file :picture, styles: { medium: "226x260#", small: "50x50#" }
 	validates_attachment :picture, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
-	
+  
+  has_attached_file :cover, styles: {big: "1170x300>", medium: "226x260#", small: "50x50#" }
+	validates_attachment :cover, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
+  
+  
   
   def profile_perc
     total = 0

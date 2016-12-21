@@ -27,7 +27,11 @@ KwTraining::Application.routes.draw do
   resources :users
   resources :searchs
   resources :profiles
-  resources :comments
+  resources :comments do
+    member do
+      get :deletar
+    end
+  end
   resources :likes
   resources :blogs
   resources :categorias

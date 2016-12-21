@@ -22,7 +22,7 @@
 
 %div{:id => "comentarios-wrapper#{feed.id}"}
   -comments.each do |c|
-    .row.news_comentario
+    .row.news_comentario{:id => "comentario_#{c.id}"}
       .col-md-2
         -if c.user.picture.file?
           %a{:href => "#"}
@@ -32,7 +32,12 @@
       .col-md-10
         %h2="#{c.user.name} #{c.user.last_name}"
         %p=c.comment
-  
+        
+        -if current_user.id == c.user.id
+          /EXCLUIR
+          =link_to("excluir comentário", deletar_comment_path(c), :remote => :true)
+        
+        
 .row.news_campo_comentario{:id => "form-comment#{feed.id}"}
   .col-md-2
     -if current_user.picture.file?

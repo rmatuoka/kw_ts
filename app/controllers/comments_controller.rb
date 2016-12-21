@@ -22,4 +22,10 @@ class CommentsController < ApplicationController
       end
     end
   end
+  
+  def deletar
+    @error = true
+    @del = Comment.destroy(params[:id])
+    @error = false
+  end
 end

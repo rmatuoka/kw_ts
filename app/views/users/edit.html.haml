@@ -1,11 +1,13 @@
 -content_for :head do
   = stylesheet_link_tag "perfil.css"
   
-  
+-style =""
+-if current_user.cover.file?
+  -style = "background-image:url('#{current_user.cover.url()}'); background-repeat:repeat;"
 .container-fluid.top_perfil
   .container
     .row
-      .col-md-12.perfil
+      .col-md-12.perfil{:style => "#{style}"}
         .col-md-3.avatar-perfil
           -if current_user.picture.file?
             %a{:href => "#"}
@@ -66,6 +68,12 @@
                     %label Sua foto:
                     %br/
                     =f.file_field :picture
+                    
+                .row
+                  .col-md-12
+                    %label Foto de capa:
+                    %br/
+                    =f.file_field :cover
           .dados_perfil_esquerda
             .row
               %h1 Onde você mora?
