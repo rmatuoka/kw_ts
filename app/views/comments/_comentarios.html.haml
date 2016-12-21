@@ -1,4 +1,4 @@
-.row.news_comentario
+.row.news_comentario{:id => "comentario_#{c.id}"}
   .col-md-2
     -if current_user.picture.file?
       %a{:href => "#"}
