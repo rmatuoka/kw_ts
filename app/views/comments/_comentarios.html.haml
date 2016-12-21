@@ -8,3 +8,7 @@
   .col-md-10
     %h2="#{current_user.name} #{current_user.last_name}"
     %p=@comment.comment
+    
+    -if current_user.id == @comment.user.id
+      /EXCLUIR
+      =link_to("excluir comentário", deletar_comment_path(@comment), :remote => :true)
