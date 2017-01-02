@@ -14,22 +14,23 @@
       .col-md-12.galeria
         %h1 galeria de fotos
         .row.galeria-itens
-          .col-md-3
-            %img{:src => "/assets/img-galeria.png"}/
-            %h3 Nome do Evento
-            %h4 01/11/2016
-          .col-md-3
-            %img{:src => "/assets/img-galeria.png"}/
-            %h3 Nome do Evento
-            %h4 01/11/2016
-          .col-md-3
-            %img{:src => "/assets/img-galeria.png"}/
-            %h3 Nome do Evento
-            %h4 01/11/2016
-          .col-md-3
-            %img{:src => "/assets/img-galeria.png"}/
-            %h3 Nome do Evento
-            %h4 01/11/2016
+          -if !@galerias.empty?
+            -@galerias.each do |g|
+              .col-md-3
+              
+                %a.fancybox-thumb{:href => "#{g.organization_images.first.image.url()}", :rel => "galeria-evento#{g.id}"}
+                  %img{:src => "#{g.organization_images.first.image.url(:medium)}"}/
+                %h3=g.title
+                %h4=g.organization_start.strftime('%d/%m/%y')
+                
+                %div{:style => "display:none;"}
+                  -counter = 0
+                  -g.organization_images.all.each do |img|
+                    -if counter > 0
+                      %a.fancybox-thumb{:href => "#{img.image.url()}", :rel => "galeria-evento#{g.id}"}
+                        %img{:src => "#{img.image.url(:medium)}"}/
+                    -counter = counter + 1
+                
 /.container-fluid
 /  .container
 /    .row
@@ -58,49 +59,63 @@
     $(document).ready(function() {
       var initialLocaleCode = 'pt-br';
 
-    $('#calendar').fullCalendar({
-      eventClick: function(calEvent, jsEvent, view) {
-        //alert('Event: ' + calEvent.title);
-        ////alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-        //alert('View: ' + view.name);
+      $('#calendar').fullCalendar({
+        eventClick: function(calEvent, jsEvent, view) {
+          //alert('Event: ' + calEvent.title);
+          ////alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+          //alert('View: ' + view.name);
 
-      // change the border color just for fun
-        $(this).css('border-color', 'red');
+        // change the border color just for fun
+          $(this).css('border-color', 'red');
 
-      },
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay,listMonth'
-      },
-        defaultDate: '#{DateTime.now.strftime("%Y/%m/%d")}',
-        locale: initialLocaleCode,
-        buttonIcons: false, // show the prev/next text
-        weekNumbers: true,
-        navLinks: true, // can click day/week names to navigate views
-        editable: true,
-        eventLimit: true, // allow "more" link when too many events
+        },
+        header: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'month,agendaWeek,agendaDay,listMonth'
+        },
+          defaultDate: '#{DateTime.now.strftime("%Y/%m/%d")}',
+          locale: initialLocaleCode,
+          buttonIcons: false, // show the prev/next text
+          weekNumbers: true,
+          navLinks: true, // can click day/week names to navigate views
+          editable: true,
+          eventLimit: true, // allow "more" link when too many events
     
-      events: [
-        #{@datas}
+        events: [
+          #{@datas}
     
-      ]
-    });
-
-    // build the locale selector's options
-    $.each($.fullCalendar.locales, function(localeCode) {
-      $('#locale-selector').append(
-        $('<option/>')
-        .attr('value', localeCode)
-        .prop('selected', localeCode == initialLocaleCode)
-        .text(localeCode)
-        );
-    });
-
-    // when the selected option changes, dynamically change the calendar option
-    $('#locale-selector').on('change', function() {
-        if (this.value) {
-          $('#calendar').fullCalendar('option', 'locale', this.value);
-        }
+        ]
       });
+
+      // build the locale selector's options
+      $.each($.fullCalendar.locales, function(localeCode) {
+        $('#locale-selector').append(
+          $('<option/>')
+          .attr('value', localeCode)
+          .prop('selected', localeCode == initialLocaleCode)
+          .text(localeCode)
+          );
+      });
+
+      // when the selected option changes, dynamically change the calendar option
+      $('#locale-selector').on('change', function() {
+          if (this.value) {
+            $('#calendar').fullCalendar('option', 'locale', this.value);
+          }
+      });
+      
+      	$(".fancybox-thumb").fancybox({
+      		prevEffect	: 'none',
+      		nextEffect	: 'none',
+      		helpers	: {
+      			title	: {
+      				type: 'outside'
+      			},
+      			thumbs	: {
+      				width	: 50,
+      				height	: 50
+      			}
+      		}
+      	});
     });

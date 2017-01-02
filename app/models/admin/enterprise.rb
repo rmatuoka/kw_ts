@@ -2,7 +2,7 @@ class Admin::Enterprise < ActiveRecord::Base
 	acts_as_taggable_on :tags
 	
 	has_attached_file :img_enterprise, styles: { 
-	                                  medium: "226x260#", 
+	                                  medium: "226x160#", 
 	                                  small: "100x100#" 
 	                                  }, 
 	                                  default_url: "/images/user_missing_:style.png"

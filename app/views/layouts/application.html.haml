@@ -14,6 +14,8 @@
     = stylesheet_link_tag "font-awesome.min.css"
     = stylesheet_link_tag "fullcalendar.css"
     = stylesheet_link_tag "fullcalendar.print.css"
+    = stylesheet_link_tag "jquery.fancybox.css"
+    = stylesheet_link_tag "helpers/jquery.fancybox-thumbs.css"
     
   %body
     %section
@@ -29,6 +31,10 @@
     = javascript_include_tag "lib/moment.min.js"
     = javascript_include_tag "fullcalendar.min.js"
     = javascript_include_tag "locale-all.js"
+    = javascript_include_tag "jquery.fancybox.js"
+    = javascript_include_tag "jquery.fancybox-thumbs.js"
+    
+    
     
     =yield :footer
     :javascript

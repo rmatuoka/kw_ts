@@ -6,8 +6,12 @@
     .row
       .col-md-12.perfil
         .col-md-3.avatar-perfil
-          %a{:href => "#"}
-            %img{:src => "/assets/avatar-perfil.png"}/
+          -if @empresa.img_enterprise.file?
+            %a{:href => "#"}
+              =image_tag(@empresa.img_enterprise.url(:medium))
+          -else
+            =image_tag("user_missing_medium.png")
+            
         .col-md-9
           .row
             %h2=@empresa.name

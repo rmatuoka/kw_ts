@@ -11,5 +11,7 @@ class EventosController < ApplicationController
       @datas += "end: '#{e.organization_finish.strftime("%Y/%m/%d")}'"
       @datas += "},"
     end
+  
+    @galerias = Admin::Organization.all.order("id DESC").limit(4)
   end
 end
