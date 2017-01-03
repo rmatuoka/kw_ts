@@ -4,7 +4,15 @@
       .col-md-11
         %a{:href => "/perfil"}
           =image_tag("logo-color.png")
+        
         %a.pull-right{:href => "/logout"} Logout
+          
+        -if current_user.has_role? :columnist
+          -if current_user.columnists.all.count > 0
+            %a.pull-right{:href => "#{colunas_path}"}
+              Meus artigos | &nbsp;
+        
+        
       .col-md-1.perfil-image-small
         
         -if current_user.picture.file?

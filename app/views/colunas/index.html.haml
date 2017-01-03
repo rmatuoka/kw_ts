@@ -1,0 +1,23 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.dados_perfil
+  .container
+    .row
+      .col-md-12
+        .dados_perfil_esquerda
+          .row
+            .artigo
+              .row
+                .col-sm-12
+                  %table.table.table-hover
+                    %tr
+                      %th Nome da Coluna
+                      %th Descrição
+                      %th Ações
+                    - for admin_columnist in @admin_columnists
+                      %tr
+                        %td= admin_columnist.name
+                        %td= admin_columnist.description
+                        %td 
+                          = link_to "Artigos", coluna_artigos_path(admin_columnist), :class => "btn btn-primary"

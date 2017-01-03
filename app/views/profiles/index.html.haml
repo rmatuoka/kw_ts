@@ -23,13 +23,18 @@
           .row
             %a{:href => "#{edit_user_path(current_user)}"}
               =image_tag("btn-editar-perfil.png")
+          
           -if current_user.has_role?  :administrator
             .row
               %a{:href => "#{admin_root_path}"}
                 =image_tag("btn-acessar-admin.png")	
-          .row
-            %a{:href => "#{edit_user_path(current_user)}"}
-              =image_tag("btn-editar-artigo.png")	
+          
+          -if current_user.has_role? :columnist
+            -if current_user.columnists.all.count > 0
+              .row
+                %a{:href => "#{colunas_path}"}
+                  =image_tag("btn-editar-artigo.png")	
+                  
 .container-fluid.dados_perfil
   .container
     .row

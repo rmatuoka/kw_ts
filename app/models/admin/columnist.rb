@@ -4,5 +4,5 @@ class Admin::Columnist < ActiveRecord::Base
 	validates_attachment :admin_columnists, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 	has_many :articles, dependent: :destroy
 	
-	
+	belongs_to :user
 end

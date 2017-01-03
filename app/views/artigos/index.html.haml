@@ -1,0 +1,30 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.dados_perfil
+  .container
+    .row
+      .col-md-12
+        .dados_perfil_esquerda
+          .row
+            .artigo
+              .row
+                .col-sm-12
+                  %table.table.table-hover
+                    %tr
+                      %th=t("activerecord.attributes.article.title") 
+                      %th=t("activerecord.attributes.article.subtitle")
+                      %th Coluna
+                      %th=t("actions")
+                    - for article in @articles 
+                      %tr
+                        %td= article.title 
+                        %td= article.subtitle
+                        %td= @columnist.name
+                        %td 
+                          = link_to "Exibir", blog_path(article), :class => "btn btn-default", :target => "_blank"
+                          = link_to "Editar", edit_coluna_artigo_path(@columnist, article), :class => "btn btn-default"
+                          = link_to 'Deletar', coluna_artigo_path(@columnist, article), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+
+                  %p
+                    = link_to "Novo Artigo", new_coluna_artigo_path, :class => "btn btn-primary"

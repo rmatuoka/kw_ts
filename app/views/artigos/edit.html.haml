@@ -1,0 +1,56 @@
+-content_for :head do
+  = stylesheet_link_tag "perfil.css"
+  
+.container-fluid.dados_perfil
+  .container
+    .row
+      .col-md-12
+        .dados_perfil_esquerda
+          .row
+            .artigo
+              .row
+                .col-sm-12
+                  = form_for [@columnist, @article], :url => url_for(:controller => :artigos, :action => 'update') do |f|
+                    -if f.error_messages
+                      .alert.alert-danger.alert-dismissable
+                        %i.fa.fa-ban
+                        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+                        %b Alert!
+                        Confira os campos marcados em vermelho.
+
+                    .form-group
+                      = f.label :title
+                      = f.text_field :title, :class => "form-control", :placeholder => "titulo" 
+                    .form-group
+                      = f.label :subtitle
+                      = f.text_field :subtitle, :class => "form-control", :placeholder => "subtitulo"
+                    .form-group 
+                      = f.label :description
+                      = f.text_area :description, :class => "form-control ckeditor", :placeholder => "descrição"
+                    .form-group 
+                      = f.label :category_ids, "Escolha a Categoria"    
+                      = f.select :category_ids, @categories,{}, {multiple: "multiple", class: "form-control select2"}
+                    .form-group 
+                      = f.label :position, "Escolha a posição"
+                      %br
+                      = f.select :position, options_for_select([["Destaque", "1"], ["Destaque Direita", "2"], ["Baixo", "3"]], @article.position),{}, {class: "form-control select2"}
+                    .form-group
+                      = f.label :tag_list
+                      = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"  
+                    .form-group 
+                      = f.label :published
+                      = f.check_box :published
+                    .form-group
+                      = f.label :image_article
+                      = f.file_field :image_article, :class => "form-control"  
+                    - if @article.image_article.file?
+                      .form-group
+                        =image_tag(@article.image_article.url)
+
+                    =f.submit nil, :class => "btn btn-primary" 
+
+-content_for :footer do
+  :javascript
+    $(function () {
+      $(".select2").select2();
+    });

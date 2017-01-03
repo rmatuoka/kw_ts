@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :suggestions
   has_many :authentications, :dependent => :destroy
-
+  has_many :columnists, class_name: 'Admin::Columnist'
+  
+  validates_presence_of :name
+  
   acts_as_authentic do |c|
     c.login_field = "email"
   end
@@ -47,6 +50,8 @@ class User < ActiveRecord::Base
       @role = :administrator
     elsif self.has_role? :supervisor
       @role = :supervisor
+    elsif self.has_role? :columnist
+      @role = :columnist
     else self.has_role? :user
       @role = :user
     end

@@ -7,6 +7,11 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :category
   belongs_to :columnist, class_name: 'Admin::Columnist'
   has_many :article_reads
+  
+  validates_presence_of :title
+  validates_presence_of :subtitle
+  validates_presence_of :description
+  validates_presence_of :image_article
 
   # def self.search(search)
   #   if search

@@ -1,5 +1,6 @@
 class Admin::ColumnistsController < ApplicationController
   before_action :set_admin_columnist, only: [:show, :edit, :update, :destroy]
+  before_filter :load_users
   layout "admin"
   # GET /admin/columnists
   # GET /admin/columnists.json
@@ -69,6 +70,11 @@ class Admin::ColumnistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_columnist_params
-      params.require(:admin_columnist).permit(:name, :description, :published, :active, :admin_columnists)
+      params.require(:admin_columnist).permit(:name, :description, :published, :active, :admin_columnists, :user_id)
+    end
+    
+    def load_users
+      @users = User.joins(:roles).where(:roles => {:name => :columnist}).all.collect { |c| [c.name, c.id] }
+      # @categories = Admin::Category.includes(:children).where("admin_categories.published = true").all
     end
 end

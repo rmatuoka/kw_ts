@@ -4941,3 +4941,8 @@ table.text-center th {
     white-space: normal !important;
   }
 }
+
+
+.field_with_errors{
+  border:1px solid red;
+}

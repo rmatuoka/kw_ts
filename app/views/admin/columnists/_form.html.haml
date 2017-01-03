@@ -8,7 +8,10 @@
 
   .box-body
     .form-group
-      =f.label :name, "Nome"
+      =f.label :user_id, "Usuário"
+      = f.select :user_id, @users,{}, {class: "form-control select2"}
+    .form-group
+      =f.label :name, "Nome da Colunia"
       = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
     .form-group
       =f.label :description, "Descrição"
@@ -28,3 +31,11 @@
 
   .box-footer
     =f.submit "Salvar", :class => "btn btn-primary"
+    
+    
+    
+-content_for :footer do
+  :javascript
+    $(function () {
+      $(".select2").select2();
+    });

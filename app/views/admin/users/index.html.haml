@@ -35,6 +35,10 @@
                 - if user.has_role?(:administrator)
                   %span.label.label-danger
                     = user.role
+                
+                - if user.has_role?(:columnist)
+                  %span.label.label-info
+                    = user.role
                     
                 - if user.has_role?(:user)
                   %span.label.label-default

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161221121544) do
+ActiveRecord::Schema.define(version: 20170103131635) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20161221121544) do
     t.string   "admin_columnists_content_type", limit: 255
     t.integer  "admin_columnists_file_size",    limit: 4
     t.datetime "admin_columnists_updated_at"
+    t.integer  "user_id",                       limit: 4
   end
 
   create_table "admin_customers", force: :cascade do |t|
