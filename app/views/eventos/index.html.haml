@@ -16,7 +16,7 @@
         .row.galeria-itens
           -if !@galerias.empty?
             -@galerias.each do |g|
-              -if g.organization_images.first.image.file?
+              -if g.organization_images.first.present?
                 .col-md-3
                 
                   %a.fancybox-thumb{:href => "#{g.organization_images.first.image.url()}", :rel => "galeria-evento#{g.id}"}
