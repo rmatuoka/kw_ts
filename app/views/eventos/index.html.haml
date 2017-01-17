@@ -16,20 +16,21 @@
         .row.galeria-itens
           -if !@galerias.empty?
             -@galerias.each do |g|
-              .col-md-3
-              
-                %a.fancybox-thumb{:href => "#{g.organization_images.first.image.url()}", :rel => "galeria-evento#{g.id}"}
-                  %img{:src => "#{g.organization_images.first.image.url(:medium)}"}/
-                %h3=g.title
-                %h4=g.organization_start.strftime('%d/%m/%y')
+              -if g.organization_images.first.image.file?
+                .col-md-3
                 
-                %div{:style => "display:none;"}
-                  -counter = 0
-                  -g.organization_images.all.each do |img|
-                    -if counter > 0
-                      %a.fancybox-thumb{:href => "#{img.image.url()}", :rel => "galeria-evento#{g.id}"}
-                        %img{:src => "#{img.image.url(:medium)}"}/
-                    -counter = counter + 1
+                  %a.fancybox-thumb{:href => "#{g.organization_images.first.image.url()}", :rel => "galeria-evento#{g.id}"}
+                    %img{:src => "#{g.organization_images.first.image.url(:medium)}"}/
+                  %h3=g.title
+                  %h4=g.organization_start.strftime('%d/%m/%y')
+                
+                  %div{:style => "display:none;"}
+                    -counter = 0
+                    -g.organization_images.all.each do |img|
+                      -if counter > 0
+                        %a.fancybox-thumb{:href => "#{img.image.url()}", :rel => "galeria-evento#{g.id}"}
+                          %img{:src => "#{img.image.url(:medium)}"}/
+                      -counter = counter + 1
                 
 /.container-fluid
 /  .container
