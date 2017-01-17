@@ -1,4 +1,8 @@
 class EventosController < ApplicationController
+  access_control do
+    allow logged_in
+  end
+  
   def index
     @eventos = Admin::Organization.all
     
