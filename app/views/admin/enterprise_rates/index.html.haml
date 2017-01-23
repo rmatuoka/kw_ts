@@ -1,0 +1,40 @@
+%section.content-header
+  %h1
+    Avaliações
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Avaliações
+/ Main content
+%section.content
+  .col-xs-12
+    %p
+    
+    .box
+      .box-header
+        %h3.box-title 
+          Avaliações
+
+      .box-body.table-responsive.no-padding
+        %table.table.table-hover
+          %tr
+            %th Empresa 
+            %th Usuáro
+            %th Comentário
+            %th Nota
+            %th=t("actions")
+          - for admin_rate in @admin_rates
+            %tr
+              %td= Admin::Enterprise.find(admin_rate.enterprise_id).name
+              %td= admin_rate.user.name
+              %td= admin_rate.comment
+              %td= admin_rate.rate
+              %td 
+                = link_to t("edit"), edit_admin_enterprise_rate_path(admin_rate), :class => "btn btn-default"
+                = link_to 'Destroy', admin_enterprise_rate_path(admin_rate), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-default"
+
+
+

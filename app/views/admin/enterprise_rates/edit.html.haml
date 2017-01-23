@@ -1,0 +1,44 @@
+%section.content-header
+  %h1
+    Avaliações
+    %small Painel de Controle
+  %ol.breadcrumb
+    %li
+      %a{:href => "#"}
+        %i.fa.fa-dashboard
+        Home
+    %li.active Avaliações
+
+
+/ Main content
+%section.content
+  .row
+    / left column
+    .col-md-12
+      / general form elements
+      .box.box-primary
+        .box-header
+          %h3.box-title Editar Avaliação
+        / /.box-header
+        / form start
+        = form_for [:admin, @admin_rate] do |f|
+          -if f.error_messages
+            .alert.alert-danger.alert-dismissable
+              %i.fa.fa-ban
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+              %b Alert!
+              Por favor, preencha todos os campos.
+          .box-body
+
+            .form-group
+              = f.label :comment
+              = f.text_area :comment, :class => "form-control", :placeholder => "Comentário"
+
+          .box-footer
+            =f.submit "Enviar", :class => "btn btn-primary" 
+        
+      
+
+      %p
+        = link_to t("back_list"), admin_enterprise_rates_path, :class => "btn btn-default"
+

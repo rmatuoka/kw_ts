@@ -14,12 +14,13 @@ KwTraining::Application.routes.draw do
     resources :customers
     resources :enterprises do
       resources :portfolios
-      resources :rates
+      
     end
     resources :statics, only: [:index]
     resources :tags
     resources :wikis
     resources :suggestions
+    resources :enterprise_rates
     
     root to: 'statics#index'
   end
