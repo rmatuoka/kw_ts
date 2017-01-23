@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :suggestions
   has_many :authentications, :dependent => :destroy
   has_many :columnists, class_name: 'Admin::Columnist'
+  has_many :enterprise_rates
   
   validates_presence_of :name
   

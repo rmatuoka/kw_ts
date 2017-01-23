@@ -16,5 +16,6 @@ class Admin::Enterprise < ActiveRecord::Base
 	has_many :portfolios
 	has_and_belongs_to_many :wikis
 	has_and_belongs_to_many :specialities
+	has_many :enterprise_rates
 	
 end

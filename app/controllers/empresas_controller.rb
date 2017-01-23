@@ -1,5 +1,8 @@
 class EmpresasController < ApplicationController
-
+  access_control do
+    allow logged_in
+  end
+  
   def index
     @empresas = Admin::Enterprise.where(["name LIKE ?", "a%"]).order(:name => "ASC")
   end
@@ -11,6 +14,8 @@ class EmpresasController < ApplicationController
     counter = 0
     @especialidades = "<div class='col-sm-4'>"
     @especialidades += "<ul>"
+    
+    @media = @empresa.enterprise_rates.all.average(:rate)
     
     @empresa.specialities.all.each do |s|
       

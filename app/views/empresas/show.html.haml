@@ -57,28 +57,37 @@
     .row
       .col-md-12
         .row.opiniao
-          %h1 Mais lidos
+          %h1 Avaliações
         .row
+          .col-sm-12
+            =link_to "Avaliar esta empresa!", new_empresa_rate_path(@empresa), :class => "fancybox", "data-fancybox-type" => "iframe"
+          
+            ="Média da empresa: #{@media}"
           .mais_lidos
-            .row.post_mais_lido
-              .col-md-2
-                %img{:src => "/assets/avatar-news.png"}/
-              .col-md-10
-                %h2 Maria Aparecida da Silva
-                %h3 Pesquisadora na empresa USP
-                %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
-            .row.post_mais_lido
-              .col-md-2
-                %img{:src => "/assets/avatar-news.png"}/
-              .col-md-10
-                %h2 Maria Aparecida da Silva
-                %h3 Pesquisadora na empresa USP
-                %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
-            .row.post_mais_lido
-              .col-md-2
-                %img{:src => "/assets/avatar-news.png"}/
-              .col-md-10
-                %h2 Maria Aparecida da Silva
-                %h3 Pesquisadora na empresa USP
-                %a{:href => "#"} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod bibendum
-
+            -@empresa.enterprise_rates.all.order(:id => "desc").each do |c|
+              .row.post_mais_lido
+                .col-md-2
+                  -if c.user.picture.file?
+                    %a{:href => "#"}
+                      =image_tag(c.user.picture.url(:small))
+                  -else
+                    =image_tag("user_missing_small.png")
+                .col-md-10
+                  %h2="#{c.user.name} #{c.user.last_name} (#{c.rate})"
+                  %p=c.comment
+ 
+-content_for :footer do
+  :javascript
+    $(document).ready(function() {
+    	$(".fancybox").fancybox({
+    		maxWidth	: 800,
+    		maxHeight	: 600,
+    		fitToView	: false,
+    		width		: '70%',
+    		height		: '70%',
+    		autoSize	: false,
+    		closeClick	: false,
+    		openEffect	: 'none',
+    		closeEffect	: 'none'
+    	});
+    });

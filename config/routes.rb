@@ -14,6 +14,7 @@ KwTraining::Application.routes.draw do
     resources :customers
     resources :enterprises do
       resources :portfolios
+      resources :rates
     end
     resources :statics, only: [:index]
     resources :tags
@@ -39,6 +40,7 @@ KwTraining::Application.routes.draw do
   resources :wiki
   resources :eventos
   resources :empresas do
+    resources :rates
     member do
       get :tags
       get :filters

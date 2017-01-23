@@ -1,0 +1,38 @@
+= form_for [@empresa, @enterprise_rate], :url => "/empresas/#{@empresa.id}/rates", :method => :post do |f|
+  -if f.error_messages
+    .alert.alert-danger.alert-dismissable
+      %i.fa.fa-ban
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+      %b Alert!
+      Por favor, preencha todos os campos.
+  .box-body
+    .form-group
+      %label Como você classificaria esta empresa?
+      %br
+      
+      =f.radio_button :rate,"1"
+      Ruim
+      
+      =f.radio_button :rate,"2"
+      Regular
+      
+      =f.radio_button :rate,"3"
+      Média
+      
+      =f.radio_button :rate,"4"
+      Boa
+      
+      =f.radio_button :rate,"5"
+      Ótima
+      
+      
+    .form-group
+      = f.label :comment
+      = f.text_area :comment, :class => "form-control", :placeholder => "Comentário"
+      
+    .form-group
+      = f.check_box :agreement, :class => "form-control"
+      Declaro ser o responsável pelos comentários e avaliações realizadas
+    
+  .box-footer
+    =f.submit "Enviar", :class => "btn btn-primary" 

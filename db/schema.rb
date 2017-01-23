@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170103131635) do
+ActiveRecord::Schema.define(version: 20170123122815) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -186,6 +186,16 @@ ActiveRecord::Schema.define(version: 20170103131635) do
     t.text     "comment",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "enterprise_rates", force: :cascade do |t|
+    t.string   "enterprise_id", limit: 255
+    t.integer  "rate",          limit: 4
+    t.integer  "user_id",       limit: 4
+    t.text     "comment",       limit: 65535
+    t.boolean  "agreement"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "feeds", force: :cascade do |t|
