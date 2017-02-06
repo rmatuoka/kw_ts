@@ -15,11 +15,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.role = "user"
-    respond_to do |format|
-      if @user.save
-        
-        format.html { redirect_to perfil_path, notice_user: 'User was successfully created.' }      
-      end
+    if @user.save        
+      redirect_to perfil_path, notice_user: 'User was successfully created.'      
+    else
+      redirect_to register_path
     end
   end
   

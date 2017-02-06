@@ -1,0 +1,82 @@
+%section
+  .container-fluid.top-bar
+    .container
+      .row
+        .col-md-6.logo
+          %a{:href => "#"}
+            %img{:src => "/assets/logo.png"}/
+        .col-md-6.form-login
+          = form_for @user_session do |f|
+            = f.text_field :email, :placeholder => "E-mail", :class => "input-login col-md-4"
+            = f.password_field :password, :placeholder => "Senha", :class => "input-login col-md-4"
+            %input.btn-login.col-md-3{:type => "submit", :value => "ENTRAR"}/
+  .container.home-block-01
+    .row
+      .col-md-6
+        /%img{:src => "/assets/tree-home.png"}/
+      .col-md-6
+        .form-home-cadastro
+          = form_for [@user] do |f|
+            %label NOME
+            %br/
+            .col-md-12
+              = f.text_field :name, class: "input-cadastro form-control"
+            %br/
+            %label SOBRENOME
+            %br/
+            .col-md-12
+              = f.text_field :last_name, class: "input-cadastro form-control"
+            %br/
+            %label E-MAIL
+            %br/
+            .col-md-12
+              = f.text_field :email, class: "input-cadastro form-control"
+            %br/
+            / %label TELEFONE
+            / %br/
+            / .col-md-12
+            /   = f.text_field :name, class: "input-cadastro form-control"
+            / %br
+            %label SENHA
+            %br
+            .col-md-12
+              = f.password_field :password, class: "input-cadastro form-control"
+            %br
+            %label CONFIRME SUA SENHA
+            %br
+            .col-md-12
+              = f.password_field :password_confirmation, class: "input-cadastro form-control"
+            %br/
+            %br/
+            %p Ao clicar em Cadastre-se agora, você aceita o Contrato do Usuário, a Política de Privacidade e a Política de Cookies do Training Society.
+            %br
+            .col-md-offset-2.col-md-8
+              %button{type: "submit", class: "btn-form btn-cadastrar"} CADASTRE-SE AGORA
+            %br
+            %br
+            .col-md-offset-2.col-md-8
+              %a{href: "http://www.trainingsociety.com.br/auth/linkedin", class: "btn-form btn-linkedin"} 
+                %i.fa.fa-linkedin
+                Conectar com Linkedin
+            %br
+            %br
+            .col-md-offset-2.col-md-8
+              %a{href: "http://www.trainingsociety.com.br/auth/facebook", class: "btn-form btn-facebook"} 
+                %i.fa.fa-facebook
+                Conectar com Facebook
+            %br
+            %br
+            %br
+  .container-fluid.home-block-05
+    .container
+      .row
+        .col-md-5
+          %p Training Society 2016 - Todo diretos reservados
+        .col-md-7
+          %ul
+            %li
+              %a{:href => "#"} TERMOS DE USO
+            %li
+              %a{:href => "#"} POLÍTICA DE PRIVACIDADE
+            %li
+              %a{:href => "#"} TRAINING SOCIETY PARA EMPRESAS

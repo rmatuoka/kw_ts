@@ -3,122 +3,147 @@
     .container
       .row
         .col-md-6.logo
-          %a{:href => "#"}
-            %img{:src => "assets/logo.png"}/
+          %a{:href => "index.html"}
+            %img{:src => "/assets/logo.png"}/
         .col-md-6.form-login
           = form_for @user_session do |f|
             = f.text_field :email, :placeholder => "E-mail", :class => "input-login col-md-4"
             = f.password_field :password, :placeholder => "Senha", :class => "input-login col-md-4"
             %input.btn-login.col-md-3{:type => "submit", :value => "ENTRAR"}/
-  .container.home-block-01
+  .container-fluid.home-block-01
     .row
-      .col-md-6
-        %img{:src => "assets/tree-home.png"}/
-      .col-md-6
-        .form-home-cadastro
-          = form_for [@user] do |f|
-            %label NOME
-            %br/
-            .col-md-12
-              = f.text_field :name, class: "input-cadastro form-control"
-            %br/
-            %label SOBRENOME
-            %br/
-            .col-md-12
-              = f.text_field :last_name, class: "input-cadastro form-control"
-            %br/
-            %label E-MAIL
-            %br/
-            .col-md-12
-              = f.text_field :email, class: "input-cadastro form-control"
-            %br/
-            / %label TELEFONE
-            / %br/
-            / .col-md-12
-            /   = f.text_field :name, class: "input-cadastro form-control"
-            / %br
-            %label SENHA
-            %br
-            .col-md-12
-              = f.password_field :password, class: "input-cadastro form-control"
-            %br
-            %label CONFIRME SUA SENHA
-            %br
-            .col-md-12
-              = f.password_field :password_confirmation, class: "input-cadastro form-control"
-            %br/
-            %br/
-            %p Ao clicar em Cadastre-se agora, você aceita o Contrato do Usuário, a Política de Privacidade e a Política de Cookies do Training Society.
-            %br
-            .col-md-offset-2.col-md-8
-              %button{type: "submit", class: "btn-form btn-cadastrar"} CADASTRE-SE AGORA
-            %br
-            %br
-            .col-md-offset-2.col-md-8
-              %a{href: "http://www.trainingsociety.com.br/auth/linkedin", class: "btn-form btn-linkedin"} 
-                %i.fa.fa-linkedin
-                Conectar com Linkedin
-            %br
-            %br
-            .col-md-offset-2.col-md-8
-              %a{href: "http://www.trainingsociety.com.br/auth/facebook", class: "btn-form btn-facebook"} 
-                %i.fa.fa-facebook
-                Conectar com Facebook
-            %br
-            %br
-            %br
+      .col-md-7
+      .col-md-4
+        %form.form-home-busca{:action=>"/", :method => :get}
+          %h1 O que você procura?
+          %input.col-md-12.input-cadastro{:onfocus => "this.value='';",:name => "q", :type => "text", :value => "Treinamentos, empresas e etc..."}/
+          %br/
+          %input{:src => "/assets/btn-busca.png", :type => "image"}/
+        %form.form-home-cadastro
+          %h1 Quer atrair mais clientes?
+          %input{:src => "/assets/btn-cadastro.png", :type => "image"}/
+      .col-md-1
   .container-fluid.home-block-02
     .container.home-block-02-background
       .row
-        .col-md-6
-          %h1
-            O que você encontra no
-            %br>/
-            Training Society?
-          .row.item-home
-            %img.icon-home{:src => "assets/ico-home01.png"}/
-            %h2 Artigos
-            %p Training Society apóia o intercâmbio de informações, disponibilizamos conteúdos  relevantes para os profissionais que treinam e desenvolvem pessoas. Como membro, você pode participar e publicar seu artigo.
-          .row.item-home
-            %img.icon-home{:src => "assets/ico-home02.png"}/
-            %h2 dIREtÓRIO de Empresas
-            %p Encontre aqui a Empresa ou o Treinamento que procura. Tempo é dinheiro, você não precisa gastar  tempo procurarando um programa de treinamento na internet. No nosso Diretório de Empresas é facil, rápido e as empresas são avalidas pelos usuários.
-          .row.item-home
-            %img.icon-home{:src => "assets/ico-home03.png"}/
-            %h2 WEBInars e eventos
-            %p Disponibilizamos Webinars e Eventos com principais palestrantes e formadores de opinião da indústria do conhecimento. Como membro, você receberá dicas, recursos e soluções com o propósito de te dar suporte no desenvolvimento de pessoas na sua empresa.
+        .col-md-2
+        .col-md-8
+          %h1 Como funciona o training society
+        .col-md-2
+      .row
+        .col-md-4
+          %img.img-responsive{:src => "/assets/icon-1.png"}/
+          %h2 Faça uma busca
+          %p Utilize o campo de busca e pequise por treinamentos, empresas ou estado.
+        .col-md-4
+          %img.img-responsive{:src => "/assets/icon-2.png"}/
+          %h2 encontre empresas
+          %p Veja as empresas e treinamentos que fazem parte de noso guia de empresas.
+        .col-md-4
+          %img.img-responsive{:src => "/assets/icon-3.png"}/
+          %h2 entre em contato
+          %p entre em contato com as empresas e contrate o treinamento que você precisa.
   .container-fluid.home-block-03
     .container
       .row
-        .col-md-6
-          %img.img-home-block03{:src => "assets/img-home-block03.png"}/
-        .col-md-6
-          %h1
-            Training Society
-            %br>/
-            para empresas
-          .row.item-home
-            %img.icon-home-02{:src => "assets/ico-home01-02.png"}/
-            %h2 Cadastre sua Empresa
-            %p Não há nenhum custo para divulgar sua empresa em nosso site e ficar visível para  nossa comunidade de membros. Se você é um pofissional ou empresa que atua na área de desenvolvimento de pessoas nas organzações, cadastre-se como membro e emseguida cadastre sua empresa.
-          .row.item-home
-            %img.icon-home-02{:src => "assets/ico-home02-02.png"}/
-            %h2 Divulgue suas Tecnologias
-            %p O Training Society disponibiliza uma plataforma para que profissionais e empresas produtoras de conhecimento, possam compartilhar o que é tendência na área de desenvolvimento de pessoas e divulgar novos produtos e tecnologias para um público segmentado.
-          .row.item-home
-            %img.icon-home-02{:src => "assets/ico-home03-02.png"}/
-            %h2 WEBInars e eventos
-            %p As empresas cadastradas no Training Society são convidadas a participar em nossos webnars e eventos dirigidos aos nossos membros, que em sua maioria, são os decisores na contratação de programas de treinamento.
+        .col-md-2
+        .col-md-8
+          %h1 JÁ estão no training society
+        .col-md-2
+      .row
+        .col-md-4
+          %img{:src => "/assets/marca1.jpg"}/
+        .col-md-4
+          %img{:src => "/assets/marca2.jpg"}/
+        .col-md-4
+          %img{:src => "/assets/marca3.jpg"}/
+      %br/
+      %br/
+      .row
+        .col-md-4
+          %img{:src => "/assets/marca4.jpg"}/
+        .col-md-4
+          %img{:src => "/assets/marca5.jpg"}/
+        .col-md-4
+          %img{:src => "/assets/marca6.jpg"}/
   .container-fluid.home-block-04
     .container
       .row
-        %h1 JÁ estão no training society
-      .row
-        %img{:src => "assets/logo-parceiro.jpg"}/
-        %img{:src => "assets/logo-parceiro.jpg"}/
-        %img{:src => "assets/logo-parceiro.jpg"}/
-        %img{:src => "assets/logo-parceiro.jpg"}/
-        %img{:src => "assets/logo-parceiro.jpg"}/
+        .col-md-6.block-noticia-home
+          .row.primeira-linha-noticias-home
+            .col-md-2
+              %img.img-responsive{:src => "/assets/avatar-news.png"}/
+            .col-md-10
+              .row
+                %h3 Maria Aparecida da Silva
+                %h4 Pesquisadora na empresa USP
+          .row.noticia-home
+            .col-md-12
+              %img.img-responsive{:src => "/assets/image-news.png"}/
+              %h5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum consectetur adipiscing elit. Aenean euismod
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+              %a{:href => "#"} Continuar lendo
+          .row.noticia-home
+            .col-md-2
+              %img.img-responsive{:src => "/assets/avatar-news.png"}/
+            .col-md-10
+              %h5 Maria Aparecida da Silva
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+          .row.noticia-home
+            .col-md-2
+              %img.img-responsive{:src => "/assets/avatar-news.png"}/
+            .col-md-10
+              %h5 Maria Aparecida da Silva
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+          .row.noticia-home
+            .col-md-2
+              %img.img-responsive{:src => "/assets/avatar-news.png"}/
+            .col-md-10
+              %h3 Maria Aparecida da Silva
+              %h4 Pesquisadora na empresa USP
+              %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget.
+              %a{:href => "#"} Continuar lendo
+        .col-md-6.oq-vc-encontra
+          .row
+            %h1 O que você encontra no Training Society?
+          .row
+            .col-md-10
+              %h2 Artigos
+              %p Training Society apóia o intercâmbio de informações, disponibilizamos conteúdos  relevantes para os profissionais que treinam e desenvolvem pessoas. Como membro, você pode participar e publicar seu artigo.
+            .col-md-2
+              %img{:src => "/assets/ico-home01.png"}/
+          .row
+            .col-md-10
+              %h2 dIREtÓRIO de Empresas
+              %p Encontre aqui a Empresa ou o Treinamento que procura. Tempo é dinheiro, você não precisa gastar  tempo procurarando um programa de treinamento na internet. No nosso Diretório de Empresas é facil, rápido e as empresas são avalidas pelos usuários.
+            .col-md-2
+              %img{:src => "/assets/ico-home01-02.png"}/
+          .row
+            .col-md-10
+              %h2 WEBInars e eventos
+              %p Disponibilizamos Webinars e Eventos com principais palestrantes e formadores de opinião da indústria do conhecimento. Como membro, você receberá dicas, recursos e soluções com o propósito de te dar suporte no desenvolvimento de pessoas na sua empresa.
+            .col-md-2
+              %img{:src => "/assets/ico-home02.png"}/
+          .row
+            %h1 Training Society para empresas
+          .row
+            .col-md-10
+              %h2 Cadastre sua Empresa
+              %p Não há nenhum custo para divulgar sua empresa em nosso site e ficar visível para  nossa comunidade de membros. Se você é um pofissional ou empresa que atua na área de desenvolvimento de pessoas nas organzações, cadastre-se como membro e emseguida cadastre sua empresa.
+            .col-md-2
+              %img{:src => "/assets/ico-home02-02.png"}/
+          .row
+            .col-md-10
+              %h2 Divulgue suas Tecnologias
+              %p O Training Society disponibiliza uma plataforma para que profissionais e empresas produtoras de conhecimento, possam compartilhar o que é tendência na área de desenvolvimento de pessoas e divulgar novos produtos e tecnologias para um público segmentado.
+            .col-md-2
+              %img{:src => "/assets/ico-home03.png"}/
+          .row
+            .col-md-10
+              %h2 WEBInars e eventos
+              %p As empresas cadastradas no Training Society são convidadas a participar em nossos webnars e eventos dirigidos aos nossos membros, que em sua maioria, são os decisores na contratação de programas de treinamento.
+            .col-md-2
+              %img{:src => "/assets/ico-home03-02.png"}/
   .container-fluid.home-block-05
     .container
       .row
@@ -132,3 +157,35 @@
               %a{:href => "#"} POLÍTICA DE PRIVACIDADE
             %li
               %a{:href => "#"} TRAINING SOCIETY PARA EMPRESAS
+              
+              
+  -if params[:q].present?
+    .modal.fade{:role => "dialog", :tabindex => "-1", :id => "modalSearch"}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .modal-header
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+          /  %h4.modal-title Modal title
+          .modal-body
+            -if @search_artigos.present? || @search_empresas.present? || @treinamentos.present?
+              %p="Encontramos #{@search_empresas.count} empresas, #{@treinamentos.count} treinamentos e #{@search_artigos.count} artigos para a palavra #{params[:q]}"
+              %p
+                ="Para ver os detalhes da busca,"
+                %a{:href=>'/register'} cadastre-se aqui.
+            -else
+              %p Sua busca não retornou nenhum resultado.
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Fechar
+        / /.modal-content
+      / /.modal-dialog
+    / /.modal
+
+
+-content_for :footer do
+  -if params[:q].present?
+    :javascript
+      $('#modalSearch').modal('show');
+      
+              
+

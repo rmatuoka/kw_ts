@@ -53,6 +53,12 @@ KwTraining::Application.routes.draw do
     resources :artigos
   end
   
+  resources :homes do
+    collection do
+      get :register
+    end
+  end
+  
   resources :authentications
   match '/auth/:provider/callback', to: 'authentications#create', via: :all
   
@@ -61,7 +67,7 @@ KwTraining::Application.routes.draw do
   match 'blog', to: "blogs#index", via: :all
   match 'caixa-de-ideias', to: "suggestions#new", via: :all
   match 'perfil', to: "profiles#index", via: :all
-  match 'register', to: "users#new", via: :all
+  match 'register', to: "homes#register", via: :all
   match 'login', to: 'user_sessions#new', via: :all  
   match 'logout', to: 'user_sessions#destroy', via: :all
 end
