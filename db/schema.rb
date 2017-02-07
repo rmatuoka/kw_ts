@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123122815) do
+ActiveRecord::Schema.define(version: 20170207124436) do
 
   create_table "admin_categories", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20170123122815) do
     t.boolean  "featured",                                     default: false
     t.string   "city",                           limit: 255
     t.string   "state",                          limit: 255
+    t.boolean  "published",                                    default: false
+    t.boolean  "active",                                       default: true
   end
 
   create_table "admin_enterprises_specialities", id: false, force: :cascade do |t|

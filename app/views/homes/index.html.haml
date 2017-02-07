@@ -3,7 +3,7 @@
     .container
       .row
         .col-md-6.logo
-          %a{:href => "index.html"}
+          %a{:href => ""}
             %img{:src => "/assets/logo.png"}/
         .col-md-6.form-login
           = form_for @user_session do |f|
@@ -19,7 +19,7 @@
           %input.col-md-12.input-cadastro{:onfocus => "this.value='';",:name => "q", :type => "text", :value => "Treinamentos, empresas e etc..."}/
           %br/
           %input{:src => "/assets/btn-busca.png", :type => "image"}/
-        %form.form-home-cadastro
+        %form.form-home-cadastro{:action => '/cadastro_empresas/new'}
           %h1 Quer atrair mais clientes?
           %input{:src => "/assets/btn-cadastro.png", :type => "image"}/
       .col-md-1
@@ -173,6 +173,8 @@
               %p
                 ="Para ver os detalhes da busca,"
                 %a{:href=>'/register'} cadastre-se aqui.
+                ou
+                %a{:href=>'/register'} faça o login
             -else
               %p Sua busca não retornou nenhum resultado.
           .modal-footer

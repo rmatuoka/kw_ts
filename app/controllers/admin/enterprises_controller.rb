@@ -7,7 +7,7 @@ class Admin::EnterprisesController < ApplicationController
   # GET /admin/enterprises
   # GET /admin/enterprises.json
   def index
-    @admin_enterprises = Admin::Enterprise.all
+    @admin_enterprises = Admin::Enterprise.all.order(:created_at => "DESC")
   end
 
   # GET /admin/enterprises/1
@@ -72,6 +72,6 @@ class Admin::EnterprisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_enterprise_params
-      params.require(:admin_enterprise).permit(:name, :description, :img_enterprise, :banner_enterprise, :specialties, :tag_list, :address, :number, :phone, :email, :site, :featured, :city, :state, speciality_ids: [])
+      params.require(:admin_enterprise).permit(:name, :description, :img_enterprise, :banner_enterprise, :specialties, :tag_list, :address, :number, :phone, :email, :site, :featured, :city, :state, :published, speciality_ids: [])
     end
 end

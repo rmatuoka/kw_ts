@@ -27,13 +27,15 @@
             %th=t("activerecord.attributes.admin_enterprise.name")
             %th=t("activerecord.attributes.admin_enterprise.description")
             %th=t("activerecord.attributes.admin_enterprise.visualizations")
+            %th="Publicada?"
             %th Ações
           - @admin_enterprises.each do |admin_enterprise|
-            %tr
+            %tr{:style => ("background-color:#f39c12;" unless !admin_enterprise.published?)}
               %td= admin_enterprise.id
               %td= admin_enterprise.name
               %td= admin_enterprise.description
               %td= admin_enterprise.visualizations
+              %td= admin_enterprise.published
               %td 
                 = link_to "Show", [admin_enterprise], :class => "btn btn-default"
                 = link_to "Edit", edit_admin_enterprise_path(admin_enterprise), :class => "btn btn-default"

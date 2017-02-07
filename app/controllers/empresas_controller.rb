@@ -4,7 +4,7 @@ class EmpresasController < ApplicationController
   end
   
   def index
-    @empresas = Admin::Enterprise.where(["name LIKE ?", "a%"]).order(:name => "ASC")
+    @empresas = Admin::Enterprise.where(["name LIKE ? AND published = 1", "a%"]).order(:name => "ASC")
   end
 
   def show
@@ -42,6 +42,6 @@ class EmpresasController < ApplicationController
   end
   
   def filters
-    @empresas = Admin::Enterprise.where(["name LIKE ?", "#{params[:id]}%"]).order(:name => "ASC")
+    @empresas = Admin::Enterprise.where(["name LIKE ? AND published = 1", "#{params[:id]}%"]).order(:name => "ASC")
   end
 end

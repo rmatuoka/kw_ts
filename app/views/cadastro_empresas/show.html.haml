@@ -1,0 +1,39 @@
+%section
+  .container-fluid.top-bar
+    .container
+      .row
+        .col-md-6.logo
+          %a{:href => "#"}
+            %img{:src => "/assets/logo.png"}/
+        .col-md-6.form-login
+          = form_for @user_session do |f|
+            = f.text_field :email, :placeholder => "E-mail", :class => "input-login col-md-4"
+            = f.password_field :password, :placeholder => "Senha", :class => "input-login col-md-4"
+            %input.btn-login.col-md-3{:type => "submit", :value => "ENTRAR"}/
+  .container.home-block-01
+    .row
+      .col-md-6
+        /%img{:src => "/assets/tree-home.png"}/
+      .col-md-6
+        .form-home-cadastro
+          %p 
+            Sua empresa foi cadastrada com sucesso.
+            %br
+            Em breve nossa equipe entrará em contato para dar continuidade no processo de aprovação.
+            %br
+            %br
+            %a{:href => "/"} Voltar para a home
+          
+  .container-fluid.home-block-05
+    .container
+      .row
+        .col-md-5
+          %p Training Society 2016 - Todo diretos reservados
+        .col-md-7
+          %ul
+            %li
+              %a{:href => "#"} TERMOS DE USO
+            %li
+              %a{:href => "#"} POLÍTICA DE PRIVACIDADE
+            %li
+              %a{:href => "#"} TRAINING SOCIETY PARA EMPRESAS

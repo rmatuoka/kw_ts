@@ -162,6 +162,10 @@
     - if @admin_enterprise.banner_enterprise.file?
       .form-group
         =image_tag(@admin_enterprise.banner_enterprise.url(:medium))
+        
+    .form-group
+      = f.label :published,  "Publicada?"
+      = f.check_box :published
     
   .box-footer
     =f.submit "Salvar", :class => "btn btn-primary"

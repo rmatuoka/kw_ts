@@ -1,5 +1,6 @@
 class Admin::Enterprise < ActiveRecord::Base
 	acts_as_taggable_on :tags
+	validates_presence_of :name, :description,:address, :number, :phone, :email, :site,:city, :state
 	
 	has_attached_file :img_enterprise, styles: { 
 	                                  medium: "226x160#", 
@@ -17,5 +18,7 @@ class Admin::Enterprise < ActiveRecord::Base
 	has_and_belongs_to_many :wikis
 	has_and_belongs_to_many :specialities
 	has_many :enterprise_rates
+	
+	
 	
 end

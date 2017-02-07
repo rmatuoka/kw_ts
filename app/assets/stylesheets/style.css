@@ -46,3 +46,9 @@ body{font-family: 'Open Sans', sans-serif;}
 .home-block-05 ul{list-style:none !important;margin-top:75px;}
 .home-block-05 ul li{float:left;margin-left:5px;}
 .home-block-05 ul li a{color:#fff;font-size:14px;text-transform:uppercase;text-decoration:none;}
+
+
+
+.field_with_errors{
+  border:1px solid red;
+}

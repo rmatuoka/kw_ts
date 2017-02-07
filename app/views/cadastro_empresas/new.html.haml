@@ -1,0 +1,92 @@
+%section
+  .container-fluid.top-bar
+    .container
+      .row
+        .col-md-6.logo
+          %a{:href => "#"}
+            %img{:src => "/assets/logo.png"}/
+        .col-md-6.form-login
+          = form_for @user_session do |f|
+            = f.text_field :email, :placeholder => "E-mail", :class => "input-login col-md-4"
+            = f.password_field :password, :placeholder => "Senha", :class => "input-login col-md-4"
+            %input.btn-login.col-md-3{:type => "submit", :value => "ENTRAR"}/
+  .container.home-block-01
+    .row
+      .col-md-6
+        /%img{:src => "/assets/tree-home.png"}/
+      .col-md-6
+        .form-home-cadastro
+          = form_for [@empresa], :url => "/cadastro_empresas", :method => :post do |f|
+            -if f.error_messages
+              .alert.alert-danger.alert-dismissable
+                %i.fa.fa-ban
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+                %b Alert!
+                Confira os campos marcados em vermelho.
+            %label NOME
+            %br/
+            .col-md-12
+              = f.text_field :name, :class => "form-control", :placeholder => "Preencha o nome"
+            %br/
+            %label DESCRIÇÃO
+            %br/
+            .col-md-12
+              = f.text_area :description, :class => "form-control", :placeholder => "descrição"
+            %br/
+            %label E-MAIL
+            %br/
+            .col-md-12
+              = f.text_field :email, :class => "form-control", :placeholder => "E-mail"
+            %br/
+            %label ENDEREÇO
+            %br/
+            .col-md-12
+              = f.text_field :address, :class => "form-control", :placeholder => "Endereço"
+            %br
+            %label NÚMERO
+            %br
+            .col-md-12
+              = f.text_field :number, :class => "form-control", :placeholder => "Número"
+            %br/
+            %label CIDADE
+            %br
+            .col-md-12
+              = f.text_field :city, :class => "form-control", :placeholder => "Cidade"
+            %br
+            %label ESTADO
+            %br
+            .col-md-12
+              = f.text_field :state, :class => "form-control", :placeholder => "Estado"
+            %br/
+            
+            %label TELEFONE
+            %br
+            .col-md-12
+              = f.text_field :phone, :class => "form-control", :placeholder => "Telefone"
+            %br/
+            
+            %label SITE
+            %br
+            .col-md-12
+              = f.text_field :site, :class => "form-control", :placeholder => "Site"
+            %br/
+            
+            %br
+            .col-md-offset-2.col-md-8
+              %button{type: "submit", class: "btn-form btn-cadastrar"} CADASTRAR MINHA EMPRESA
+            %br
+            %br
+            %br
+  .container-fluid.home-block-05
+    .container
+      .row
+        .col-md-5
+          %p Training Society 2016 - Todo diretos reservados
+        .col-md-7
+          %ul
+            %li
+              %a{:href => "#"} TERMOS DE USO
+            %li
+              %a{:href => "#"} POLÍTICA DE PRIVACIDADE
+            %li
+              %a{:href => "#"} TRAINING SOCIETY PARA EMPRESAS

@@ -1,0 +1,2 @@
+module CadastroEmpresasHelper
+end
