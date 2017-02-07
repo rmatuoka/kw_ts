@@ -30,7 +30,7 @@
             %th="Publicada?"
             %th Ações
           - @admin_enterprises.each do |admin_enterprise|
-            %tr{:style => ("background-color:#f39c12;" unless !admin_enterprise.published?)}
+            %tr{:style => ("background-color:#f39c12;" unless admin_enterprise.published?)}
               %td= admin_enterprise.id
               %td= admin_enterprise.name
               %td= admin_enterprise.description
