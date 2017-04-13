@@ -52,9 +52,15 @@
       = f.text_field :tag_list, :class => "form-control tags", :placeholder => "Tags"
     
     .form-group
-      = f.label :speciality_ids, "Especialidades"
+      = f.label :speciality_ids, "Selecione até 5 produtos:"
       %br
-      = f.collection_check_boxes(:speciality_ids, Speciality.all, :id, :name)
+      = f.collection_select(:speciality_ids, Speciality.all, :id, :name, {}, {multiple: "multiple", class: "form-control select2"})
+      
+                                                                                                               
+    /.form-group
+    /  = f.label :speciality_ids, "Especialidades"
+    /  %br
+    /  = f.collection_check_boxes(:speciality_ids, Speciality.all, :id, :name)
     /.form-group
     /  =f.label :specialties, "Especialidades"
     /  %select.select2.form-control#user_services_performed{name: "admin_enterprise[specialties]", multiple: "multiple"}
@@ -173,5 +179,7 @@
 -content_for :footer do
   :javascript
     $(function () {
-      $(".select2").select2();
+      $(".select2").select2({
+        maximumSelectionLength: 5
+      });
     });

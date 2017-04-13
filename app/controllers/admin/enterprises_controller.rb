@@ -1,6 +1,7 @@
 class Admin::EnterprisesController < ApplicationController
   layout "admin"
   before_action :set_admin_enterprise, only: [:show, :edit, :update, :destroy]
+  before_filter :load_specialities
   access_control do
       allow :administrator, :all
   end
@@ -69,9 +70,15 @@ class Admin::EnterprisesController < ApplicationController
     def set_admin_enterprise
       @admin_enterprise = Admin::Enterprise.find(params[:id])
     end
+    
+    def load_specialities
+      @specialities = Speciality.all.collect { |c| [c.name, c.id] }
+      # @categories = Admin::Category.includes(:children).where("admin_categories.published = true").all
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_enterprise_params
-      params.require(:admin_enterprise).permit(:name, :description, :img_enterprise, :banner_enterprise, :specialties, :tag_list, :address, :number, :phone, :email, :site, :featured, :city, :state, :published, speciality_ids: [])
+      params.require(:admin_enterprise).permit!
+      #params.require(:admin_enterprise).permit(:name, :description, :img_enterprise, :banner_enterprise, :specialties, :tag_list, :address, :number, :phone, :email, :site, :featured, :city, :state, :published, speciality_ids: [])
     end
 end
